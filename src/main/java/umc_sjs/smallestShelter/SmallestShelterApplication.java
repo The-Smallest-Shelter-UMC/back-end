@@ -8,8 +8,6 @@ import javax.persistence.EntityManagerFactory;
 @SpringBootApplication
 public class SmallestShelterApplication {
 
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(SmallestShelterApplication.class, args);
 	}
