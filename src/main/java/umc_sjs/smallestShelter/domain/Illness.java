@@ -19,4 +19,8 @@ public class Illness {
     private Long idx;
 
     private String name;
+
+    public Illness(String name) {
+        this.name = name;
+    }
 }

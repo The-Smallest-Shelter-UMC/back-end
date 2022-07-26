@@ -27,4 +27,14 @@ public class AnimalIllness {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "illness_idx")
     private Illness illness;
+
+    public AnimalIllness(Illness illness) {
+        this.illness = illness;
+    }
+
+    //연관관계 편의 메소드
+    public void modifyAnimal(Animal animal) {
+        this.setAnimal(animal);
+        animal.getAnimalIllnessList().add(this);
+    }
 }

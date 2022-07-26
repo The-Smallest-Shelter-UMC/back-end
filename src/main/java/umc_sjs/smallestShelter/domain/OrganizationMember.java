@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,24 +16,30 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Organization {
+public class OrganizationMember {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "organization_idx")
+    @Column(name = "organizationMember_idx")
     private Long idx;
 
     private String password;
     private String name;
     private String userName;
+
+    @Enumerated(EnumType.STRING)
     private OrganizationName organizationName;
+
     private String phoneNumber;
     private String profileImgUrl;
     private String email;
     private String address;
 
-    @OneToMany(mappedBy = "organization")
-    private List<Animal> animalList;
+    @OneToMany(mappedBy = "organizationMember")
+    private List<Animal> animalList = new ArrayList<>();
 
+    @CreationTimestamp
     private Timestamp createDate;
+
+    @Enumerated(EnumType.STRING)
     private Role role;
 }

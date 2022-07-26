@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -26,4 +29,7 @@ public class Post {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "animal_idx")
     private Animal animal;
+
+    @CreationTimestamp
+    private Timestamp createDate;
 }
