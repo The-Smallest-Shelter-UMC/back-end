@@ -1,17 +1,14 @@
 package umc_sjs.smallestShelter;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import umc_sjs.smallestShelter.domain.AnimalIllness;
-import umc_sjs.smallestShelter.domain.Illness;
+import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.OrganizationMember;
+import umc_sjs.smallestShelter.dto.GetAnimalDto;
 import umc_sjs.smallestShelter.dto.JoinAnimalReq;
 import umc_sjs.smallestShelter.dto.JoinAnimalRes;
 import umc_sjs.smallestShelter.domain.Animal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,4 +48,26 @@ public class AnimalController {
 
         return new JoinAnimalRes(saveAnimalIdx);
     }
+
+    @GetMapping("/animal/animals")
+    @ResponseBody
+    public List<GetAnimalDto> getAnimalsRes(@RequestParam int page) {
+
+        List<Animal> animalList = animalService.getAnimals(page);
+        List<GetAnimalDto> animalDtoList = new ArrayList<>();
+
+        for (Animal animal : animalList) {
+            GetAnimalDto animalDto = new GetAnimalDto();
+            animalDto.setName(animal.getName());
+            animalDto.setImgUrl(animal.getMainImgUrl());
+            animalDto.setGender(animal.getGender());
+            animalDto.setSpecies(animal.getSpecies());
+            animalDto.setIsAdopted(animal.getIsAdopted());
+            animalDtoList.add(animalDto);
+        }
+
+        return animalDtoList;
+    }
+
+
 }

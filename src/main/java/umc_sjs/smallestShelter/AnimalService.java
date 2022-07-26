@@ -19,4 +19,8 @@ public class AnimalService {
         return animalIdx;
     }
 
+    public List<Animal> getAnimals(int page) {
+        List<Animal> animalList = animalRepository.getAnimals(page);
+        return animalList;
+    }
 }

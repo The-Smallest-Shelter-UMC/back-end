@@ -37,4 +37,14 @@ public class AnimalRepository {
         OrganizationMember findOrganization = em.find(OrganizationMember.class, userIdx);
         return findOrganization;
     }
+
+    public List<Animal> getAnimals(int page) {
+
+        List<Animal> animalList = em.createQuery("select a from Animal a order by a.createDate desc", Animal.class)
+                .setFirstResult(page * 12)
+                .setMaxResults(12)
+                .getResultList();
+
+        return animalList;
+    }
 }
