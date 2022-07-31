@@ -20,7 +20,17 @@ public class Illness {
 
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "animal_idx")
+    private Animal animal;
+
     public Illness(String name) {
         this.name = name;
+    }
+
+    //연관관계 편의 메서드
+    public void modifyAnimal(Animal animal) {
+        this.animal = animal;
+        animal.getIllnessList().add(this);
     }
 }

@@ -5,16 +5,12 @@ import lombok.Setter;
 import umc_sjs.smallestShelter.domain.Gender;
 import umc_sjs.smallestShelter.domain.Species;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class GetAnimalDto {
+public class SearchAnimalReq {
 
-    private String name;
-    private String imgUrl;
     private Species species;
     private Gender gender;
+    private String age;
     private Boolean isAdopted;
-
 }

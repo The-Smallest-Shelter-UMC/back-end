@@ -55,10 +55,10 @@ public class Animal {
     @JoinColumn(name = "organizationMember_idx")
     private OrganizationMember organizationMember;
 
-    @OneToMany(mappedBy = "animal")
-    private List<AnimalIllness> animalIllnessList = new ArrayList<>();
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
+    private List<Illness> illnessList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "animal")
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
 
     @CreationTimestamp
