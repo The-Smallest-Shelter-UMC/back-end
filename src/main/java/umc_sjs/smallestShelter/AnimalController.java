@@ -56,20 +56,9 @@ public class AnimalController {
     //@ResponseBody
     public List<GetAnimalRes> getAnimals(@RequestParam int page) {
 
-        List<Animal> animalList = animalService.getAnimals(page);
-        List<GetAnimalRes> animalDtoList = new ArrayList<>();
+        List<GetAnimalRes> animalList = animalService.getAnimals(page);
 
-        for (Animal animal : animalList) {
-            GetAnimalRes animalDto = new GetAnimalRes();
-            animalDto.setName(animal.getName());
-            animalDto.setImgUrl(animal.getMainImgUrl());
-            animalDto.setGender(animal.getGender());
-            animalDto.setSpecies(animal.getSpecies());
-            animalDto.setIsAdopted(animal.getIsAdopted());
-            animalDtoList.add(animalDto);
-        }
-
-        return animalDtoList;
+        return animalList;
     }
 
     @DeleteMapping("/{anmIdx}")
@@ -119,20 +108,9 @@ public class AnimalController {
     @PostMapping("/search")
     public List<GetAnimalRes> searchAnimal(@RequestParam int page, @RequestBody SearchAnimalReq searchAnimalReq) {
 
-        List<Animal> animalList = animalRepository.searchAnimal(page, searchAnimalReq);
-        List<GetAnimalRes> animalDtoList = new ArrayList<>();
+        List<GetAnimalRes> animalList = animalRepository.searchAnimal(page, searchAnimalReq);
 
-        for (Animal animal : animalList) {
-            GetAnimalRes animalDto = new GetAnimalRes();
-            animalDto.setName(animal.getName());
-            animalDto.setImgUrl(animal.getMainImgUrl());
-            animalDto.setGender(animal.getGender());
-            animalDto.setSpecies(animal.getSpecies());
-            animalDto.setIsAdopted(animal.getIsAdopted());
-            animalDtoList.add(animalDto);
-        }
-
-        return animalDtoList;
+        return animalList;
     }
 
 }

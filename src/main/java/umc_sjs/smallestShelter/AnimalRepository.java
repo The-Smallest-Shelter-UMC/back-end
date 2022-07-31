@@ -3,6 +3,7 @@ package umc_sjs.smallestShelter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.*;
+import umc_sjs.smallestShelter.dto.GetAnimalRes;
 import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 
@@ -39,9 +40,9 @@ public class AnimalRepository {
         return findOrganization;
     }
 
-    public List<Animal> getAnimals(int page) {
+    public List<GetAnimalRes> getAnimals(int page) {
 
-        List<Animal> animalList = em.createQuery("select a from Animal a order by a.createDate desc", Animal.class)
+        List<GetAnimalRes> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a order by a.createDate desc", GetAnimalRes.class)
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
                 .getResultList();
@@ -97,9 +98,10 @@ public class AnimalRepository {
         return resultList;
     }
 
-    public List<Animal> searchAnimal(int page, SearchAnimalReq searchAnimalReq) {
-        List<Animal> resultList = em.createQuery("select a from Animal a where a.species =: species and a.gender =: gender and a.age =: age and a.isAdopted =: isAdopted" +
-                                " order by a.createDate desc", Animal.class)
+    public List<GetAnimalRes> searchAnimal(int page, SearchAnimalReq searchAnimalReq) {
+        List<GetAnimalRes> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a " +
+                        "where a.species =: species and a.gender =: gender and a.age =: age and a.isAdopted =: isAdopted" +
+                                " order by a.createDate desc", GetAnimalRes.class)
                 .setParameter("species", searchAnimalReq.getSpecies())
                 .setParameter("gender", searchAnimalReq.getGender())
                 .setParameter("age", searchAnimalReq.getAge())

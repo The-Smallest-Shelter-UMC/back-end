@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Illness;
 import umc_sjs.smallestShelter.domain.Post;
+import umc_sjs.smallestShelter.dto.GetAnimalRes;
 
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class AnimalService {
         return animalIdx;
     }
 
-    public List<Animal> getAnimals(int page) {
-        List<Animal> animalList = animalRepository.getAnimals(page);
+    public List<GetAnimalRes> getAnimals(int page) {
+        List<GetAnimalRes> animalList = animalRepository.getAnimals(page);
         return animalList;
     }
 
