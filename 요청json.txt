@@ -1,0 +1,11 @@
+동물 게시물(피드) 등록
+{
+    "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
+    "content": "안녕하세요, 게시글 내용입니다"
+}
+
+동물 게시물(피드) 수정
+{
+    "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
+    "content": "안녕하세요, 게시글 내용입니다"
+}
