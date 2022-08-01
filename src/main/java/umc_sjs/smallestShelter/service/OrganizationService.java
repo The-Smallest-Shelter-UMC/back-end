@@ -14,8 +14,8 @@ import javax.transaction.Transactional;
 @Service
 public class OrganizationService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final OrganizationRepository organizationRepository;
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+//    private final OrganizationRepository organizationRepository;
 
     @Transactional
     public void join(JoinDto joinDto) {
