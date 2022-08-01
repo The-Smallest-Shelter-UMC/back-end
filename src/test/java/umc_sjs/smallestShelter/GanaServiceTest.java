@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.service.PostService;
 import umc_sjs.smallestShelter.domain.Animal;
-import umc_sjs.smallestShelter.model.CreatePostReq;
-import umc_sjs.smallestShelter.model.CreatePostRes;
+import umc_sjs.smallestShelter.dto.post.CreatePostReq;
+import umc_sjs.smallestShelter.dto.post.CreatePostRes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

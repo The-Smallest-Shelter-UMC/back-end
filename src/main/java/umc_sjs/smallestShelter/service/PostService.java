@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.model.*;
+import umc_sjs.smallestShelter.dto.post.*;
 import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 

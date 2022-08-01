@@ -1,12 +1,11 @@
-package umc_sjs.smallestShelter;
+package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
-import umc_sjs.smallestShelter.domain.Illness;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.dto.GetAnimalRes;
+import umc_sjs.smallestShelter.repository.AnimalRepository;
 
 import java.util.List;
 

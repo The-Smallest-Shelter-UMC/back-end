@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter.model;
+package umc_sjs.smallestShelter.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

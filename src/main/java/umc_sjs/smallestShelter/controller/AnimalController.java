@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter;
+package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
@@ -8,8 +8,9 @@ import umc_sjs.smallestShelter.dto.*;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.repository.AnimalRepository;
+import umc_sjs.smallestShelter.service.AnimalService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
