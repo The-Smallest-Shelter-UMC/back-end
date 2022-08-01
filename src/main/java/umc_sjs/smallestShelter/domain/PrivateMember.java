@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -30,11 +31,12 @@ public class PrivateMember {
     private String address;
 
     @OneToMany(mappedBy = "privateMember")
-    private List<FavoriteAnimal> favoriteAnimalList;
+    private List<FavoriteAnimal> favoriteAnimalList = new ArrayList<>();
 
     @CreationTimestamp
     private Timestamp createDate;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 
