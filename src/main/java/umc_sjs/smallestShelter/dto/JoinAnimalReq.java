@@ -2,10 +2,7 @@ package umc_sjs.smallestShelter.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import umc_sjs.smallestShelter.domain.Gender;
-import umc_sjs.smallestShelter.domain.OrganizationMember;
-import umc_sjs.smallestShelter.domain.Species;
-import umc_sjs.smallestShelter.domain.Status;
+import umc_sjs.smallestShelter.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,9 @@ public class JoinAnimalReq {
 
     private Long userIdx;
     private String name;
-    private String age;
+    private int year;
+    private int month;
+    private boolean isGuessed;
     private Gender gender;
     private Species species;
     private String mainImgUrl;

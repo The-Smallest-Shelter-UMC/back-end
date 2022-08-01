@@ -25,7 +25,9 @@ public class Animal {
     private Long idx;
 
     private String name;
-    private String age;
+
+    @Embedded
+    private Age age;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

@@ -3,11 +3,8 @@ package umc_sjs.smallestShelter;
 import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import umc_sjs.smallestShelter.domain.Illness;
-import umc_sjs.smallestShelter.domain.OrganizationMember;
-import umc_sjs.smallestShelter.domain.Post;
+import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.*;
-import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
@@ -31,7 +28,7 @@ public class AnimalController {
         Animal joinAnimal = new Animal();
 
         joinAnimal.setName(joinAnimalReq.getName());
-        joinAnimal.setAge(joinAnimalReq.getAge());
+        joinAnimal.setAge(new Age(joinAnimalReq.getYear(), joinAnimalReq.getMonth(), joinAnimalReq.isGuessed()));
         joinAnimal.setGender(joinAnimalReq.getGender());
         joinAnimal.setSpecies(joinAnimalReq.getSpecies());
         joinAnimal.setMainImgUrl(joinAnimalReq.getMainImgUrl());

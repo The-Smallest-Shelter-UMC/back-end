@@ -110,6 +110,16 @@ public class AnimalRepository {
                 .setMaxResults(12)
                 .getResultList();
 
+
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getAge());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
+
+        for (GetAnimalRes getAnimalRes : resultList) {
+            System.out.println("getAnimalRes = " + getAnimalRes);
+        }
+
         return resultList;
     }
 }
