@@ -17,22 +17,22 @@ public class OrganizationService {
 //    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 //    private final OrganizationRepository organizationRepository;
 
-//    @Transactional
-//    public void join(JoinDto joinDto) {
-//
-////        OrganizationMember organization = OrganizationMember.builder()
-////                .idx(joinDto.getIdx())
-////                .name(joinDto.getName())
-////                .userName(joinDto.getUserName())
-////                .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
-////                .organizationName(joinDto.getOrganizationName())
-////                .phoneNumber(joinDto.getPhoneNumber())
-////                .profileImgUrl(joinDto.getProfileImgUrl())
-////                .email(joinDto.getEmail())
-////                .address(joinDto.getAddress())
-////                .createDate(joinDto.getCreateDate())
-////                .role(Role.ORGANIZATION).build();
-////
-////        organizationRepository.save(organization);
-//    }
+    @Transactional
+    public void join(JoinDto joinDto) {
+
+        OrganizationMember organization = OrganizationMember.builder()
+                .idx(joinDto.getIdx())
+                .name(joinDto.getName())
+                .userName(joinDto.getUserName())
+                .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
+                .organizationName(joinDto.getOrganizationName())
+                .phoneNumber(joinDto.getPhoneNumber())
+                .profileImgUrl(joinDto.getProfileImgUrl())
+                .email(joinDto.getEmail())
+                .address(joinDto.getAddress())
+                .createDate(joinDto.getCreateDate())
+                .role(Role.ORGANIZATION).build();
+
+        organizationRepository.save(organization);
+    }
 }

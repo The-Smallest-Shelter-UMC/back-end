@@ -12,16 +12,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.filter.CorsFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthenticationFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthorizationFilter;
-import umc_sjs.smallestShelter.repository.JoinDtoRepository;
+import umc_sjs.smallestShelter.repository.UserRepository;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CorsFilter corsFilter;
-    private final JoinDtoRepository joinDtoRepository;
+    private final UserRepository userRepository;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -30,19 +30,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //http.addFilterAfter(new MyFilter3(), SecurityContextPersistenceFilter.class);
         http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // 세션 사용X
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(corsFilter)  // cors 정책에서 벗어나기 (@CrossOrigin 하고 다름)
+                .addFilter(corsFilter)
                 .formLogin().disable()
                 .httpBasic().disable()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))  // AuthenticationManager
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), joinDtoRepository))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
                 .authorizeRequests()
                 .antMatchers("/user/**", "/auth/**")
-                    .access("hasRole('PRIVATE')")
-                .antMatchers("/animal/**", "/post/**")
+                .access("hasRole('PRIVATE') or hasRole('ORGANIZATION')")
+                .antMatchers("/organization/post/**", "/organization/animal/**")
                 .access("hasRole('ORGANIZATION')")
                 .anyRequest().permitAll();
+
     }
 }
