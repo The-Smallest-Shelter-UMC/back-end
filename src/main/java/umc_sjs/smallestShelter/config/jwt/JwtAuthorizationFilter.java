@@ -7,6 +7,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
+import umc_sjs.smallestShelter.dto.JoinDto;
+import umc_sjs.smallestShelter.dto.LoginDto;
+import umc_sjs.smallestShelter.repository.JoinDtoRepository;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,11 +20,11 @@ import java.io.IOException;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private UserRepository userRepository;
+    private JoinDtoRepository joinDtoRepository;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, JoinDtoRepository joinDtoRepository) {
         super(authenticationManager);
-        this.userRepository = userRepository;
+        this.joinDtoRepository = joinDtoRepository;
     }
 
     @Override
@@ -38,12 +42,13 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         String username =
                 JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
-                        .getClaim("email").asString();
+                        .getClaim("username").asString();
 
         if (username != null){
-            User user = userRepository.findByEmail(username);
 
-            PrincipalDetails principalDetails = new PrincipalDetails(user);
+            JoinDto joinDto = joinDtoRepository.findByUserName(username);
+
+            PrincipalDetails principalDetails = new PrincipalDetails(joinDto);
 
             Authentication authentication =
                     new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());

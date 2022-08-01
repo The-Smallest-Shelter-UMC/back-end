@@ -1,14 +1,12 @@
 package umc_sjs.smallestShelter.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -20,9 +18,9 @@ public class Organization {
     @Column(name = "organization_idx")
     private Long idx;
 
-    private String password;
     private String name;
     private String userName;
+    private String password;
     private OrganizationName organizationName;
     private String phoneNumber;
     private String profileImgUrl;

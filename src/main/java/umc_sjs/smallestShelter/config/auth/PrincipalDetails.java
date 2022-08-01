@@ -3,6 +3,7 @@ package umc_sjs.smallestShelter.config.auth;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import umc_sjs.smallestShelter.dto.JoinDto;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,16 +11,16 @@ import java.util.Collection;
 @Data
 public class PrincipalDetails implements UserDetails {
 
-    private User user; // 컴포지션
+    private JoinDto joinDto; // 컴포지션
 
-    public PrincipalDetails(User user) {
-        this.user = user;
+    public PrincipalDetails(JoinDto joinDto) {
+        this.joinDto = joinDto;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> collector = new ArrayList<>(); // ArrayList는 Collection의 자식
-        collector.add(() ->{ return user.getRoles();});
+        Collection<GrantedAuthority> collector = new ArrayList<>();
+        collector.add(() ->{ return joinDto.getRole().toString();});
 
         return collector;
 
@@ -27,12 +28,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return joinDto.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return joinDto.getUserName();
     }
 
     @Override

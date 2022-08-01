@@ -9,6 +9,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
+import umc_sjs.smallestShelter.dto.LoginDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -28,16 +30,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             throws AuthenticationException {
 
         ObjectMapper om = new ObjectMapper();
-        LoginRequestDto loginRequestDto = null;
+        LoginDto loginDto = null;
         try{
-            loginRequestDto = om.readValue(request.getInputStream(), LoginRequestDto.class);
+            loginDto = om.readValue(request.getInputStream(), LoginDto.class);
 
         } catch(IOException e){
             e.printStackTrace();
         }
 
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+                new UsernamePasswordAuthenticationToken(loginDto.getUserName(), loginDto.getPassword());
 
         Authentication authentication =
                 authenticationManager.authenticate(authenticationToken);
@@ -57,8 +59,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = JWT.create()
                 .withSubject(principalDetails.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME))
-                .withClaim("id", principalDetails.getUser().getId())
-                .withClaim("email", principalDetails.getUser().getEmail())
+                .withClaim("id", principalDetails.getJoinDto().getIdx())
+                .withClaim("username", principalDetails.getUsername())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);

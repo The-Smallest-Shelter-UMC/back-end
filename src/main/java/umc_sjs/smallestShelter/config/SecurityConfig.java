@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.filter.CorsFilter;
+import umc_sjs.smallestShelter.config.jwt.JwtAuthenticationFilter;
+import umc_sjs.smallestShelter.config.jwt.JwtAuthorizationFilter;
+import umc_sjs.smallestShelter.repository.JoinDtoRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +21,7 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CorsFilter corsFilter;
+    private final JoinDtoRepository joinDtoRepository;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -33,12 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .httpBasic().disable()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))  // AuthenticationManager
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), joinDtoRepository))
                 .authorizeRequests()
-                .antMatchers("/api/user/**", "/auth/**")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/api/admin/**")
-                .access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/user/**", "/auth/**")
+                    .access("hasRole('PRIVATE')")
+                .antMatchers("/animal/**", "/post/**")
+                .access("hasRole('ORGANIZATION')")
                 .anyRequest().permitAll();
     }
 }
