@@ -1,10 +1,11 @@
-package umc_sjs.smallestShelter.controller;
+package umc_sjs.smallestShelter;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.service.PostService;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.model.CreatePostReq;
@@ -15,7 +16,7 @@ import javax.persistence.PersistenceContext;
 
 @SpringBootTest
 @Transactional
-public class PostServiceTest {
+public class GanaServiceTest {
 
     @Autowired private PostService postService;
     @PersistenceContext
@@ -46,5 +47,17 @@ public class PostServiceTest {
         Animal animal = em.find(Animal.class, 1110L);
 
         Assertions.assertThat(animal).isNull();
+    }
+    
+    @Test
+    public void 동물수정후_테이블확인(){
+        Animal animal = em.find(Animal.class, 2L);
+
+        System.out.println("animal.getPostList() = " + animal.getPostList());
+    }
+
+    @Test
+    public void 게시물조회(){
+        Post post = em.find(Post.class, 4L);
     }
 }

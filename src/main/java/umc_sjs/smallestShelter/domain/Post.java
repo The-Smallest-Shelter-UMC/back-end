@@ -35,7 +35,14 @@ public class Post {
     @CreationTimestamp
     private Timestamp createDate;
 
-    // 생성자
+    /* 연관관계 편의 메소드 */
+    public void setAnimal(Animal animal){
+        this.animal = animal;
+        animal.getPostList().add(this);
+    }
+    /* 연관관계 편의 메소드 끝 */
+
+    /* 생성 메소드드 */
     public static Post createPost(String imgUrl, String content, Animal animal){
         Post post = new Post();
         post.setImgUrl(imgUrl);
@@ -45,6 +52,7 @@ public class Post {
         return post;
     }
 
+    /*  비지니스 로직 */
     // 게시물 수정
     public Post updatePost(String imgUrl, String content){
         this.setImgUrl(imgUrl);
@@ -52,4 +60,5 @@ public class Post {
 
         return this;
     }
+    /*  비지니스 로직 끝 */
 }
