@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter;
+package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.model.*;
+import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
@@ -42,7 +43,6 @@ public class PostService {
 
         try{
             Post post =  postRepository.findById(animlIdx);
-
             // 해당하는 게시글이 없는 경우
             if(post == null){
                 throw new BaseException(POST_NOT_EXIST);
@@ -62,6 +62,10 @@ public class PostService {
 
         // 수정 전 게시물
         Post beforePost = postRepository.findById(postIdx);
+        // 해당 게시물이 존재하지 않는경우
+        if(beforePost == null){
+            throw new BaseException(POST_NOT_EXIST);
+        }
         // 수정 후 게시물
         Post afterPost = beforePost.updatePost(updatePostReq.getImgUrl(), updatePostReq.getContent());
 
@@ -73,5 +77,21 @@ public class PostService {
         }
 
         return new UpdatePostRes(afterPost.getIdx());
+    }
+
+    // 게시물 삭제
+    @Transactional
+    public void delete(Long postIdx) throws BaseException{
+
+        Post post = postRepository.findById(postIdx);
+        if(post == null){
+            throw new BaseException(POST_NOT_EXIST);
+        }
+
+        try{
+            postRepository.delete(post);
+        } catch (Exception e){
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 }

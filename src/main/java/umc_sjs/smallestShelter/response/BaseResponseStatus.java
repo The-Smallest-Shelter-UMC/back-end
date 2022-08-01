@@ -14,6 +14,7 @@ public enum BaseResponseStatus {
 
     POST_EMPTY_IMG(false, 20, "게시물에 포함된 이미지가 없습니다"),
     POST_NOT_EXIST(false,20, "해당하는 게시물이 존재하지 않습니다"),
+    EMPTY_URL_INFO(false, 20, "uri에 충분한 정보가 담기지 않았습니다. ex.queryString, pathValue"),
 
     /**
      * 4000 : Database, Server 오류

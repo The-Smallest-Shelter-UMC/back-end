@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import umc_sjs.smallestShelter.PostService;
+import umc_sjs.smallestShelter.service.PostService;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.model.CreatePostReq;
 import umc_sjs.smallestShelter.model.CreatePostRes;

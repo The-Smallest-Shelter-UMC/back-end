@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter;
+package umc_sjs.smallestShelter.repository;
 
 import org.springframework.stereotype.Repository;
 import umc_sjs.smallestShelter.domain.Animal;
@@ -13,7 +13,7 @@ public class PostRepository {
     @PersistenceContext
     private EntityManager em;
 
-    // 게시글(피드) 생성
+    // 게시글(피드) 생성/수정
     public void save(Post post){
         if(post.getIdx() == null){ //게시물 생성
             em.persist(post);
@@ -29,6 +29,11 @@ public class PostRepository {
 //        return em.createQuery("select p from Post p where p.post_idx = :postIdx", Post.class)
 //                .setParameter("postIdx", postIdx)
 //                .getSingleResult();
+    }
+
+    // 게시물 삭제
+    public void delete(Post post){
+        em.remove(post);
     }
 
     // 동물 찾기 (이후 삭제 필요)
