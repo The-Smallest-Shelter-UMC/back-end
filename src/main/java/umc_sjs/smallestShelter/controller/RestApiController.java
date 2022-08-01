@@ -13,16 +13,16 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class RestApiController {
 
-    private final PrivateMemberService privateMemberService;
-    private final OrganizationService organizationService;
-
-    @PostMapping("join")
-    public String join(JoinDto joinDto) throws IOException {
-        if (joinDto.getOrganizationName()==null) {
-            privateMemberService.join(joinDto);
-        } else {
-            organizationService.join(joinDto);
-        }
-        return "회원가입 완료";
-    }
+//    private final PrivateMemberService privateMemberService;
+//    private final OrganizationService organizationService;
+//
+//    @PostMapping("join")
+//    public String join(JoinDto joinDto) throws IOException {
+//        if (joinDto.getOrganizationName()==null) {
+//            privateMemberService.join(joinDto);
+//        } else {
+//            organizationService.join(joinDto);
+//        }
+//        return "회원가입 완료";
+//    }
 }

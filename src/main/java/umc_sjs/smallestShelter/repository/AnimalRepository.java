@@ -81,7 +81,7 @@ public class AnimalRepository {
                 .getSingleResult();
 
         random.setSeed(System.currentTimeMillis());
-        int randomNumber = random.nextInt(animalCount.intValue() - 12);
+        int randomNumber = random.nextInt(animalCount.intValue());
 
         List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
                         "where a.isAdopted = false ", RecommandAnimalDto.class)

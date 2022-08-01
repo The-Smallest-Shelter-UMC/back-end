@@ -51,7 +51,7 @@ public class AnimalRepositoryTest {
         List<RecommandAnimalDto> recommendAnimals = animalRepository.getRecommendAnimals(anmIdx);
         //then
 
-        Assertions.assertThat(recommendAnimals)
+        Assertions.assertThat(recommendAnimals);
 
     }
 
