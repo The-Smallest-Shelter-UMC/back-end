@@ -4,8 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Post;
+import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.service.PostService;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.dto.post.CreatePostReq;
@@ -14,11 +16,14 @@ import umc_sjs.smallestShelter.dto.post.CreatePostRes;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
 public class GanaServiceTest {
 
     @Autowired private PostService postService;
+    @Autowired private AnimalRepository animalRepository;
     @PersistenceContext
     private EntityManager em;
 
@@ -46,7 +51,11 @@ public class GanaServiceTest {
     public void 동물찾기_없는동물조회(){
         Animal animal = em.find(Animal.class, 1110L);
 
-        Assertions.assertThat(animal).isNull();
+        Assertions.assertThat(animal).isNull(); //널값 확인. 에러가 뜨지는 않음.
+
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            Animal findAnimal = animalRepository.findAnimalById(1000L);
+        });
     }
     
     @Test
@@ -59,5 +68,10 @@ public class GanaServiceTest {
     @Test
     public void 게시물조회(){
         Post post = em.find(Post.class, 4L);
+    }
+
+    @Test
+    public void 이넘타입() {
+
     }
 }

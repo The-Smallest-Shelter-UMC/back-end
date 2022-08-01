@@ -47,6 +47,7 @@ public class Post {
         Post post = new Post();
         post.setImgUrl(imgUrl);
         post.setContent(content);
+
         post.setAnimal(animal);
 
         return post;
