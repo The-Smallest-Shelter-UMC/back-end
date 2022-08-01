@@ -26,14 +26,21 @@ public class Animal {
 
     private String name;
     private String age;
+    @Enumerated
     private Gender gender;
+    @Enumerated
     private Species species;
     private String mainImgUrl;
     private Boolean isAdopted;
+    @Enumerated
     private Status socialization;
+    @Enumerated
     private Status separation;
+    @Enumerated
     private Status toilet;
+    @Enumerated
     private Status bark;
+    @Enumerated
     private Status bite;
 
     @ManyToOne(fetch = LAZY)
