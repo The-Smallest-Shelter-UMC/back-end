@@ -5,84 +5,85 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/MemberRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/SmallestShelterApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/SmallestShelterApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/umc_sjs/smallestShelter/MemberRepositoryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/AnimalController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/AnimalRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/AnimalService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/MemberRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/SmallestShelterApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/PostController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Age.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Animal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/AnimalIllness.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Gender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Illness.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Organization.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/OrganizationMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/OrganizationName.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Post.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/PrivateMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Species.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/GetAnimalDetailRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/GetAnimalRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinAnimalReq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/SearchAnimalReq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDetailDto/IllnessDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDetailDto/PostDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDetailDto/RecommandAnimalDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/model/CreatePostReq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/model/CreatePostRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/model/GetPostRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/model/UpdatePostReq.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/model/UpdatePostRes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/PostRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/response/BaseException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/response/BaseResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/response/BaseResponseStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/PostService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/umc_sjs/smallestShelter/AnimalRepositoryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/umc_sjs/smallestShelter/SmallestShelterApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/umc_sjs/smallestShelter/controller/PostServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bootJarMainClassName" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/SmallestShelterApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/PostController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Age.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Animal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Gender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Illness.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/OrganizationMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/OrganizationName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/PrivateMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Species.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/GetAnimalDetailRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/GetAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/JoinAnimalReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/SearchAnimalReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/IllnessDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/PostDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/RecommandAnimalDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/post/CreatePostReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/post/CreatePostRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/post/GetPostRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/post/UpdatePostReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/post/UpdatePostRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/PostRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/BaseException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/BaseResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/BaseResponseStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/PostService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/umc_sjs/smallestShelter/GanaServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/umc_sjs/smallestShelter/SmallestShelterApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/smallestShelter-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/smallestShelter-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/umc_sjs.smallestShelter.GanaServiceTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/umc_sjs.smallestShelter.SmallestShelterApplicationTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/umc_sjs.smallestShelter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/joinForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/loginForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-umc_sjs.smallestShelter.GanaServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-umc_sjs.smallestShelter.SmallestShelterApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Species.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Species.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/MemberRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/AnimalRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/GanaServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/GanaServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +135,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="android.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -277,5 +281,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

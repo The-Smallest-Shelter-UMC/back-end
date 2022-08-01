@@ -60,4 +60,9 @@ public class GanaServiceTest {
     public void 게시물조회(){
         Post post = em.find(Post.class, 4L);
     }
+
+    @Test
+    public void 이넘타입() {
+
+    }
 }

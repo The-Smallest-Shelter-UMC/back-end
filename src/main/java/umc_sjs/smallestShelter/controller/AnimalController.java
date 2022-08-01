@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.*;
+import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
+import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
+import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
 
@@ -37,6 +40,7 @@ public class AnimalController {
         joinAnimal.setToilet(joinAnimalReq.getToilet());
         joinAnimal.setBark(joinAnimalReq.getBark());
         joinAnimal.setBite(joinAnimalReq.getBite());
+
 
         OrganizationMember findOrganizationMember = animalRepository.findOrganizationMember(joinAnimalReq.getUserIdx());
         joinAnimal.modifyOrganizationMember(findOrganizationMember);
