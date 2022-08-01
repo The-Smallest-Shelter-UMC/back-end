@@ -1,9 +1,6 @@
 package umc_sjs.smallestShelter.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -50,6 +47,7 @@ public class Post {
         Post post = new Post();
         post.setImgUrl(imgUrl);
         post.setContent(content);
+
         post.setAnimal(animal);
 
         return post;
