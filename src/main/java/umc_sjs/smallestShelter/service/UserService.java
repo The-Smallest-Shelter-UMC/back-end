@@ -25,7 +25,6 @@ public class UserService {
         System.out.println("**************************" + joinDto.getPassword());
 
         User user = User.builder()
-                .idx(joinDto.getIdx())
                 .name(joinDto.getName())
                 .userName(joinDto.getUserName())
                 .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
