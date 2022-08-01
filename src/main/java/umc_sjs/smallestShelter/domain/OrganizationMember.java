@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,9 +23,9 @@ public class OrganizationMember {
     @Column(name = "organizationMember_idx")
     private Long idx;
 
-    private String password;
     private String name;
     private String userName;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private OrganizationName organizationName;
