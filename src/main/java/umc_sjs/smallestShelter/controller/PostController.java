@@ -23,6 +23,9 @@ public class PostController {
     public BaseResponse<CreatePostRes> createPost(@RequestParam("animal_id") Long animalIdx, @RequestBody CreatePostReq createPostReq){
 
         //animalIdx null 체크도 해줘야하나?
+        if(animalIdx==null){
+            return new BaseResponse<>(EMPTY_URL_INFO);
+        }
 
         // 게시글의 이미지가 없으면
         if(createPostReq.getImgUrl().isEmpty() || createPostReq.getImgUrl() == null){
