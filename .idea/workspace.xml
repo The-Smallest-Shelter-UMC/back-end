@@ -13,12 +13,14 @@
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Age.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Age.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/GetAnimalDetailRes.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/GetAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Age.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Age.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/GetAnimalDetailRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDetailDto/GetAnimalDetailRes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/GetAnimalRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDto/GetAnimalRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/JoinAnimalRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/JoinAnimalRes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" afterDir="false" />
     </list>
@@ -81,6 +83,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
@@ -206,7 +209,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658737077149</updated>
-      <workItem from="1659365902364" duration="8586000" />
+      <workItem from="1659365902364" duration="9341000" />
     </task>
     <servers />
   </component>
