@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.dto.post.*;
+import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
@@ -17,6 +18,7 @@ import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final AnimalRepository animalRepository;
 
     @Transactional
     // 게시글(피드) 생성
@@ -24,9 +26,11 @@ public class PostService {
         // 동물 유효 검증해야함.
         // 유저 유효또한 검증해야함.
 
-        Animal animal = postRepository.findAnimalByIdx(animalIdx); //나중에 끌고와야 할 것 같음.
-
-        Post post = Post.createPost(createPostReq.getImgUrl(), createPostReq.getContent(), animal);
+        Animal animal = animalRepository.findAnimalById(animalIdx);
+        if(animal == null){
+            throw new BaseException(EMPTY_ANIMAL_INFO);
+        }
+        Post post = Post.createPost(createPostReq.getImgUrl(), createPostReq.getContent(), animal); // 게시글 객체 생성
 
         try {
             postRepository.save(post);

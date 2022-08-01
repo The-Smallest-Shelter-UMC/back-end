@@ -8,6 +8,7 @@ import umc_sjs.smallestShelter.dto.*;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.response.BaseResponse;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
 
@@ -25,7 +26,7 @@ public class AnimalController {
 
     //@ResponseBody
     @PostMapping("/join")
-    public JoinAnimalRes joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq){
+    public BaseResponse<JoinAnimalRes> joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq){
 
         Animal joinAnimal = new Animal();
 
@@ -49,16 +50,17 @@ public class AnimalController {
 
         Long saveAnimalIdx = animalService.saveAnimal(joinAnimal, illnessList);
 
-        return new JoinAnimalRes(saveAnimalIdx);
+        JoinAnimalRes temp = new JoinAnimalRes(saveAnimalIdx);
+        return new BaseResponse<>(temp);
     }
 
     @GetMapping("/animals")
     //@ResponseBody
-    public List<GetAnimalRes> getAnimals(@RequestParam int page) {
+    public BaseResponse<List<GetAnimalRes>> getAnimals(@RequestParam int page) {
 
         List<GetAnimalRes> animalList = animalService.getAnimals(page);
 
-        return animalList;
+        return new BaseResponse<>(animalList);
     }
 
     @DeleteMapping("/{anmIdx}")
@@ -68,7 +70,7 @@ public class AnimalController {
 
     @GetMapping("/{anmIdx}")
     //@ResponseBody
-    public GetAnimalDetailRes getAnimalDetail(@PathVariable Long anmIdx) {
+    public BaseResponse<GetAnimalDetailRes> getAnimalDetail(@PathVariable Long anmIdx) {
 
         GetAnimalDetailRes getAnimalDetailRes = new GetAnimalDetailRes();
 
@@ -102,7 +104,7 @@ public class AnimalController {
 
 //        List<Animal> recommandAnimalList = animalService.getRecommandAnimal(anmIdx);
 
-        return getAnimalDetailRes;
+        return new BaseResponse<>(getAnimalDetailRes);
     }
 
     @PostMapping("/search")
