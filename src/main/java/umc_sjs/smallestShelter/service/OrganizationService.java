@@ -3,7 +3,7 @@ package umc_sjs.smallestShelter.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import umc_sjs.smallestShelter.domain.Organization;
+import umc_sjs.smallestShelter.domain.OrganizationMember;
 import umc_sjs.smallestShelter.domain.Role;
 import umc_sjs.smallestShelter.dto.JoinDto;
 import umc_sjs.smallestShelter.repository.OrganizationRepository;
@@ -20,7 +20,7 @@ public class OrganizationService {
     @Transactional
     public void join(JoinDto joinDto) {
 
-        Organization organization = Organization.builder()
+        OrganizationMember organization = OrganizationMember.builder()
                 .idx(joinDto.getIdx())
                 .name(joinDto.getName())
                 .userName(joinDto.getUserName())

@@ -3,7 +3,6 @@ package umc_sjs.smallestShelter.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import umc_sjs.smallestShelter.domain.Organization;
 import umc_sjs.smallestShelter.domain.PrivateMember;
 import umc_sjs.smallestShelter.domain.Role;
 import umc_sjs.smallestShelter.dto.JoinDto;
