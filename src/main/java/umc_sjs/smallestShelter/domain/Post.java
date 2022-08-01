@@ -44,4 +44,12 @@ public class Post {
 
         return post;
     }
+
+    // 게시물 수정
+    public Post updatePost(String imgUrl, String content){
+        this.setImgUrl(imgUrl);
+        this.setContent(content);
+
+        return this;
+    }
 }

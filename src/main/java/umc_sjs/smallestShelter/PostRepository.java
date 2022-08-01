@@ -14,8 +14,13 @@ public class PostRepository {
     private EntityManager em;
 
     // 게시글(피드) 생성
-    public void create(Post post){
-        em.persist(post);
+    public void save(Post post){
+        if(post.getIdx() == null){ //게시물 생성
+            em.persist(post);
+        }
+        else { //게시물 수정
+            em.merge(post);
+        }
     }
 
     // 게시물 조회

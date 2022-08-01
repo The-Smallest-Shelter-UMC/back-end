@@ -2,9 +2,7 @@ package umc_sjs.smallestShelter;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import umc_sjs.smallestShelter.model.CreatePostReq;
-import umc_sjs.smallestShelter.model.CreatePostRes;
-import umc_sjs.smallestShelter.model.GetPostRes;
+import umc_sjs.smallestShelter.model.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
 
@@ -47,6 +45,27 @@ public class PostController {
             GetPostRes getPostRes = postService.findById(postIdx);
 
             return new BaseResponse<>(getPostRes);
+        } catch (BaseException e){
+            return new BaseResponse<>(e.getStatus());
+        }
+    }
+
+    // 게시물 수정
+    @PatchMapping()
+    public BaseResponse<UpdatePostRes> updatePost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx, @RequestBody UpdatePostReq updatePostReq){
+
+        //animalIdx null 체크도 해줘야하나?
+
+        // 게시글의 이미지가 없으면
+        if(updatePostReq.getImgUrl().isEmpty() || updatePostReq.getImgUrl() == null){
+            return new BaseResponse<>(POST_EMPTY_IMG);
+        }
+        // 게시물의 내용은 없어도 되지 않나..?
+
+        try{
+            // 게시물 수정
+            UpdatePostRes updatePostRes = postService.update(postIdx, updatePostReq);
+            return new BaseResponse<>(updatePostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
         }

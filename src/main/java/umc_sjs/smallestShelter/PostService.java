@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.model.CreatePostReq;
-import umc_sjs.smallestShelter.model.CreatePostRes;
-import umc_sjs.smallestShelter.model.GetPostRes;
+import umc_sjs.smallestShelter.model.*;
 import umc_sjs.smallestShelter.response.BaseException;
 
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
@@ -30,7 +28,7 @@ public class PostService {
         Post post = Post.createPost(createPostReq.getImgUrl(), createPostReq.getContent(), animal);
 
         try {
-            postRepository.create(post);
+            postRepository.save(post);
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
@@ -45,13 +43,35 @@ public class PostService {
         try{
             Post post =  postRepository.findById(animlIdx);
 
+            // 해당하는 게시글이 없는 경우
+            if(post == null){
+                throw new BaseException(POST_NOT_EXIST);
+            }
+
             return new GetPostRes(post.getIdx(), post.getImgUrl(), post.getContent());
-        } catch (NullPointerException e){ // null값. 즉 해당하는 게시물이 없다는 것.
-            throw new BaseException(POST_NOT_EXIST);
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
     }
 
+    // 게시물 수정
+    @Transactional
+    public UpdatePostRes update(Long postIdx, UpdatePostReq updatePostReq) throws BaseException{
+        // 동물 idx에 대해서도 검증이 필요하긴 함.
+        // 유저에 대해서도 검증 필요함.
 
+        // 수정 전 게시물
+        Post beforePost = postRepository.findById(postIdx);
+        // 수정 후 게시물
+        Post afterPost = beforePost.updatePost(updatePostReq.getImgUrl(), updatePostReq.getContent());
+
+        // 게시물 수정
+        try{
+            postRepository.save(afterPost);
+        } catch (Exception e){
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+        return new UpdatePostRes(afterPost.getIdx());
+    }
 }
