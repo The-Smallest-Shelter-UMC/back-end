@@ -2,6 +2,7 @@ package umc_sjs.smallestShelter.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import umc_sjs.smallestShelter.domain.AgeBoundary;
 import umc_sjs.smallestShelter.domain.Gender;
 import umc_sjs.smallestShelter.domain.Species;
 
@@ -11,6 +12,6 @@ public class SearchAnimalReq {
 
     private Species species;
     private Gender gender;
-    private String age;
+    private AgeBoundary ageBoundary;
     private Boolean isAdopted;
 }

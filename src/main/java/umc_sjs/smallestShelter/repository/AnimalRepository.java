@@ -9,7 +9,6 @@ import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
