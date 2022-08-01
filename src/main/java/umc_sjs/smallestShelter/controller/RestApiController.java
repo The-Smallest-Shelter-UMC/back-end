@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
@@ -26,3 +27,4 @@ public class RestApiController {
         return "회원가입 완료";
     }
 }
+*/

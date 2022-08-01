@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.config.auth;
 
 import lombok.RequiredArgsConstructor;
@@ -20,4 +21,4 @@ public class PrincipalDetailsService implements UserDetailsService {
 
         return new PrincipalDetails(joinDto);
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
@@ -65,4 +66,4 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
     }
-}
+}*/

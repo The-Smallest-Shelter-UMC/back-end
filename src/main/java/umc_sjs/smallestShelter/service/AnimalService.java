@@ -2,9 +2,11 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import umc_sjs.smallestShelter.domain.AgeBoundary;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.dto.GetAnimalRes;
+import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
 
 import java.util.List;
@@ -36,11 +38,6 @@ public class AnimalService {
         List<Post> postList = animalRepository.findPostById(anmIdx);
         return postList;
     }
-
-//    public List<Animal> getRecommandAnimal(Long anmIdx) {
-//
-//
-//    }
 
 
 }

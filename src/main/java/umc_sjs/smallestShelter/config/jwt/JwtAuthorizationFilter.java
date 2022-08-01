@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
@@ -58,4 +59,5 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
         }
     }
-}
+*/
+//}

@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,3 +23,4 @@ public class JoinDtoRepository {
     }
 
 }
+*/

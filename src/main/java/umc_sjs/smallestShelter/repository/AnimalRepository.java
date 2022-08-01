@@ -9,6 +9,7 @@ import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -41,7 +42,7 @@ public class AnimalRepository {
 
     public List<GetAnimalRes> getAnimals(int page) {
 
-        List<GetAnimalRes> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a order by a.createDate desc", GetAnimalRes.class)
+        List<GetAnimalRes> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalRes.class)
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
                 .getResultList();
@@ -80,7 +81,7 @@ public class AnimalRepository {
                 .getSingleResult();
 
         random.setSeed(System.currentTimeMillis());
-        int randomNumber = random.nextInt(animalCount.intValue() - 12);
+        int randomNumber = random.nextInt(animalCount.intValue());
 
         List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
                         "where a.isAdopted = false ", RecommandAnimalDto.class)
@@ -98,12 +99,40 @@ public class AnimalRepository {
     }
 
     public List<GetAnimalRes> searchAnimal(int page, SearchAnimalReq searchAnimalReq) {
-        List<GetAnimalRes> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a " +
-                        "where a.species =: species and a.gender =: gender and a.age =: age and a.isAdopted =: isAdopted" +
-                                " order by a.createDate desc", GetAnimalRes.class)
+
+        String query = null;
+
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getAgeBoundary());
+
+        if (searchAnimalReq.getAgeBoundary() == AgeBoundary.PUPPY) {
+            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year = 0 and a.isAdopted =: isAdopted" +
+                    " order by a.createDate desc";
+        }
+
+        else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.JUNIOR) {
+            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year between 1 and 2 and a.isAdopted =: isAdopted" +
+                    " order by a.createDate desc";
+        }
+
+        else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.ADULT) {
+            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year between 3 and 8 and a.isAdopted =: isAdopted" +
+                    " order by a.createDate desc";
+        }
+
+        else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.SENIOR) {
+            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year between 3 and 8 and a.isAdopted =: isAdopted" +
+                    " order by a.createDate desc";
+        }
+
+        System.out.println("query = " + query);
+
+        List<GetAnimalRes> resultList = em.createQuery(query, GetAnimalRes.class)
                 .setParameter("species", searchAnimalReq.getSpecies())
                 .setParameter("gender", searchAnimalReq.getGender())
-                .setParameter("age", searchAnimalReq.getAge())
                 .setParameter("isAdopted", searchAnimalReq.getIsAdopted())
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
@@ -112,7 +141,6 @@ public class AnimalRepository {
 
         System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
         System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getAge());
         System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
 
         for (GetAnimalRes getAnimalRes : resultList) {
