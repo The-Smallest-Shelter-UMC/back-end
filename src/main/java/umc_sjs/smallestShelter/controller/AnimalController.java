@@ -5,9 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.*;
+import umc_sjs.smallestShelter.dto.getAnimalDetailDto.GetAnimalDetailRes;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
+import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
 
@@ -53,11 +56,13 @@ public class AnimalController {
 
     @GetMapping("/animals")
     //@ResponseBody
-    public List<GetAnimalRes> getAnimals(@RequestParam int page) {
+    public GetAnimalRes getAnimals(@RequestParam int page) {
 
-        List<GetAnimalRes> animalList = animalService.getAnimals(page);
+        GetAnimalRes getAnimalRes = new GetAnimalRes();
 
-        return animalList;
+        GetAnimalRes animalRes = animalService.getAnimals(page, getAnimalRes);
+
+        return animalRes;
     }
 
     @DeleteMapping("/{anmIdx}")
@@ -75,8 +80,12 @@ public class AnimalController {
         getAnimalDetailRes.setName(animal.getName());
         getAnimalDetailRes.setMainImgUrl(animal.getMainImgUrl());
         getAnimalDetailRes.setSpecies(animal.getSpecies());
+        getAnimalDetailRes.setAge(animal.getAge());
         getAnimalDetailRes.setGender(animal.getGender());
         getAnimalDetailRes.setIsAdopted(animal.getIsAdopted());
+        getAnimalDetailRes.setOrganizationName(animal.getOrganizationMember().getOrganizationName());
+        getAnimalDetailRes.setPhoneNumber(animal.getOrganizationMember().getPhoneNumber());
+        getAnimalDetailRes.setAddress(animal.getOrganizationMember().getAddress());
 
         List<Illness> illnessList = animal.getIllnessList();
 
@@ -105,11 +114,9 @@ public class AnimalController {
     }
 
     @PostMapping("/search")
-    public List<GetAnimalRes> searchAnimal(@RequestParam int page, @RequestBody SearchAnimalReq searchAnimalReq) {
-
-        List<GetAnimalRes> animalList = animalRepository.searchAnimal(page, searchAnimalReq);
-
-        return animalList;
+    public GetAnimalRes searchAnimal(@RequestParam int page, @RequestBody SearchAnimalReq searchAnimalReq) {
+        GetAnimalRes getAnimalRes = animalRepository.searchAnimal(page, searchAnimalReq, new GetAnimalRes());
+        return getAnimalRes;
     }
 
 }

@@ -2,11 +2,10 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import umc_sjs.smallestShelter.domain.AgeBoundary;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.dto.GetAnimalRes;
-import umc_sjs.smallestShelter.dto.SearchAnimalReq;
+import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
+import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
 
 import java.util.List;
@@ -23,9 +22,9 @@ public class AnimalService {
         return animalIdx;
     }
 
-    public List<GetAnimalRes> getAnimals(int page) {
-        List<GetAnimalRes> animalList = animalRepository.getAnimals(page);
-        return animalList;
+    public GetAnimalRes getAnimals(int page, GetAnimalRes getAnimalRes) {
+        GetAnimalRes animalRes = animalRepository.getAnimals(page, getAnimalRes);
+        return animalRes;
     }
 
 

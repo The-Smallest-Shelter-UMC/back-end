@@ -3,13 +3,14 @@ package umc_sjs.smallestShelter.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.*;
-import umc_sjs.smallestShelter.dto.GetAnimalRes;
+
 import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
+import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -40,14 +41,20 @@ public class AnimalRepository {
         return findOrganization;
     }
 
-    public List<GetAnimalRes> getAnimals(int page) {
+    public GetAnimalRes getAnimals(int page, GetAnimalRes getAnimalRes) {
 
-        List<GetAnimalRes> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalRes.class)
+        List<GetAnimalDto> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalDto.class)
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
                 .getResultList();
 
-        return animalList;
+        Long animalCount = em.createQuery("select count(a) from Animal a", Long.class)
+                .getSingleResult();
+
+        getAnimalRes.setAnimal(animalList);
+        getAnimalRes.setPageNumber((animalCount.intValue()/12));
+
+        return getAnimalRes;
     }
 
     public Animal findAnimalById(Long anmIdx) {
@@ -98,39 +105,50 @@ public class AnimalRepository {
         return resultList;
     }
 
-    public List<GetAnimalRes> searchAnimal(int page, SearchAnimalReq searchAnimalReq) {
+    public GetAnimalRes searchAnimal(int page, SearchAnimalReq searchAnimalReq, GetAnimalRes getAnimalRes) {
 
         String query = null;
-
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getAgeBoundary());
+        String countQuery = null;
 
         if (searchAnimalReq.getAgeBoundary() == AgeBoundary.PUPPY) {
-            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+            query = "select new umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
                     "where a.species =: species and a.gender =: gender and a.age.year = 0 and a.isAdopted =: isAdopted" +
                     " order by a.createDate desc";
+
+            countQuery = "select count(a) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year = 0 and a.isAdopted =: isAdopted";
         }
 
         else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.JUNIOR) {
-            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
-                    "where a.species =: species and a.gender =: gender and a.age.year between 1 and 2 and a.isAdopted =: isAdopted" +
+            query = "select new umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 1 and a.age.year <= 2 and a.isAdopted =: isAdopted" +
                     " order by a.createDate desc";
+
+            countQuery = "select count(a) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 1 and a.age.year <= 2 and a.isAdopted =: isAdopted";
         }
 
         else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.ADULT) {
-            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
-                    "where a.species =: species and a.gender =: gender and a.age.year between 3 and 8 and a.isAdopted =: isAdopted" +
+            query = "select new umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 3 and a.age.year <= 8 and a.isAdopted =: isAdopted" +
                     " order by a.createDate desc";
+
+            countQuery = "select count(a) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 3 and a.age.year <= 8 and a.isAdopted =: isAdopted";
         }
 
         else if (searchAnimalReq.getAgeBoundary() == AgeBoundary.SENIOR) {
-            query = "select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
-                    "where a.species =: species and a.gender =: gender and a.age.year between 3 and 8 and a.isAdopted =: isAdopted" +
+            query = "select new umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 9 and a.isAdopted =: isAdopted" +
                     " order by a.createDate desc";
+
+            countQuery = "select count(a) from Animal a " +
+                    "where a.species =: species and a.gender =: gender and a.age.year >= 9 and a.isAdopted =: isAdopted";
         }
 
         System.out.println("query = " + query);
 
-        List<GetAnimalRes> resultList = em.createQuery(query, GetAnimalRes.class)
+        List<GetAnimalDto> animalList = em.createQuery(query, GetAnimalDto.class)
                 .setParameter("species", searchAnimalReq.getSpecies())
                 .setParameter("gender", searchAnimalReq.getGender())
                 .setParameter("isAdopted", searchAnimalReq.getIsAdopted())
@@ -138,15 +156,15 @@ public class AnimalRepository {
                 .setMaxResults(12)
                 .getResultList();
 
+        Long animalCount = em.createQuery(countQuery, Long.class)
+                .setParameter("species", searchAnimalReq.getSpecies())
+                .setParameter("gender", searchAnimalReq.getGender())
+                .setParameter("isAdopted", searchAnimalReq.getIsAdopted())
+                .getSingleResult();
 
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
+        getAnimalRes.setAnimal(animalList);
+        getAnimalRes.setPageNumber((animalCount.intValue()/12));
 
-        for (GetAnimalRes getAnimalRes : resultList) {
-            System.out.println("getAnimalRes = " + getAnimalRes);
-        }
-
-        return resultList;
+        return getAnimalRes;
     }
 }

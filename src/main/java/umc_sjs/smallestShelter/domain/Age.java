@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.Embeddable;
 
-@Getter
-@Setter
 @Embeddable
 @NoArgsConstructor
 public class Age {
@@ -21,5 +19,29 @@ public class Age {
         this.year = year;
         this.month = month;
         this.isGuessed = isGuessed;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    private void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    private void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public boolean getIsGuessed() {
+        return isGuessed;
+    }
+
+    private void setIsGuessed(boolean guessed) {
+        isGuessed = guessed;
     }
 }
