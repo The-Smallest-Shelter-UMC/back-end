@@ -11,5 +11,5 @@ import lombok.Setter;
 @Setter
 public class CreatePostRes {
 
-    private Long postIdx;
+    private Long postIdx; //게시물 idx
 }

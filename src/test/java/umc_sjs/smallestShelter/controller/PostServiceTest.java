@@ -37,7 +37,7 @@ public class PostServiceTest {
 
     @Test
     public void 동물찾기(){
-        Animal animal = em.find(Animal.class, 1L);
+        Animal animal = em.find(Animal.class, 1110L);
         System.out.println("animal.getName() = " + animal.getName());
     }
 }

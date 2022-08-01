@@ -13,6 +13,7 @@ public enum BaseResponseStatus {
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
 
     POST_EMPTY_IMG(false, 20, "게시물에 포함된 이미지가 없습니다"),
+    POST_NOT_EXIST(false,20, "해당하는 게시물이 존재하지 않습니다"),
 
     /**
      * 4000 : Database, Server 오류

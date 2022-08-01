@@ -9,8 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreatePostReq {
+public class GetPostRes {
 
-    private String imgUrl; //이미지 url
-    private String content; //게시글 내용
+    private Long postIdx; //게시물 idx
+    private String imgUrl; //게시물 이미지
+    private String content; //게시물 내용
 }
