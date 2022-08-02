@@ -30,7 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.addFilterAfter(new MyFilter3(), SecurityContextPersistenceFilter.class);
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -40,10 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))  // AuthenticationManager
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
                 .authorizeRequests()
-                .antMatchers("/user/**", "/auth/**")
+                .antMatchers("/auth/**")
                 .access("hasRole('PRIVATE') or hasRole('ORGANIZATION')")
-                .antMatchers("/organization/post/**", "/organization/animal/**")
+                .antMatchers("/auth/organization/**")
                 .access("hasRole('ORGANIZATION')")
+                .antMatchers("/auth/private/**")
+                .access("hasRole('PRIVATE')")
                 .anyRequest().permitAll();
 
     }
