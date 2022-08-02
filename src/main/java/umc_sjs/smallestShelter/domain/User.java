@@ -22,14 +22,16 @@ public class User {
     @Column(name = "user_idx")
     private Long idx;
 
-    private String password;
+    @Column(nullable = false, unique = true)
+    private String username;
     private String name;
-    private String userName;
+    private String password;
     private String phoneNumber;
     private String profileImgUrl;
     private String email;
     private String address;
 
+    @Enumerated(EnumType.STRING)
     @Nullable
     private OrganizationName organizationName;
 
