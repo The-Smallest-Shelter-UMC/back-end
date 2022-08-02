@@ -21,7 +21,7 @@ public class JoinDto {
 
     private String password;
     private String name;
-    private String userName;
+    private String username;
     private String phoneNumber;
     private String profileImgUrl;
     private String email;

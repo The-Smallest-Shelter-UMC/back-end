@@ -2,6 +2,7 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.PrivateMember;
 import umc_sjs.smallestShelter.domain.Role;
@@ -21,12 +22,10 @@ public class UserService {
 
     @Transactional
     public void join(JoinDto joinDto) {
-        System.out.println("**************************" + joinDto.getUserName());
-        System.out.println("**************************" + joinDto.getPassword());
 
         User user = User.builder()
                 .name(joinDto.getName())
-                .userName(joinDto.getUserName())
+                .username(joinDto.getUsername())
                 .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
                 .phoneNumber(joinDto.getPhoneNumber())
                 .profileImgUrl(joinDto.getProfileImgUrl())

@@ -21,6 +21,6 @@ import java.sql.Timestamp;
 public class LoginDto {
 
     private String password;
-    private String userName;
+    private String username;
 
 }

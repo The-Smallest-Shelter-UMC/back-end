@@ -22,7 +22,7 @@ public class OrganizationService {
 
         OrganizationMember organization = OrganizationMember.builder()
                 .name(joinDto.getName())
-                .userName(joinDto.getUserName())
+                .userName(joinDto.getUsername())
                 .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
                 .organizationName(joinDto.getOrganizationName())
                 .phoneNumber(joinDto.getPhoneNumber())
