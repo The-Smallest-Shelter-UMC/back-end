@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.*;
 
 import umc_sjs.smallestShelter.dto.AdoptAnimalRes;
+import umc_sjs.smallestShelter.dto.LikeAnimalRes;
 import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
@@ -40,6 +41,11 @@ public class AnimalRepository {
     public OrganizationMember findOrganizationMember(Long userIdx) {
         OrganizationMember findOrganization = em.find(OrganizationMember.class, userIdx);
         return findOrganization;
+    }
+
+    public PrivateMember findPrivateMember(Long userIdx) {
+        PrivateMember findPrivateMember = em.find(PrivateMember.class, userIdx);
+        return findPrivateMember;
     }
 
     public GetAnimalRes getAnimals(int page, GetAnimalRes getAnimalRes) {
@@ -197,5 +203,42 @@ public class AnimalRepository {
 
             return adoptAnimalRes;
         }
+    }
+
+    public LikeAnimalRes setFavoriteAnimal(Long userIdx, Long animalIdx, LikeAnimalRes likeAnimalRes) {
+
+        List<FavoriteAnimal> resultList = em.createQuery("select fa from FavoriteAnimal fa where fa.animal.idx =: animalIdx and fa.privateMember.idx =: userIdx", FavoriteAnimal.class)
+                .setParameter("animalIdx", animalIdx)
+                .setParameter("userIdx", userIdx)
+                .getResultList();
+
+        if(resultList.size() == 0){
+            FavoriteAnimal favoriteAnimal = new FavoriteAnimal();
+
+            favoriteAnimal.modifyPrivateMemberAndAnimal(findPrivateMember(userIdx), findAnimalById(animalIdx));
+            em.persist(favoriteAnimal);
+
+            likeAnimalRes.setUserIdx(favoriteAnimal.getPrivateMember().getIdx());
+            likeAnimalRes.setAnimalIdx(favoriteAnimal.getAnimal().getIdx());
+            likeAnimalRes.setLike(true);
+
+            return likeAnimalRes;
+        }
+
+        else{
+            FavoriteAnimal favoriteAnimal = resultList.get(0);
+
+            Long findMemberIdx = favoriteAnimal.getPrivateMember().getIdx();
+            Long findAnimalIdx = favoriteAnimal.getAnimal().getIdx();
+
+            likeAnimalRes.setUserIdx(findMemberIdx);
+            likeAnimalRes.setAnimalIdx(findAnimalIdx);
+            likeAnimalRes.setLike(false);
+
+            em.remove(favoriteAnimal);
+
+            return likeAnimalRes;
+        }
+
     }
 }

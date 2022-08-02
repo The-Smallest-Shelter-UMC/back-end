@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.dto.AdoptAnimalRes;
-import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
+import umc_sjs.smallestShelter.dto.LikeAnimalRes;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
 
@@ -45,5 +45,12 @@ public class AnimalService {
         AdoptAnimalRes adoptAnimalRes = animalRepository.setIsAdopt(anmIdx);
         return adoptAnimalRes;
 
+    }
+
+    public LikeAnimalRes likeAnimal(Long userIdx, Long animalIdx, LikeAnimalRes likeAnimalRes) {
+
+        LikeAnimalRes returnLikeAnimalRes = animalRepository.setFavoriteAnimal(userIdx, animalIdx, likeAnimalRes);
+
+        return returnLikeAnimalRes;
     }
 }

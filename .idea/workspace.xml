@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/AdoptAnimalRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/LikeAnimalRes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/AnimalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" afterDir="false" />
     </list>
@@ -200,7 +202,7 @@
       <option name="presentableId" value="Default" />
       <updated>1658737077149</updated>
       <workItem from="1659365902364" duration="9341000" />
-      <workItem from="1659423338386" duration="9145000" />
+      <workItem from="1659423338386" duration="19509000" />
     </task>
     <servers />
   </component>

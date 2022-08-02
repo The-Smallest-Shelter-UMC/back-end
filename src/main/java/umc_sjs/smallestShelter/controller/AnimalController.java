@@ -11,6 +11,7 @@ import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.dto.SearchAnimalReq;
+import umc_sjs.smallestShelter.dto.LikeAnimalRes;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
 
@@ -28,7 +29,7 @@ public class AnimalController {
 
     //@ResponseBody
     @PostMapping("/join")
-    public JoinAnimalRes joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq){
+    public JoinAnimalRes joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq) {
 
         Animal joinAnimal = new Animal();
 
@@ -120,10 +121,16 @@ public class AnimalController {
     }
 
     @PatchMapping("/adopt")
-    public AdoptAnimalRes adoptAnimal(@RequestParam Long anmIdx) {
-        AdoptAnimalRes adoptAnimalRes = animalService.adoptAnimal(anmIdx);
+    public AdoptAnimalRes adoptAnimal(@RequestParam Long animal_id) {
+        AdoptAnimalRes adoptAnimalRes = animalService.adoptAnimal(animal_id);
 
         return adoptAnimalRes;
     }
 
+    @PatchMapping("/like")
+    public LikeAnimalRes likeAnimal(@RequestParam Long user_id, @RequestParam Long animal_id) {
+
+        LikeAnimalRes likeAnimalRes = animalService.likeAnimal(user_id, animal_id, new LikeAnimalRes());
+        return likeAnimalRes;
+    }
 }

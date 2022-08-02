@@ -25,4 +25,12 @@ public class FavoriteAnimal {
     @ManyToOne
     @JoinColumn(name = "animal_idx")
     private Animal animal;
+
+    //연관관계 편의 메소드
+    public void modifyPrivateMemberAndAnimal(PrivateMember privateMember, Animal animal) {
+        this.privateMember = privateMember;
+        privateMember.getFavoriteAnimalList().add(this);
+        this.animal = animal;
+    }
+
 }
