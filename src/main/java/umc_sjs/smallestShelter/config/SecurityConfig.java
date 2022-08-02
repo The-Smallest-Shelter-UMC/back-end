@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.filter.CorsFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthenticationFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthorizationFilter;
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(corsFilter)
                 .formLogin().disable()
                 .httpBasic().disable()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))  // AuthenticationManager
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))// AuthenticationManager
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
                 .authorizeRequests()
                 .antMatchers("/auth/**")
@@ -45,7 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasRole('ORGANIZATION')")
                 .antMatchers("/auth/private/**")
                 .access("hasRole('PRIVATE')")
-                .anyRequest().permitAll();
-
+                .anyRequest().permitAll()
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
     }
+
 }
