@@ -119,4 +119,11 @@ public class AnimalController {
         return getAnimalRes;
     }
 
+    @PatchMapping("/adopt")
+    public AdoptAnimalRes adoptAnimal(@RequestParam Long anmIdx) {
+        AdoptAnimalRes adoptAnimalRes = animalService.adoptAnimal(anmIdx);
+
+        return adoptAnimalRes;
+    }
+
 }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
+import umc_sjs.smallestShelter.dto.AdoptAnimalRes;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
@@ -39,4 +40,10 @@ public class AnimalService {
     }
 
 
+    public AdoptAnimalRes adoptAnimal(Long anmIdx) {
+
+        AdoptAnimalRes adoptAnimalRes = animalRepository.setIsAdopt(anmIdx);
+        return adoptAnimalRes;
+
+    }
 }

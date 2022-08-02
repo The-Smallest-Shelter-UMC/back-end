@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.*;
 
+import umc_sjs.smallestShelter.dto.AdoptAnimalRes;
 import umc_sjs.smallestShelter.dto.SearchAnimalReq;
 import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
 import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalDto;
@@ -166,5 +167,35 @@ public class AnimalRepository {
         getAnimalRes.setPageNumber((animalCount.intValue()/12));
 
         return getAnimalRes;
+    }
+
+    public AdoptAnimalRes setIsAdopt(Long anmIdx) {
+
+        Boolean isAdopted = em.createQuery("select a.isAdopted from Animal a where a.idx =: anmIdx", Boolean.class)
+                .setParameter("anmIdx", anmIdx)
+                .getSingleResult();
+
+        if (isAdopted == true) {
+            em.createQuery("update Animal a set a.isAdopted = false where a.idx =: anmIdx")
+                    .setParameter("anmIdx", anmIdx)
+                    .executeUpdate();
+
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+                    .setParameter("anmIdx", anmIdx)
+                    .getSingleResult();
+
+            return adoptAnimalRes;
+        }
+        else{
+            em.createQuery("update Animal a set a.isAdopted = true where a.idx =: anmIdx")
+                    .setParameter("anmIdx", anmIdx)
+                    .executeUpdate();
+
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+                    .setParameter("anmIdx", anmIdx)
+                    .getSingleResult();
+
+            return adoptAnimalRes;
+        }
     }
 }
