@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
+import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
 import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
 import umc_sjs.smallestShelter.dto.user.JoinDto;
 import umc_sjs.smallestShelter.service.UserService;
@@ -26,10 +27,6 @@ public class UserController {
     public GetPrivatePageRes privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        System.out.println("UserController**********************" + principalDetails.getUsername());
-
-        System.out.println("UserController**********************");
-
         if (principalDetails.getUser().getIdx() == userIdx) {
             return userService.privatePage(userIdx);
         } else {
@@ -37,9 +34,14 @@ public class UserController {
         }
     }
 
-//    @GetMapping("/auth/organization/{userIdx}") // 마이페이지 - 단체
-//    public String organizationPage(@PathVariable Long userIdx) throws IOException {
-//        userService.organizationPage(userIdx);
-//        return "회원가입 완료";
-//    }
+    @GetMapping("/auth/organization/{userIdx}") // 마이페이지 - 단체
+    public GetOrganizationPageRes organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            return userService.organizationPage(userIdx);
+        } else {
+            return null;
+        }
+    }
 }

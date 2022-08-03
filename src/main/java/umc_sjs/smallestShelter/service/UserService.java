@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.User;
+import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
 import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
 import umc_sjs.smallestShelter.dto.user.JoinDto;
 import umc_sjs.smallestShelter.repository.UserRepository;
@@ -30,6 +31,7 @@ public class UserService {
                 .email(joinDto.getEmail())
                 .address(joinDto.getAddress())
                 .createDate(joinDto.getCreateDate())
+                .organizationName(joinDto.getOrganizationName())
                 .role(joinDto.getRole()).build();
 
         userRepository.save(user);
@@ -42,8 +44,6 @@ public class UserService {
 
         Optional<User> user = userRepository.findById(userIdx);
 
-        System.out.println("UserService" + user.get());
-
         getPrivatePageRes.setUserIdx(user.get().getIdx());
         getPrivatePageRes.setName(user.get().getName());
         getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
@@ -53,6 +53,25 @@ public class UserService {
         getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
 
         return getPrivatePageRes;
+    }
+
+    // 마이페이지 - 단체
+    public GetOrganizationPageRes organizationPage(Long userIdx) {
+
+        GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
+
+        Optional<User> user = userRepository.findById(userIdx);
+
+        getOrganizationPageRes.setUserIdx(user.get().getIdx());
+        getOrganizationPageRes.setName(user.get().getName());
+        getOrganizationPageRes.setPhoneNumber(user.get().getPhoneNumber());
+        getOrganizationPageRes.setAddress(user.get().getAddress());
+        getOrganizationPageRes.setEmail(user.get().getEmail());
+        getOrganizationPageRes.setRole(user.get().getRole().toString());
+        getOrganizationPageRes.setProfileImgUrl(user.get().getProfileImgUrl());
+        getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
+
+        return getOrganizationPageRes;
     }
 }
 
