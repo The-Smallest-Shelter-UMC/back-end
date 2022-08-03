@@ -2,16 +2,14 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import umc_sjs.smallestShelter.domain.PrivateMember;
-import umc_sjs.smallestShelter.domain.Role;
 import umc_sjs.smallestShelter.domain.User;
-import umc_sjs.smallestShelter.dto.JoinDto;
-import umc_sjs.smallestShelter.repository.PrivateMemberRepository;
+import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
+import umc_sjs.smallestShelter.dto.user.JoinDto;
 import umc_sjs.smallestShelter.repository.UserRepository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -35,6 +33,26 @@ public class UserService {
                 .role(joinDto.getRole()).build();
 
         userRepository.save(user);
+    }
+
+    // 마이페이지 - 개인
+    public GetPrivatePageRes privatePage(Long userIdx) {
+
+        GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
+
+        Optional<User> user = userRepository.findById(userIdx);
+
+        System.out.println("UserService" + user.get());
+
+        getPrivatePageRes.setUserIdx(user.get().getIdx());
+        getPrivatePageRes.setName(user.get().getName());
+        getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
+        getPrivatePageRes.setAddress(user.get().getAddress());
+        getPrivatePageRes.setEmail(user.get().getEmail());
+        getPrivatePageRes.setRole(user.get().getRole().toString());
+        getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
+
+        return getPrivatePageRes;
     }
 }
 
