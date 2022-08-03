@@ -31,8 +31,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        System.out.println("AuthorizationFilter들어옴");
-
         String jwtHeader = request.getHeader(JwtProperties.HEADER_STRING);
 
         if (jwtHeader == null || !jwtHeader.startsWith(JwtProperties.TOKEN_PREFIX)){
@@ -45,12 +43,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
                         .getClaim("username").asString();
 
-        System.out.println("username :::::::::::::::: " + username);
-
         if (username != null){
             User user = userRepository.findByUsername(username);
-
-            System.out.println("user :::::::::::::::: " + user);
 
             PrincipalDetails principalDetails = new PrincipalDetails(user);
 
@@ -58,8 +52,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
 
             PrincipalDetails principalDetails1 = (PrincipalDetails) authentication.getPrincipal();
-
-            System.out.println("authentication:::::::::::::::" + principalDetails1.getUser().getRole());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 

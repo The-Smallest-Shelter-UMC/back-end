@@ -28,6 +28,7 @@ public class JoinDto {
     private String address;
     @Nullable
     private OrganizationName organizationName;
+    @Enumerated(EnumType.STRING)
     private Role role;
     @CreationTimestamp
     private Timestamp createDate;

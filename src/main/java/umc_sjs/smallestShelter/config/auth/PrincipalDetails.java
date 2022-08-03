@@ -2,11 +2,14 @@ package umc_sjs.smallestShelter.config.auth;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import umc_sjs.smallestShelter.domain.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Data
 public class PrincipalDetails implements UserDetails {
@@ -19,10 +22,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> collector = new ArrayList<>();
-        collector.add(() ->{ return user.getRole().toString();});
+//        Collection<GrantedAuthority> collector = new ArrayList<>();
+//        collector.add(() ->{ return user.getRole().toString();});
 
-        System.out.println("collector" + collector);
+        List<GrantedAuthority> collector = Collections.
+                singletonList(new SimpleGrantedAuthority("ROLE_"+user.getRole().name()));
+
 
         return collector;
 
