@@ -1,16 +1,24 @@
 package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import umc_sjs.smallestShelter.domain.Animal;
+import umc_sjs.smallestShelter.domain.FavoriteAnimal;
 import umc_sjs.smallestShelter.domain.User;
-import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
-import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
-import umc_sjs.smallestShelter.dto.user.JoinDto;
-import umc_sjs.smallestShelter.dto.user.PatchUserReq;
+import umc_sjs.smallestShelter.dto.user.*;
+import umc_sjs.smallestShelter.repository.AnimalRepository;
+import umc_sjs.smallestShelter.repository.FavoriteAnimalRepository;
 import umc_sjs.smallestShelter.repository.UserRepository;
 
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -19,6 +27,8 @@ public class UserService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
+    private final FavoriteAnimalRepository favoriteAnimalRepository;
+    private final AnimalRepository animalRepository;
 
     @Transactional
     public void join(JoinDto joinDto) {
@@ -54,6 +64,31 @@ public class UserService {
         getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
 
         return getPrivatePageRes;
+    }
+
+    @Transactional(readOnly = true) // 마이페이지 관심동물 - 개인
+    public GetPrivateAnimalsRes privateAnimals(int page, Long userIdx) {
+
+        GetPrivateAnimalsRes getPrivateAnimalsRes = new GetPrivateAnimalsRes();
+
+        Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
+
+        List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
+
+
+        List<AnimalRes> animalResList = new ArrayList<>();
+
+        for (FavoriteAnimal fa : favoriteAnimals) {
+            Animal animal = animalRepository.findAnimalById(fa.getIdx());
+            AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
+
+
+            animalResList.add(animalRes);
+        }
+
+        getPrivateAnimalsRes.setAnimalResList(animalResList);
+
+        return getPrivateAnimalsRes;
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 단체
