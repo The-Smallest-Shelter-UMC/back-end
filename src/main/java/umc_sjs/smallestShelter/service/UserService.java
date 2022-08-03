@@ -76,7 +76,21 @@ public class UserService {
     }
 
     @Transactional // 회원정보수정 - 개인
-    public Long updateUser(Long userIdx, PatchUserReq patchUserReq) {
+    public Long updatePrivate(Long userIdx, PatchUserReq patchUserReq) {
+        Optional<User> user = userRepository.findById(userIdx);
+
+        user.get().setName(patchUserReq.getName());
+        user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
+        user.get().setAddress(patchUserReq.getAddress());
+        user.get().setEmail(patchUserReq.getEmail());
+
+        userRepository.save(user.get());
+
+        return user.get().getIdx();
+    }
+
+    @Transactional // 회원정보수정 - 단체
+    public Long updateOrganization(Long userIdx, PatchUserReq patchUserReq) {
         Optional<User> user = userRepository.findById(userIdx);
 
         user.get().setName(patchUserReq.getName());

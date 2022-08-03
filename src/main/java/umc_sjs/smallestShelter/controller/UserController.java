@@ -47,11 +47,22 @@ public class UserController {
     }
 
     @PatchMapping("/auth/private/{userIdx}") // 회원정보수정 - 개인
-    public Long updateUser(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+    public String updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.updateUser(userIdx, patchUserReq);
+            return "userIdx : " + userService.updatePrivate(userIdx, patchUserReq);
+        } else {
+            return null;
+        }
+    }
+
+    @PatchMapping("/auth/organization/{userIdx}") // 회원정보수정 - 단체
+    public String updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            return "userIdx : " + userService.updateOrganization(userIdx, patchUserReq);
         } else {
             return null;
         }
