@@ -1,13 +1,12 @@
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
-import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
-import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
-import umc_sjs.smallestShelter.dto.user.JoinDto;
-import umc_sjs.smallestShelter.dto.user.PatchUserReq;
+import umc_sjs.smallestShelter.dto.user.*;
 import umc_sjs.smallestShelter.service.UserService;
 
 import java.io.IOException;
@@ -30,6 +29,17 @@ public class UserController {
 
         if (principalDetails.getUser().getIdx() == userIdx) {
             return userService.privatePage(userIdx);
+        } else {
+            return null;
+        }
+    }
+
+    @GetMapping("/auth/private/animals/{userIdx}") // 마이페이지 관심동물 - 개인
+    public GetPrivateAnimalsRes privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            return userService.privateAnimals(page, userIdx);
         } else {
             return null;
         }
