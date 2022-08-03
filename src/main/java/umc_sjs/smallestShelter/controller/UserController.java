@@ -7,6 +7,7 @@ import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
 import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
 import umc_sjs.smallestShelter.dto.user.JoinDto;
+import umc_sjs.smallestShelter.dto.user.PatchUserReq;
 import umc_sjs.smallestShelter.service.UserService;
 
 import java.io.IOException;
@@ -44,4 +45,16 @@ public class UserController {
             return null;
         }
     }
+
+    @PatchMapping("/auth/private/{userIdx}") // 회원정보수정 - 개인
+    public Long updateUser(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            return userService.updateUser(userIdx, patchUserReq);
+        } else {
+            return null;
+        }
+    }
+
 }
