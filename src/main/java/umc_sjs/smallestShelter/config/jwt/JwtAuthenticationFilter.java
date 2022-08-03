@@ -13,8 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
-import umc_sjs.smallestShelter.dto.LoginDto;
-import umc_sjs.smallestShelter.dto.LoginResDto;
+import umc_sjs.smallestShelter.dto.user.LoginDto;
+import umc_sjs.smallestShelter.dto.user.LoginRes;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -69,16 +69,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
 
         /* body에 추가 정보 응답 */
-        LoginResDto loginResDto = new LoginResDto();
-        loginResDto.setUserIdx(principalDetails.getUser().getIdx());
-        loginResDto.setName(principalDetails.getUser().getName());
-        loginResDto.setRole(principalDetails.getUser().getRole().toString());
+        LoginRes loginRes = new LoginRes();
+        loginRes.setUserIdx(principalDetails.getUser().getIdx());
+        loginRes.setName(principalDetails.getUser().getName());
+        loginRes.setRole(principalDetails.getUser().getRole().toString());
 
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
         MediaType jsonMimeType = MediaType.APPLICATION_JSON;
 
-        System.out.println("jsonResponse" + loginResDto);
+        System.out.println("jsonResponse" + loginRes);
 
-        jsonConverter.write(loginResDto, jsonMimeType, new ServletServerHttpResponse(response));
+        jsonConverter.write(loginRes, jsonMimeType, new ServletServerHttpResponse(response));
     }
 }
