@@ -7,9 +7,10 @@ import umc_sjs.smallestShelter.domain.User;
 import umc_sjs.smallestShelter.dto.user.GetOrganizationPageRes;
 import umc_sjs.smallestShelter.dto.user.GetPrivatePageRes;
 import umc_sjs.smallestShelter.dto.user.JoinDto;
+import umc_sjs.smallestShelter.dto.user.PatchUserReq;
 import umc_sjs.smallestShelter.repository.UserRepository;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -37,7 +38,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    // 마이페이지 - 개인
+    @Transactional(readOnly = true) // 마이페이지 - 개인
     public GetPrivatePageRes privatePage(Long userIdx) {
 
         GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
@@ -55,7 +56,7 @@ public class UserService {
         return getPrivatePageRes;
     }
 
-    // 마이페이지 - 단체
+    @Transactional(readOnly = true) // 마이페이지 - 단체
     public GetOrganizationPageRes organizationPage(Long userIdx) {
 
         GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
@@ -72,6 +73,20 @@ public class UserService {
         getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
 
         return getOrganizationPageRes;
+    }
+
+    @Transactional // 회원정보수정 - 개인
+    public Long updateUser(Long userIdx, PatchUserReq patchUserReq) {
+        Optional<User> user = userRepository.findById(userIdx);
+
+        user.get().setName(patchUserReq.getName());
+        user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
+        user.get().setAddress(patchUserReq.getAddress());
+        user.get().setEmail(patchUserReq.getEmail());
+
+        userRepository.save(user.get());
+
+        return user.get().getIdx();
     }
 }
 
