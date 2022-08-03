@@ -102,5 +102,13 @@ public class UserService {
 
         return user.get().getIdx();
     }
+
+    @Transactional // 회원탈퇴
+    public void outUser(Long userIdx) {
+
+        Optional<User> user = userRepository.findById(userIdx);
+
+        userRepository.delete(user.get());
+    }
 }
 

@@ -68,4 +68,16 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/auth/out/{userIdx}") // 회원탈퇴
+    public String outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            userService.outUser(userIdx);
+            return "회원 탈퇴가 완료되었습니다.";
+        } else {
+            return null;
+        }
+    }
+
 }
