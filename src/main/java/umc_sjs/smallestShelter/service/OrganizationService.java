@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.OrganizationMember;
 import umc_sjs.smallestShelter.domain.Role;
-import umc_sjs.smallestShelter.dto.JoinDto;
+import umc_sjs.smallestShelter.dto.user.JoinDto;
 import umc_sjs.smallestShelter.repository.OrganizationRepository;
 
 import javax.transaction.Transactional;

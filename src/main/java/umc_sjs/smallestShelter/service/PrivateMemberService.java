@@ -2,12 +2,6 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import umc_sjs.smallestShelter.domain.PrivateMember;
-import umc_sjs.smallestShelter.domain.Role;
-import umc_sjs.smallestShelter.dto.JoinDto;
-import umc_sjs.smallestShelter.repository.PrivateMemberRepository;
-
-import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
 @Service
