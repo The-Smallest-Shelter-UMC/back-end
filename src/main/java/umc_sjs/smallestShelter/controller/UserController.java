@@ -1,8 +1,6 @@
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
@@ -35,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/auth/private/animals/{userIdx}") // 마이페이지 관심동물 - 개인
-    public GetPrivateAnimalsRes privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public GetAnimalsRes privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
@@ -51,6 +49,17 @@ public class UserController {
 
         if (principalDetails.getUser().getIdx() == userIdx) {
             return userService.organizationPage(userIdx);
+        } else {
+            return null;
+        }
+    }
+
+    @GetMapping("/auth/organization/animals/{userIdx}") // 마이페이지 등록동물 - 단체
+    public GetAnimalsRes organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        if (principalDetails.getUser().getIdx() == userIdx) {
+            return userService.organizationAnimals(page, userIdx);
         } else {
             return null;
         }
