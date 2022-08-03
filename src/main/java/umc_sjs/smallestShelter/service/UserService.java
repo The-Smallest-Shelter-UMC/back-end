@@ -1,7 +1,6 @@
 package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -67,14 +66,13 @@ public class UserService {
     }
 
     @Transactional(readOnly = true) // 마이페이지 관심동물 - 개인
-    public GetPrivateAnimalsRes privateAnimals(int page, Long userIdx) {
+    public GetAnimalsRes privateAnimals(int page, Long userIdx) {
 
-        GetPrivateAnimalsRes getPrivateAnimalsRes = new GetPrivateAnimalsRes();
+        GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
 
         Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
         List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
-
 
         List<AnimalRes> animalResList = new ArrayList<>();
 
@@ -86,9 +84,9 @@ public class UserService {
             animalResList.add(animalRes);
         }
 
-        getPrivateAnimalsRes.setAnimalResList(animalResList);
+        getAnimalsRes.setAnimalResList(animalResList);
 
-        return getPrivateAnimalsRes;
+        return getAnimalsRes;
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 단체
@@ -108,6 +106,28 @@ public class UserService {
         getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
 
         return getOrganizationPageRes;
+    }
+
+    @Transactional(readOnly = true) // 마이페이지 등록동물 - 단체
+    public GetAnimalsRes organizationAnimals(int page, Long userIdx) {
+
+        GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
+
+        //Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
+
+        List<Animal> animals = animalRepository.findByUserIdx(userIdx, page);
+
+        List<AnimalRes> animalResList = new ArrayList<>();
+
+        for (Animal a : animals) {
+            AnimalRes animalRes = new AnimalRes(a.getIdx(), a.getMainImgUrl(), a.getName(), a.getSpecies(), a.getGender(), a.getIsAdopted(), a.getAge());
+
+            animalResList.add(animalRes);
+        }
+
+        getAnimalsRes.setAnimalResList(animalResList);
+
+        return getAnimalsRes;
     }
 
     @Transactional // 회원정보수정 - 개인
