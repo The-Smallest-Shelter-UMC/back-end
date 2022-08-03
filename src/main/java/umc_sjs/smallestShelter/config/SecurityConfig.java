@@ -45,16 +45,15 @@ public class SecurityConfig{
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .and()
-                .authorizeRequests(authroize -> authroize.anyRequest().permitAll())
-                .build();
-//        .authorizeRequests(authroize -> authroize.antMatchers("/auth/**")
-//                .access("hasRole('PRIVATE') or hasRole('ORGANIZATION')")
-//                .antMatchers("/auth/organization/**")
-//                .access("hasRole('ORGANIZATION')")
-//                .antMatchers("/auth/private/**")
-//                .access("hasRole('PRIVATE')")
-//                .anyRequest().permitAll())
-//                .build();
+                .authorizeRequests(authroize -> authroize.antMatchers("/auth/organization/**")
+                        .access("hasRole('ROLE_ORGANIZATION')")
+                        .antMatchers("/auth/private/**")
+                        .access("hasRole('ROLE_PRIVATE')")
+                        .antMatchers("/auth/**")
+                        .access("hasRole('ROLE_PRIVATE') or hasRole('ROLE_ORGANIZATION')")
+
+                        .anyRequest().permitAll())
+                        .build();
     }
 
     public class CustomFilter extends AbstractHttpConfigurer<CustomFilter, HttpSecurity> {
