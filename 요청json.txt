@@ -1,11 +1,50 @@
+localhost:8080/
+https://sjs.hana-umc.shop/
+
+post/join?animal_id=
 동물 게시물(피드) 등록
 {
     "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
     "content": "안녕하세요, 게시글 내용입니다"
 }
 
+post?animal_id=&post_id=
 동물 게시물(피드) 수정
 {
     "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
     "content": "안녕하세요, 게시글 내용입니다"
 }
+
+게시물 조회
+post?animal_id=&post_id=
+
+게시물 삭제
+localhost:8080/post?animal_id=&post_id=
+
+동물 등록
+animal/join
+{
+    "userIdx": 1,
+    "name": "dog1",
+    "year": "2",
+    "month": "1",
+    "isGuessed": true,
+    "gender": "MALE",
+    "species": "DOG",
+    "mainImgUrl": "animalImgUrl1",
+    "isAdopted": false,
+    "socialization": "GOOD",
+    "separation": "GOOD",
+    "toilet": "GOOD",
+    "bark": "GOOD",
+    "bite": "GOOD",
+    "illnessList": [
+        "질병1", "질병2", "질병3"
+    ]
+}
+
+동물 리스트 조회
+animal/animals?page=0
+
+동물 상세 조회
+animal/1
