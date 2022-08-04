@@ -23,6 +23,10 @@ public class FavoriteAnimal {
     private PrivateMember privateMember;
 
     @ManyToOne
+    @JoinColumn(name = "user_idx")
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "animal_idx")
     private Animal animal;
 

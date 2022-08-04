@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter.dto;
+package umc_sjs.smallestShelter.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +13,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class JoinDto {
 
     @Id
@@ -24,13 +21,14 @@ public class JoinDto {
 
     private String password;
     private String name;
-    private String userName;
+    private String username;
     private String phoneNumber;
     private String profileImgUrl;
     private String email;
     private String address;
     @Nullable
     private OrganizationName organizationName;
+    @Enumerated(EnumType.STRING)
     private Role role;
     @CreationTimestamp
     private Timestamp createDate;

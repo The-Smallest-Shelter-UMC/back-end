@@ -12,16 +12,64 @@ public enum BaseResponseStatus {
      */
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
 
-    POST_EMPTY_IMG(false, 20, "게시물에 포함된 이미지가 없습니다"),
-    POST_NOT_EXIST(false,20, "해당하는 게시물이 존재하지 않습니다"),
-    EMPTY_URL_INFO(false, 20, "uri에 충분한 정보가 담기지 않았습니다. ex.queryString, pathValue"),
-    EMPTY_ANIMAL_INFO(false,20,"해당 동물이 존재하지 않습니다"),
+    /**
+     * 2000 : Request 오류
+     */
+    // Common
+    REQUEST_ERROR(false, 2000, "입력값을 확인해주세요."),
+    EMPTY_JWT(false, 2001, "JWT를 입력해주세요."),
+    INVALID_JWT(false, 2002, "유효하지 않은 JWT입니다."),
+    INVALID_USER_JWT(false,2003,"권한이 없는 유저의 접근입니다."),
+    NOT_MATCHING_JWT_USER(false, 2004, "유저와 JWT가 매칭되지 않습니다."),
+    INVALID_ENUM_VALUE(false, 2005, "올바르지 않은 ENUM값 입니다."),
+
+    //member
+
+
+
+    //animal
+
+
+
+    //post
+
+
+    /**
+     * 3000 : Response 오류
+     */
+    //member
+
+
+
+    //animal
+
+
+
+    //post
+
+
+
 
     /**
      * 4000 : Database, Server 오류
      */
+    // Common
     DATABASE_ERROR(false, 4000, "데이터베이스 연결에 실패하였습니다."),
-    SERVER_ERROR(false, 4001, "서버와의 연결에 실패하였습니다.");
+
+
+
+    //member
+
+
+
+    //animal
+
+
+
+    //post
+
+
+
 
 
     private final boolean isSuccess;

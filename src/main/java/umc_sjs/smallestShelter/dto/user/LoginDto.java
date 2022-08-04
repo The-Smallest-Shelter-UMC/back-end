@@ -1,4 +1,4 @@
-package umc_sjs.smallestShelter.dto;
+package umc_sjs.smallestShelter.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +21,6 @@ import java.sql.Timestamp;
 public class LoginDto {
 
     private String password;
-    private String userName;
+    private String username;
 
 }

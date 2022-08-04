@@ -9,23 +9,23 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
-import umc_sjs.smallestShelter.dto.JoinDto;
-import umc_sjs.smallestShelter.dto.LoginDto;
-import umc_sjs.smallestShelter.repository.JoinDtoRepository;
+import umc_sjs.smallestShelter.domain.User;
+import umc_sjs.smallestShelter.repository.UserRepository;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private JoinDtoRepository joinDtoRepository;
+    private UserRepository userRepository;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, JoinDtoRepository joinDtoRepository) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
         super(authenticationManager);
-        this.joinDtoRepository = joinDtoRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -38,7 +38,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-
         String jwtToken = request.getHeader(JwtProperties.HEADER_STRING).replace(JwtProperties.TOKEN_PREFIX, "");
 
         String username =
@@ -46,13 +45,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                         .getClaim("username").asString();
 
         if (username != null){
+            User user = userRepository.findByUsername(username);
 
-            JoinDto joinDto = joinDtoRepository.findByUserName(username);
-
-            PrincipalDetails principalDetails = new PrincipalDetails(joinDto);
+            PrincipalDetails principalDetails = new PrincipalDetails(user);
 
             Authentication authentication =
                     new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
+
+            PrincipalDetails principalDetails1 = (PrincipalDetails) authentication.getPrincipal();
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 

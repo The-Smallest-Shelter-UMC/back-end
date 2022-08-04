@@ -73,6 +73,18 @@ public class AnimalRepository {
         return findAnimal;
     }
 
+    // 연지 추가
+    public List<Animal> findByUserIdx(Long userIdx, int page) {
+        List<Animal> animals = em.createQuery("select a from Animal a where a.user.idx =: userIdx order by a.createDate desc", Animal.class)
+                .setParameter("userIdx", userIdx)
+                .setFirstResult(page * 2)
+                .setMaxResults(2)
+                .getResultList();
+
+        return animals;
+    }
+
+
     public List<Post> findPostById(Long anmIdx) {
         List<Post> postList = em.createQuery("select p from Post p where p.animal.idx =: anmIdx", Post.class)
                 .setParameter("anmIdx", anmIdx)

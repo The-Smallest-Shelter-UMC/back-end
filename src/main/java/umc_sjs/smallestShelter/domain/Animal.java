@@ -57,6 +57,10 @@ public class Animal {
     @JoinColumn(name = "organizationMember_idx")
     private OrganizationMember organizationMember;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_idx")
+    private User user;
+
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<Illness> illnessList = new ArrayList<>();
 
