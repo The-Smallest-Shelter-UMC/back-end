@@ -15,6 +15,10 @@ import umc_sjs.smallestShelter.repository.FavoriteAnimalRepository;
 import umc_sjs.smallestShelter.repository.UserRepository;
 
 import org.springframework.transaction.annotation.Transactional;
+import umc_sjs.smallestShelter.response.BaseException;
+import umc_sjs.smallestShelter.response.BaseResponseStatus;
+
+import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,21 +34,44 @@ public class UserService {
     private final AnimalRepository animalRepository;
 
     @Transactional
-    public void join(JoinDto joinDto) {
+    public void join(JoinDto joinDto) throws BaseException {
 
-        User user = User.builder()
-                .name(joinDto.getName())
-                .username(joinDto.getUsername())
-                .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
-                .phoneNumber(joinDto.getPhoneNumber())
-                .profileImgUrl(joinDto.getProfileImgUrl())
-                .email(joinDto.getEmail())
-                .address(joinDto.getAddress())
-                .createDate(joinDto.getCreateDate())
-                .organizationName(joinDto.getOrganizationName())
-                .role(joinDto.getRole()).build();
+        // 아이디 중복 확인
+        if(checkUsername(joinDto.getUsername())){
+            throw new BaseException(USERS_EXISTS_USERNAME);
+        }
 
-        userRepository.save(user);
+        // 이메일 중복 확인
+        if(checkEmail(joinDto.getEmail())){
+            throw new BaseException(USERS_EXISTS_EMAIL);
+        }
+
+        String encodePassword;
+        try{
+            //암호화
+            encodePassword = bCryptPasswordEncoder.encode(joinDto.getPassword());
+        } catch (Exception ignored) {
+            throw new BaseException(PASSWORD_ENCRYPTION_ERROR);
+        }
+
+        try{
+            User user = User.builder()
+                    .name(joinDto.getName())
+                    .username(joinDto.getUsername())
+                    .password(encodePassword)
+                    .phoneNumber(joinDto.getPhoneNumber())
+                    .profileImgUrl(joinDto.getProfileImgUrl())
+                    .email(joinDto.getEmail())
+                    .address(joinDto.getAddress())
+                    .createDate(joinDto.getCreateDate())
+                    .organizationName(joinDto.getOrganizationName())
+                    .role(joinDto.getRole()).build();
+
+            userRepository.save(user);
+
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 개인
@@ -164,6 +191,22 @@ public class UserService {
         Optional<User> user = userRepository.findById(userIdx);
 
         userRepository.delete(user.get());
+    }
+
+    public boolean checkUsername(String username) throws BaseException{
+        try{
+            return userRepository.existsByUsername(username);
+        } catch (Exception exception){
+            throw new BaseException(BaseResponseStatus.USERS_EXISTS_USERNAME);
+        }
+    }
+
+    public boolean checkEmail(String email) throws BaseException {
+        try{
+            return userRepository.existsByEmail(email);
+        } catch (Exception exception){
+            throw new BaseException(BaseResponseStatus.USERS_EXISTS_EMAIL);
+        }
     }
 }
 
