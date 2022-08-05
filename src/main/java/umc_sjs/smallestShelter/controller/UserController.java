@@ -46,7 +46,8 @@ public class UserController {
         if(joinDto.getRole() == null) {
             return new BaseResponse<>(USERS_EMPTY_ROLE);
         }
-        if((joinDto.getRole().toString() != "ORGANIZATION") || (joinDto.getRole().toString() != "PRIVATE")) {
+        if((joinDto.getRole().toString() != "ORGANIZATION") && (joinDto.getRole().toString() != "PRIVATE")) {
+            System.out.println("role" + joinDto.getRole().toString());
             return new BaseResponse<>(INVALID_ENUM_VALUE);
         }
         if (joinDto.getRole().toString() == "ORGANIZATION") {
