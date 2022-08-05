@@ -22,7 +22,8 @@ public enum BaseResponseStatus {
     INVALID_USER_JWT(false,2003,"권한이 없는 유저의 접근입니다."),
     NOT_MATCHING_JWT_USER(false, 2004, "유저와 JWT가 매칭되지 않습니다."),
     INVALID_ENUM_VALUE(false, 2005, "올바르지 않은 ENUM값 입니다."),
-
+    // 임시로 적어두었습니다! by 가나
+    URL_VALUE_EMPLY(false, 33, "URL에 비어있는 값이 있습니다. path value 또는 query string"),
 
     //users
     USERS_EMPTY_USERNAME(false, 2010, "아이디를 입력해주세요."),
@@ -41,6 +42,11 @@ public enum BaseResponseStatus {
 
 
     //post
+    POST_EMPTY_IMG(false,33, "게시물에 이미지가 없습니다"),
+    POST_CONTENT_LENGTH_OVER(false, 33, "게시글의 내용이 허용된 글자수를 넘었습니다"),
+    ANIMAL_NOT_EXIST(false, 33, "해당하는 반려동물이 존재하지 않습니다"),
+    POST_NOT_EXIST(false,33,"해당하는 게시물이 존재하지 않습니다"),
+    POSTIDX_ANIMALIDX_ILLEGAL(false, 33, "해당 동물의 게시물의 아닙니다: idx 불일치"),
 
 
     /**

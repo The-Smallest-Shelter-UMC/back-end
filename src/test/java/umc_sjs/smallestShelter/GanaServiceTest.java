@@ -26,11 +26,9 @@ public class GanaServiceTest {
     public void 게시물등록(){
         // given
         Long animalIdx = 1L;
-        CreatePostReq createPostReq = new CreatePostReq("/img", "내용내용");
 
         try{
-            CreatePostRes createPostRes = postService.create(animalIdx, createPostReq);
-            System.out.println("createPostRes.getPostIdx() = " + createPostRes.getPostIdx());
+            Post post = postService.create(animalIdx, "/img", "내용내용");
         } catch (Exception e){
             e.printStackTrace();
         }
