@@ -31,7 +31,7 @@ public class PostRepository {
 
     // 게시물 조회 + fetch join Animal
     public Post findPost(Long postIdx){
-        return em.createQuery("selec p from Post p join fetch p.Animal a where p.post=:postIdx", Post.class)
+        return em.createQuery("select p from Post p join fetch p.animal a where p.idx=:postIdx", Post.class)
                 .setParameter("postIdx", postIdx)
                 .getSingleResult();
     }

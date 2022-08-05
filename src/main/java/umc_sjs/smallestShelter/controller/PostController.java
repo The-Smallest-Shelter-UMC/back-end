@@ -63,7 +63,7 @@ public class PostController {
 
         try{
             // 게시물 조회
-            Post post = postService.findById(animalIdx, postIdx);
+            Post post = postService.getPost(postIdx, animalIdx);
 
             GetPostRes getPostRes = new GetPostRes(post.getIdx(), post.getImgUrl(), post.getContent());
             return new BaseResponse<>(getPostRes);

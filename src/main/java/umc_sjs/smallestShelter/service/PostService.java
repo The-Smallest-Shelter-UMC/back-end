@@ -46,15 +46,16 @@ public class PostService {
     }
 
     // 게시물 조회
-    public Post findById(Long animalIdx, Long postIdx) throws BaseException{
+    public Post getPost (Long postIdx, Long animalIdx) throws BaseException{
         try{
             // 게시물 조회
-            Post post =  findPostOne(postIdx);
+            Post post = findPostOne(postIdx);
 
             checkPostLegal(post, animalIdx);
 
-
             return post;
+        } catch (BaseException e){
+            throw new BaseException(e.getStatus());
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
@@ -64,18 +65,20 @@ public class PostService {
     @Transactional
     public Post update(Long postIdx, Long animalIdx, String imgUrl, String content) throws BaseException{
 
-        // 수정 전 게시물 조회
-        Post beforUpdatePost =  findPostOne(postIdx);
-
-        checkPostLegal(beforUpdatePost, animalIdx);
-
-        // 수정 후 게시물
-        Post afterUpdatePost = beforUpdatePost.updatePost(imgUrl, content);
-
-        // 게시물 수정
         try{
+            // 수정 전 게시물 조회
+            Post beforUpdatePost = findPostOne(postIdx);
+
+            checkPostLegal(beforUpdatePost, animalIdx);
+
+            // 수정 후 게시물
+            Post afterUpdatePost = beforUpdatePost.updatePost(imgUrl, content);
+
+            // 게시물 수정
             postRepository.save(afterUpdatePost);
             return afterUpdatePost;
+        } catch (BaseException e){
+            throw new BaseException(e.getStatus());
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
@@ -85,13 +88,14 @@ public class PostService {
     @Transactional
     public void delete(Long postIdx, Long animalIdx) throws BaseException{
 
-        Post post = findPostOne(postIdx);
-
-        checkPostLegal(post, animalIdx);
-
         try{
+            Post post = findPostOne(postIdx);
+
+            checkPostLegal(post, animalIdx);
             // 게시물 삭제
             postRepository.delete(post);
+        } catch (BaseException e){
+            throw new BaseException(e.getStatus());
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
