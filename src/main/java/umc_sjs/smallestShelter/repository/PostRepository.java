@@ -6,6 +6,7 @@ import umc_sjs.smallestShelter.domain.Post;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class PostRepository {
@@ -23,12 +24,16 @@ public class PostRepository {
         }
     }
 
-    // 게시물 조회
+    // 게시물 idx로 조회
     public Post findById(Long postIdx){
         return em.find(Post.class, postIdx);
-//        return em.createQuery("select p from Post p where p.post_idx = :postIdx", Post.class)
-//                .setParameter("postIdx", postIdx)
-//                .getSingleResult();
+    }
+
+    // 게시물 조회 + fetch join Animal
+    public Post findPost(Long postIdx){
+        return em.createQuery("select p from Post p join fetch p.animal a where p.idx=:postIdx", Post.class)
+                .setParameter("postIdx", postIdx)
+                .getSingleResult();
     }
 
     // 게시물 삭제
@@ -36,8 +41,9 @@ public class PostRepository {
         em.remove(post);
     }
 
-    // 동물 찾기 (이후 삭제 필요)
-    public Animal findAnimalByIdx(Long animalIdx){
-        return em.find(Animal.class, animalIdx);
+    // 게시물 전체조회
+    public List<Post> findAll(){
+        return em.createQuery("select p from Post p", Post.class)
+                .getResultList();
     }
 }
