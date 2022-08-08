@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.User;
 import umc_sjs.smallestShelter.repository.UserRepository;
+import umc_sjs.smallestShelter.response.BaseException;
+
+import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +20,12 @@ public class PrincipalDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User userEntity = userRepository.findByUsername(username);
-        return new PrincipalDetails(userEntity);
+
+        try{
+            User userEntity = userRepository.findByUsername(username).orElseThrow();
+            return new PrincipalDetails(userEntity);
+        } catch (Exception exception) {
+            throw new RuntimeException("없는 아이디거나 비밀번호가 틀렸습니다.");
+        }
     }
 }*/

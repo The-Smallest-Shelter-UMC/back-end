@@ -68,5 +68,15 @@ public class Post {
 
         return this;
     }
+
+    // 게시물의 주인(반려동물)이 요청값으로 넘어온 반려동물과 일치하는지 확인
+    public boolean checkLegal(Long animalIdx){
+        if(this.getAnimal().getIdx() == animalIdx){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     /*  비지니스 로직 끝 */
 }
