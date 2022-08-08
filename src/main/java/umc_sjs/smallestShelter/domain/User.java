@@ -38,10 +38,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Animal> animalList = new ArrayList<>();
+    @OneToMany(mappedBy = "uploadUser")
+    private List<Animal> uploadAnimalList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "likeUser")
     private List<FavoriteAnimal> favoriteAnimalList = new ArrayList<>();
 
     @CreationTimestamp

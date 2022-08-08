@@ -46,4 +46,13 @@ public class PostRepository {
         return em.createQuery("select p from Post p", Post.class)
                 .getResultList();
     }
+
+    //건호 추가
+    public List<Post> findPostById(Long anmIdx) {
+        List<Post> postList = em.createQuery("select p from Post p where p.animal.idx =: anmIdx", Post.class)
+                .setParameter("anmIdx", anmIdx)
+                .getResultList();
+
+        return postList;
+    }
 }

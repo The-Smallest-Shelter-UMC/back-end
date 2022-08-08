@@ -4,10 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.dto.AdoptAnimalRes;
-import umc_sjs.smallestShelter.dto.LikeAnimalRes;
-import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.AdoptAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.LikeAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
+import umc_sjs.smallestShelter.repository.PostRepository;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
+    private final PostRepository postRepository;
 
     public Long saveAnimal(Animal animal, List<String> illnessNameList) {
 
@@ -35,7 +37,7 @@ public class AnimalService {
     }
 
     public List<Post> getAnimalPost(Long anmIdx) {
-        List<Post> postList = animalRepository.findPostById(anmIdx);
+        List<Post> postList = postRepository.findPostById(anmIdx);
         return postList;
     }
 

@@ -54,12 +54,8 @@ public class Animal {
     private Status bite;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "organizationMember_idx")
-    private OrganizationMember organizationMember;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_idx")
-    private User user;
+    @JoinColumn(name = "uploadUser_idx")
+    private User uploadUser;
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<Illness> illnessList = new ArrayList<>();
@@ -71,9 +67,9 @@ public class Animal {
     private Timestamp createDate;
 
     //연관관계 편의 메소드
-    public void modifyOrganizationMember(OrganizationMember organizationMember) {
-        this.setOrganizationMember(organizationMember);
-        organizationMember.getAnimalList().add(this);
+    public void modifyUploadUser(User uploadUser) {
+        this.setUploadUser(uploadUser);
+        uploadUser.getUploadAnimalList().add(this);
     }
 
 }

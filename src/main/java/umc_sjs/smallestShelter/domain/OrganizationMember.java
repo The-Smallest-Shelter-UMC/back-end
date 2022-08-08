@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.domain;
 
 import lombok.*;
@@ -41,3 +42,4 @@ public class OrganizationMember {
     @Enumerated(EnumType.STRING)
     private Role role;
 }
+*/

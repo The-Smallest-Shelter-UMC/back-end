@@ -1,12 +1,9 @@
 package umc_sjs.smallestShelter.domain;
 
-<<<<<<< HEAD
-=======
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
->>>>>>> 9367bffc6c6b558b8b73efd9efa32729296d4d65
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 

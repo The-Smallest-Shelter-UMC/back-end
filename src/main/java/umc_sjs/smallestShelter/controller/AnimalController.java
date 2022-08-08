@@ -4,14 +4,12 @@ import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.*;
-import umc_sjs.smallestShelter.dto.*;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.GetAnimalDetailRes;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.IllnessDto;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.PostDto;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
-import umc_sjs.smallestShelter.dto.getAnimalDto.GetAnimalRes;
-import umc_sjs.smallestShelter.dto.SearchAnimalReq;
-import umc_sjs.smallestShelter.dto.LikeAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.*;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.GetAnimalDetailRes;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.IllnessDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.PostDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
 
@@ -21,14 +19,18 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 //@NoArgsConstructor
-@RequestMapping("/animal")
 public class AnimalController {
 
     private final AnimalService animalService;
     private final AnimalRepository animalRepository;
 
+    /**
+     * 동물 등록 API
+     * @param joinAnimalReq
+     * @return JoinAnimalRes
+     */
     //@ResponseBody
-    @PostMapping("/join")
+    @PostMapping("/auth/organization/animal/join")
     public JoinAnimalRes joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq) {
 
         Animal joinAnimal = new Animal();
@@ -45,8 +47,8 @@ public class AnimalController {
         joinAnimal.setBark(joinAnimalReq.getBark());
         joinAnimal.setBite(joinAnimalReq.getBite());
 
-        OrganizationMember findOrganizationMember = animalRepository.findOrganizationMember(joinAnimalReq.getUserIdx());
-        joinAnimal.modifyOrganizationMember(findOrganizationMember);
+        User findUser = animalRepository.findUser(joinAnimalReq.getUserIdx());
+        joinAnimal.modifyUploadUser(findUser);
 
         List<String> illnessList = joinAnimalReq.getIllnessList();
 
@@ -55,6 +57,11 @@ public class AnimalController {
         return new JoinAnimalRes(saveAnimalIdx);
     }
 
+    /**
+     * 동물 리스트 조회 API
+     * @param page
+     * @return GetAnimalRes
+     */
     @GetMapping("/animals")
     //@ResponseBody
     public GetAnimalRes getAnimals(@RequestParam int page) {
@@ -66,27 +73,38 @@ public class AnimalController {
         return animalRes;
     }
 
-    @DeleteMapping("/{anmIdx}")
-    public void deleteAnimal(@PathVariable Long anmIdx) {
-        animalRepository.deleteAnimal(anmIdx);
+    /**
+     * 동물 삭제 API
+     * @param animal_id
+     */
+    @DeleteMapping("/auth/organization/animal/{animal_id}")
+    public void deleteAnimal(@PathVariable Long animal_id) {
+        animalRepository.deleteAnimal(animal_id);
     }
 
-    @GetMapping("/{anmIdx}")
+    /**
+     * 동물 상세 조회 API
+     * @param animal_id
+     * @return GetAnimalDetailRes
+     */
+    @GetMapping("/animals/{animal_id}")
     //@ResponseBody
-    public GetAnimalDetailRes getAnimalDetail(@PathVariable Long anmIdx) {
+    public GetAnimalDetailRes getAnimalDetail(@PathVariable Long animal_id) {
 
         GetAnimalDetailRes getAnimalDetailRes = new GetAnimalDetailRes();
 
-        Animal animal = animalService.getAnimal(anmIdx);
+        Animal animal = animalService.getAnimal(animal_id);
         getAnimalDetailRes.setName(animal.getName());
         getAnimalDetailRes.setMainImgUrl(animal.getMainImgUrl());
         getAnimalDetailRes.setSpecies(animal.getSpecies());
         getAnimalDetailRes.setAge(animal.getAge());
         getAnimalDetailRes.setGender(animal.getGender());
         getAnimalDetailRes.setIsAdopted(animal.getIsAdopted());
-        getAnimalDetailRes.setOrganizationName(animal.getOrganizationMember().getOrganizationName());
-        getAnimalDetailRes.setPhoneNumber(animal.getOrganizationMember().getPhoneNumber());
-        getAnimalDetailRes.setAddress(animal.getOrganizationMember().getAddress());
+        getAnimalDetailRes.setOrganizationName(animal.getUploadUser().getOrganizationName());
+        getAnimalDetailRes.setOrganizationMemberId(animal.getUploadUser().getUsername());
+        getAnimalDetailRes.setOrganizationMemberImgUrl(animal.getUploadUser().getProfileImgUrl());
+        getAnimalDetailRes.setPhoneNumber(animal.getUploadUser().getPhoneNumber());
+        getAnimalDetailRes.setAddress(animal.getUploadUser().getAddress());
 
         List<Illness> illnessList = animal.getIllnessList();
 
@@ -96,7 +114,7 @@ public class AnimalController {
             getAnimalDetailRes.getIllness().add(illnessDto);
         }
 
-        List<Post> postList = animalService.getAnimalPost(anmIdx);
+        List<Post> postList = animalService.getAnimalPost(animal_id);
         for (Post post : postList) {
             PostDto postDto = new PostDto();
             postDto.setPostIdx(post.getIdx());
@@ -104,7 +122,7 @@ public class AnimalController {
             getAnimalDetailRes.getPost().add(postDto);
         }
 
-        List<RecommandAnimalDto> recommendAnimals = animalRepository.getRecommendAnimals(anmIdx);
+        List<RecommandAnimalDto> recommendAnimals = animalRepository.getRecommendAnimals(animal_id);
         getAnimalDetailRes.setRecommandAnimal(recommendAnimals);
 
 //        System.out.println("authentication = " + authentication);
@@ -114,20 +132,37 @@ public class AnimalController {
         return getAnimalDetailRes;
     }
 
+    /**
+     * 동물 검색 API
+     * @param page
+     * @param searchAnimalReq
+     * @return GetAnimalRes
+     */
     @PostMapping("/search")
     public GetAnimalRes searchAnimal(@RequestParam int page, @RequestBody SearchAnimalReq searchAnimalReq) {
         GetAnimalRes getAnimalRes = animalRepository.searchAnimal(page, searchAnimalReq, new GetAnimalRes());
         return getAnimalRes;
     }
 
-    @PatchMapping("/adopt")
+    /**
+     * 입양 버튼 API
+     * @param animal_id
+     * @return AdoptAnimalRes
+     */
+    @PatchMapping("/auth/organization/adopt")
     public AdoptAnimalRes adoptAnimal(@RequestParam Long animal_id) {
         AdoptAnimalRes adoptAnimalRes = animalService.adoptAnimal(animal_id);
 
         return adoptAnimalRes;
     }
 
-    @PatchMapping("/like")
+    /**
+     * 관심 동물 - 즐겨찾기 API
+     * @param user_id
+     * @param animal_id
+     * @return LikeAnimalRes
+     */
+    @PatchMapping("/auth/private/like")
     public LikeAnimalRes likeAnimal(@RequestParam Long user_id, @RequestParam Long animal_id) {
 
         LikeAnimalRes likeAnimalRes = animalService.likeAnimal(user_id, animal_id, new LikeAnimalRes());

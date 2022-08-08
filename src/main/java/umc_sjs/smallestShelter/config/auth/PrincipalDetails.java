@@ -1,4 +1,5 @@
 /*
+
 package umc_sjs.smallestShelter.config.auth;
 
 import lombok.Data;
@@ -63,5 +64,5 @@ public class PrincipalDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-*/
-//}
+
+}*/

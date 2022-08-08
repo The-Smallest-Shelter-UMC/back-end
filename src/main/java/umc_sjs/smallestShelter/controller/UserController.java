@@ -1,13 +1,14 @@
+/*
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
+import umc_sjs.smallestShelter.dto.animal.GetAnimalsRes;
 import umc_sjs.smallestShelter.dto.user.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
-import umc_sjs.smallestShelter.response.BaseResponseStatus;
 import umc_sjs.smallestShelter.service.UserService;
 
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
@@ -157,3 +158,4 @@ public class UserController {
     }
 
 }
+*/

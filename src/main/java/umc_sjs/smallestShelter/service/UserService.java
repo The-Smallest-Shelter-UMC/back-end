@@ -1,6 +1,8 @@
+/*
 package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.FavoriteAnimal;
 import umc_sjs.smallestShelter.domain.User;
+import umc_sjs.smallestShelter.dto.animal.AnimalRes;
+import umc_sjs.smallestShelter.dto.animal.GetAnimalsRes;
 import umc_sjs.smallestShelter.dto.user.*;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.repository.FavoriteAnimalRepository;
@@ -210,3 +214,4 @@ public class UserService {
     }
 }
 
+*/

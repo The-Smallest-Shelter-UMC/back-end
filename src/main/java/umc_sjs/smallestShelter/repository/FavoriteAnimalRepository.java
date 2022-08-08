@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.repository;
 
 import org.springframework.data.domain.Page;
@@ -10,3 +11,4 @@ import java.util.List;
 public interface FavoriteAnimalRepository extends JpaRepository<FavoriteAnimal, Long> {
     List<FavoriteAnimal> findByUserIdx(Long userIdx, Pageable pageable);
 }
+*/

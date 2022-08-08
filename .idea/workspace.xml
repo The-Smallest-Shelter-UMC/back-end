@@ -5,107 +5,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/SecurityConfig$CustomFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/SecurityConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/auth/PrincipalDetails.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/auth/PrincipalDetailsService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/User$UserBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/AnimalRes$AnimalResBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/AnimalRes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetAnimalsRes$GetAnimalsResBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetAnimalsRes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetOrganizationPageRes$GetOrganizationPageResBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetOrganizationPageRes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetPrivatePageRes$GetPrivatePageResBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/GetPrivatePageRes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/JoinDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/LoginDto$LoginDtoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/LoginDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/LoginRes$LoginResBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/LoginRes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/PatchUserReq$PatchUserReqBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/PatchUserReq.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/OrganizationRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/UserRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/OrganizationService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/PrivateMemberService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/AnimalRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/GetAnimalsRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/GetOrganizationPageRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/GetPrivatePageRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/LoginRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/PatchUserReq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/AdoptAnimalRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/AnimalRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/GetAnimalsRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/JoinAnimalReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/JoinAnimalRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/LikeAnimalRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/SearchAnimalReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDetailDto/GetAnimalDetailRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDetailDto/IllnessDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDetailDto/PostDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDetailDto/RecommandAnimalDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDto/GetAnimalDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDto/GetAnimalRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/SmallestShelterApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/SmallestShelterApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/umc_sjs/smallestShelter/SmallestShelterApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/AnimalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Age.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Age.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Animal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/OrganizationMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/PrivateMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/GetAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/JoinAnimalReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/SearchAnimalReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/IllnessDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/PostDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/dto/getAnimalDetailDto/RecommandAnimalDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/AnimalRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/PostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/PostRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/BaseResponseStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/BaseResponseStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/AnimalService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/PostService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/AnimalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Animal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/PrivateMemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/PrivateMemberRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/umc_sjs/smallestShelter/SmallestShelterApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/SecurityConfig$CustomFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/WebConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/auth/PrincipalDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Age.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/AgeBoundary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/domain/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/AdoptAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/JoinDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/LikeAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/LoginDto$LoginDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/LoginDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/SearchAnimalReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDetailDto/GetAnimalDetailRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDto/GetAnimalDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/getAnimalDto/GetAnimalRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/dto/user/JoinDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/umc_sjs/smallestShelter/GanaServiceTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/RestApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/RestApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/OrganizationMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/OrganizationMember.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/PrivateMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/PrivateMember.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/JoinDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/JoinDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/LoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/LoginDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/AdoptAnimalRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/JoinAnimalReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/JoinAnimalRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/LikeAnimalRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/SearchAnimalReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDetailDto/GetAnimalDetailRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDetailDto/IllnessDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDetailDto/PostDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDetailDto/RecommandAnimalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDto/GetAnimalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/getAnimalDto/GetAnimalRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/AnimalRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/GetAnimalsRes.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/JoinDtoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/JoinDtoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/OrganizationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/OrganizationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PrivateMemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PrivateMemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/BaseResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/BaseResponseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/OrganizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/OrganizationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/PrivateMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/PrivateMemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/AnimalRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/AnimalRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,9 +120,22 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="smallestShelter" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="smallestShelter" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -189,6 +201,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="/Users/Keonho/smallest-shelter-back" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="GanaServiceTest.게시물등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smallestShelter.test" />
       <extension name="coverage">
@@ -253,22 +284,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceTest.게시물등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smallestShelter.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="umc_sjs.smallestShelter.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="umc_sjs.smallestShelter.controller" />
-      <option name="MAIN_CLASS_NAME" value="umc_sjs.smallestShelter.controller.PostServiceTest" />
-      <option name="METHOD_NAME" value="게시물등록" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SmallestShelterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="smallestShelter.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="umc_sjs.smallestShelter.SmallestShelterApplication" />
@@ -278,6 +293,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle./Users/Keonho/smallest-shelter-back" />
         <item itemvalue="Application.SmallestShelterApplication" />
         <item itemvalue="JUnit.GanaServiceTest.게시물등록" />
         <item itemvalue="JUnit.GanaServiceTest.dto접근안됨" />
@@ -296,7 +312,12 @@
       <workItem from="1659365902364" duration="9341000" />
       <workItem from="1659423338386" duration="20984000" />
       <workItem from="1659496261808" duration="92000" />
-      <workItem from="1659605747208" duration="5121000" />
+      <workItem from="1659605747208" duration="6306000" />
+      <workItem from="1659947912218" duration="3000" />
+      <workItem from="1659950218929" duration="5381000" />
+      <workItem from="1659955617452" duration="1175000" />
+      <workItem from="1659956800146" duration="4249000" />
+      <workItem from="1659961745729" duration="3040000" />
     </task>
     <servers />
   </component>
