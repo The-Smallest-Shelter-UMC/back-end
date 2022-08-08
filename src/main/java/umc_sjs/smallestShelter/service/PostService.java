@@ -10,6 +10,8 @@ import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
+import java.util.List;
+
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @Service
@@ -121,5 +123,11 @@ public class PostService {
         } catch (Exception e){
             throw new BaseException(DATABASE_ERROR);
         }
+    }
+
+    //건호 추가
+    public List<Post> getAnimalPost(Long anmIdx) {
+        List<Post> postList = postRepository.findPostById(anmIdx);
+        return postList;
     }
 }

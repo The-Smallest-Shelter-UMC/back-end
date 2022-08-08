@@ -13,8 +13,8 @@ public class JoinAnimalReq {
 
     private Long userIdx;
     private String name;
-    private int year;
-    private int month;
+    private Integer year;
+    private Integer month;
     private boolean isGuessed;
     private Gender gender;
     private Species species;

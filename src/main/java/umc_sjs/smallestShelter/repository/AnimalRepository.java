@@ -79,10 +79,9 @@ public class AnimalRepository {
         return animals;
     }
 
-    public void deleteAnimal(Long anmIdx){
+    public void deleteAnimal(Animal animal){
 
-        Animal findAnimal = findAnimalById(anmIdx);
-        em.remove(findAnimal);
+        em.remove(animal);
     }
 
     public List<RecommandAnimalDto> getRecommendAnimals(Long anmIdx) {

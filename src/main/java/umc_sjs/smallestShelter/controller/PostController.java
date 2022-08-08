@@ -24,7 +24,7 @@ public class PostController {
     public BaseResponse<CreatePostRes> createPost(@RequestParam("animal_id") Long animalIdx, @RequestBody CreatePostReq createPostReq){
 
         if(animalIdx == null){
-            return new BaseResponse<>(URL_VALUE_EMPLY);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         String imgUrl = createPostReq.getImgUrl(); // 게시글의 이미지
@@ -58,7 +58,7 @@ public class PostController {
     public BaseResponse<GetPostRes> getPost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx){
         //animalIdx null 체크도 해줘야하나?
         if(animalIdx==null || postIdx==null){
-            return new BaseResponse<>(URL_VALUE_EMPLY);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         try{
@@ -79,7 +79,7 @@ public class PostController {
 
         //animalIdx null 체크도 해줘야하나?
         if(animalIdx==null || postIdx==null){
-            return new BaseResponse<>(URL_VALUE_EMPLY);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         // 게시글의 이미지가 없으면
@@ -109,7 +109,7 @@ public class PostController {
     public BaseResponse<String> deletePost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx){
         //animalIdx null 체크도 해줘야하나?
         if(animalIdx==null || postIdx==null){
-            return new BaseResponse<>(URL_VALUE_EMPLY);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         try{
