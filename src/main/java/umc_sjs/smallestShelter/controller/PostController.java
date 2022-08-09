@@ -70,6 +70,8 @@ public class PostController {
             return new BaseResponse<>(getPostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 
@@ -101,6 +103,8 @@ public class PostController {
             return new BaseResponse<>(updatePostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 
@@ -118,6 +122,8 @@ public class PostController {
             return new BaseResponse<>("게시물 삭제에 성공했습니다.");
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 }

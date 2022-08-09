@@ -29,12 +29,11 @@ public class PostRepository {
     // 게시물 idx로 조회
     public Post findOne(Long postIdx){
         return em.find(Post.class, postIdx);
-//        return null;
     }
 
     // 게시물 조회 + fetch join Animal
     public Post findPost(Long postIdx){
-        return em.createQuery("select p from Post p join fetch p.animal a where p.idx=:postIdx", Post.class)
+        return em.createQuery("select p from Post p left join fetch p.animal a where p.idx=:postIdx", Post.class)
                 .setParameter("postIdx", postIdx)
                 .getSingleResult();
     }
@@ -52,8 +51,7 @@ public class PostRepository {
 
     // 게시물 전체조회 + fetch join Animal
     public List<Post> findPostAll(Long postIdx){
-        return em.createQuery("select p from Post p join fetch p.animal a where p.idx=:postIdx", Post.class)
-                .setParameter("postIdx", postIdx)
+        return em.createQuery("select p from Post p left join fetch p.animal a", Post.class)
                 .getResultList();
     }
 }
