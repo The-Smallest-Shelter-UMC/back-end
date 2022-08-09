@@ -45,7 +45,7 @@ class PostControllerTest {
     public void 게시물_전체조회(){
         posts = em.createQuery("select p from Post p", Post.class)
                 .getResultList();
-        post = posts.get(3);
+        post = posts.get(0);
     }
 
 
@@ -94,11 +94,35 @@ class PostControllerTest {
 
     @Test
     public void 게시글조회_X_일치하지않는동물idx(){
-        BaseResponse response = postController.getPost(-1L, post.getIdx());
+        BaseResponse response = postController.getPost(post.getAnimal().getIdx() + 1, post.getIdx());
 
         System.out.println(response.getMessage());
         Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
     }
 
+    @Test
+    public void 게시물삭제(){
+        게시글생성();
 
+        BaseResponse response = postController.deletePost(post.getAnimal().getIdx(), post.getIdx());
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(true);
+    }
+
+    @Test
+    public void 게시글삭제_x_없는게시물(){
+        BaseResponse response = postController.deletePost(animal.getIdx(), -1L);
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
+    public void 게시물삭제_x_일치하지않는동물idx(){
+        BaseResponse response = postController.deletePost(-1L, post.getIdx());
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
 }

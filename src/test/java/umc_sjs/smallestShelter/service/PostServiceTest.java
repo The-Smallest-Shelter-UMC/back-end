@@ -38,19 +38,23 @@ class PostServiceTest {
 
     private Long animalIdx;
     private Long postIdx;
+    private Animal animal;
+    private Post post;
 
     @BeforeEach
     public void 동물_전체조회(){
         animals = em.createQuery("select a from Animal a", Animal.class)
                 .getResultList();
-        animalIdx = animals.get(0).getIdx();
+        animal = animals.get(0);
+        animalIdx = animal.getIdx();
     }
 
     @BeforeEach
     public void 게시물_전체조회(){
         posts = em.createQuery("select p from Post p", Post.class)
                 .getResultList();
-        postIdx = posts.get(3).getIdx();
+        post = posts.get(0);
+        postIdx = post.getIdx();
     }
 
     @Test
@@ -124,4 +128,41 @@ class PostServiceTest {
             Assertions.fail("에러!");
         }
     }
+
+    @Test
+    public void 게시글삭제(){
+        try {
+            postService.delete(post.getIdx(), post.getAnimal().getIdx());
+        } catch (BaseException e){
+            Assertions.fail("게시글 삭제 실패: " + e.getStatus().getMessage());
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
+
+    @Test
+    @Rollback(value = true)
+    public void 게시글삭제_x_없는게시물(){
+        try{
+            postService.delete(-1L, animalIdx);
+        } catch (BaseException e){
+            Assertions.assertThat(e.getStatus()).isEqualTo(POST_NOT_EXIST);
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
+
+    @Test
+    @Rollback(value = true)
+    public void 게시물삭제_x_일치하지않는동물idx(){
+        try {
+            postService.delete(postIdx, -1L);
+        } catch (BaseException e){
+            Assertions.assertThat(e.getStatus()).isEqualTo(POSTIDX_ANIMALIDX_ILLEGAL);
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
+
+
 }
