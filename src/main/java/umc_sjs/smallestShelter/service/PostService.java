@@ -29,9 +29,11 @@ public class PostService {
         Animal animal;
         try {
             animal = animalRepository.findAnimalById(animalIdx);
+
         } catch (EmptyResultDataAccessException e){ // 해당하는 동물이 없을경우
-            throw new BaseException(ANIMAL_NOT_EXIST);
+            throw new BaseException(NON_EXISTING_ANIMAL);
         } catch (Exception e){
+            e.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
         }
 

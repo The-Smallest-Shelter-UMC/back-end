@@ -27,7 +27,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 //@NoArgsConstructor
-@Validated
+//@Validated
 public class AnimalController {
 
     private final AnimalService animalService;
@@ -111,7 +111,11 @@ public class AnimalController {
      */
     @GetMapping("/animals")
     //@ResponseBody
-    public BaseResponse<GetAnimalRes> getAnimals(@RequestParam @NotNull Integer page) {
+    public BaseResponse<GetAnimalRes> getAnimals(@RequestParam Integer page) {
+
+        if (page == null) {
+            return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
+        }
 
         try {
             GetAnimalRes getAnimalRes = new GetAnimalRes();
@@ -143,7 +147,7 @@ public class AnimalController {
      * @param animal_id
      * @return GetAnimalDetailRes
      */
-    @GetMapping("/animals/{animal_id}")
+    @GetMapping("/animal/{animal_id}")
     public BaseResponse<GetAnimalDetailRes> getAnimalDetail(@PathVariable Long animal_id) {
 
         try {
@@ -193,8 +197,8 @@ public class AnimalController {
      * @param searchAnimalReq
      * @return GetAnimalRes
      */
-    @PostMapping("/search")
-    public BaseResponse<GetAnimalRes> searchAnimal(@RequestParam @NotNull Integer page, @RequestBody SearchAnimalReq searchAnimalReq) {
+    @PostMapping("/animal/search")
+    public BaseResponse<GetAnimalRes> searchAnimal(@RequestParam Integer page, @RequestBody SearchAnimalReq searchAnimalReq) {
 
         try {
             /*if (page == null) {
@@ -214,8 +218,8 @@ public class AnimalController {
      * @param animal_id
      * @return AdoptAnimalRes
      */
-    @PatchMapping("/auth/organization/adopt")
-    public BaseResponse<AdoptAnimalRes> adoptAnimal(@RequestParam @NotNull Long animal_id) {
+    @PatchMapping("/auth/organization/animal/adopt")
+    public BaseResponse<AdoptAnimalRes> adoptAnimal(@RequestParam Long animal_id) {
 
         if (animal_id == null) {
             return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
@@ -235,8 +239,8 @@ public class AnimalController {
      * @param animal_id
      * @return LikeAnimalRes
      */
-    @PatchMapping("/auth/private/like")
-    public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam @NotNull Long user_id, @RequestParam @NotNull Long animal_id) {
+    @PatchMapping("/auth/private/animal/like")
+    public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam Long user_id, @RequestParam Long animal_id) {
 
         LikeAnimalRes likeAnimalRes = animalService.likeAnimal(user_id, animal_id, new LikeAnimalRes());
         return new BaseResponse<>(likeAnimalRes);

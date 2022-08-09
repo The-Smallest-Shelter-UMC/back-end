@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 @Repository
-@Transactional
+//@Transactional
 public class AnimalRepository {
 
     @PersistenceContext
@@ -67,6 +67,16 @@ public class AnimalRepository {
 
         return findAnimal;
     }
+
+    /*public List<Animal> findAnimalById(Long anmIdx) {
+        List<Animal> result = em.createQuery("select a from Animal a where a.idx =: anmIdx", Animal.class)
+                .setParameter("anmIdx", anmIdx)
+                .getResultList();
+
+        return result;
+
+
+    }*/
 
     // 연지 추가
     public List<Animal> findByUserIdx(Long userIdx, int page) {

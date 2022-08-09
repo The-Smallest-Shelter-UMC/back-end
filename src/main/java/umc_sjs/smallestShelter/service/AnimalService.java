@@ -2,6 +2,7 @@ package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.domain.User;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
@@ -46,6 +48,7 @@ public class AnimalService {
             Animal findAnimal = animalRepository.findAnimalById(anmIdx);
             return findAnimal;
         } catch (Exception e) {
+            e.printStackTrace();
             throw new BaseException(BaseResponseStatus.NON_EXISTING_ANIMAL);
         }
     }
@@ -72,6 +75,7 @@ public class AnimalService {
     public void deleteAnimal(Long animal_id) throws BaseException {
         try {
             Animal findAnimal = getAnimal(animal_id);
+            animalRepository.deleteAnimal(findAnimal);
 
         } catch (Exception e) {
             throw new BaseException(BaseResponseStatus.NON_EXISTING_ANIMAL);
