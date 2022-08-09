@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Post;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -17,5 +19,10 @@ class PostRepositoryTest {
     @Test
     public void 게시물조회_fetch(){
         Post post = postRepository.findPost(1L);
+    }
+
+    @Test
+    public void 게시물전체조회_fetch(){
+        List<Post> posts = postRepository.findPostAll();
     }
 }

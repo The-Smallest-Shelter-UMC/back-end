@@ -1,8 +1,6 @@
 package umc_sjs.smallestShelter.repository;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 
 import javax.persistence.EntityManager;
@@ -50,7 +48,7 @@ public class PostRepository {
     }
 
     // 게시물 전체조회 + fetch join Animal
-    public List<Post> findPostAll(Long postIdx){
+    public List<Post> findPostAll(){
         return em.createQuery("select p from Post p left join fetch p.animal a", Post.class)
                 .getResultList();
     }

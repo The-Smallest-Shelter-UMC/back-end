@@ -43,7 +43,7 @@ public class PostService {
     }
 
     // 게시물 조회
-    public Post getPost (Long postIdx, Long animalIdx) throws BaseException{
+    public Post get(Long postIdx, Long animalIdx) throws BaseException{
         try{
             // 게시물 조회
             Post post = findPost(postIdx);

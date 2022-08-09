@@ -1,25 +1,19 @@
 package umc_sjs.smallestShelter.service;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
-import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.repository.AnimalRepository;
-import umc_sjs.smallestShelter.repository.UserRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @SpringBootTest
@@ -92,7 +86,7 @@ class PostServiceTest {
         try {
             Post post = posts.get(0);
 
-            Post findPost = postService.getPost(post.getIdx(), post.getAnimal().getIdx());
+            Post findPost = postService.get(post.getIdx(), post.getAnimal().getIdx());
 
             Assertions.assertThat(findPost.getIdx()).isEqualTo(post.getIdx());
         } catch (BaseException e){
@@ -107,7 +101,7 @@ class PostServiceTest {
     @Rollback(value = true)
     public void 게시물조회_X_없는게시물조회(){
         try {
-            postService.getPost(-1L, animalIdx);
+            postService.get(-1L, animalIdx);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POST_NOT_EXIST);
         } catch (Exception e){
@@ -120,7 +114,7 @@ class PostServiceTest {
     @Rollback(value = true)
     public void 게시글조회_X_일치하지않는동물idx(){
         try{
-            postService.getPost(postIdx, -1L);
+            postService.get(postIdx, -1L);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POSTIDX_ANIMALIDX_ILLEGAL);
         } catch (Exception e){

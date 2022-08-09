@@ -1,7 +1,6 @@
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.service.PostService;
@@ -64,7 +63,7 @@ public class PostController {
 
         try{
             // 게시물 조회
-            Post post = postService.getPost(postIdx, animalIdx);
+            Post post = postService.get(postIdx, animalIdx);
 
             GetPostRes getPostRes = new GetPostRes(post.getIdx(), post.getImgUrl(), post.getContent());
             return new BaseResponse<>(getPostRes);
