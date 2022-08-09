@@ -1,7 +1,6 @@
 package umc_sjs.smallestShelter.repository;
 
 import org.springframework.stereotype.Repository;
-import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 
 import javax.persistence.EntityManager;
@@ -9,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+//@Transactional
 public class PostRepository {
 
     @PersistenceContext
@@ -25,13 +25,13 @@ public class PostRepository {
     }
 
     // 게시물 idx로 조회
-    public Post findById(Long postIdx){
+    public Post findOne(Long postIdx){
         return em.find(Post.class, postIdx);
     }
 
     // 게시물 조회 + fetch join Animal
     public Post findPost(Long postIdx){
-        return em.createQuery("select p from Post p join fetch p.animal a where p.idx=:postIdx", Post.class)
+        return em.createQuery("select p from Post p left join fetch p.animal a where p.idx=:postIdx", Post.class)
                 .setParameter("postIdx", postIdx)
                 .getSingleResult();
     }
@@ -44,6 +44,12 @@ public class PostRepository {
     // 게시물 전체조회
     public List<Post> findAll(){
         return em.createQuery("select p from Post p", Post.class)
+                .getResultList();
+    }
+
+    // 게시물 전체조회 + fetch join Animal
+    public List<Post> findPostAll(){
+        return em.createQuery("select p from Post p left join fetch p.animal a", Post.class)
                 .getResultList();
     }
 }

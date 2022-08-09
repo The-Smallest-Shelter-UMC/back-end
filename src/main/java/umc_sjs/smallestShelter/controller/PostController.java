@@ -21,33 +21,33 @@ public class PostController {
     // 동물 게시물(피드) 등록
     // [POST] /post/join?animal_id
     @PostMapping("/join")
-    public BaseResponse<CreatePostRes> createPost(@RequestParam("animal_id") Long animalIdx, @RequestBody CreatePostReq createPostReq){
+    public BaseResponse<CreatePostRes> createPost(@RequestParam(value = "animal_id", required = false) Long animalIdx, @RequestBody CreatePostReq createPostReq){
 
+        // 이거 안됨
         if(animalIdx == null){
             return new BaseResponse<>(URL_VALUE_EMPLY);
         }
 
-        String imgUrl = createPostReq.getImgUrl(); // 게시글의 이미지
-        String content = createPostReq.getContent(); // 게시글의 내용
-
         // 게시글의 이미지가 없으면
-        if(imgUrl.isEmpty() || imgUrl == null){
+        if(createPostReq.getImgUrl() == null || createPostReq.getImgUrl().isEmpty()){
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
         // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(content.length() > MAX_CONTENT){
+        if(createPostReq.getContent().length() > MAX_CONTENT){
             return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
         }
 
         try {
             // 게시물 생성
-            Post post = postService.create(animalIdx, imgUrl, content);
+            Post post = postService.create(animalIdx, createPostReq.getImgUrl(), createPostReq.getContent());
 
             CreatePostRes createPostRes = new CreatePostRes(post.getIdx());
             return new BaseResponse<>(createPostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
 
     }
@@ -63,12 +63,14 @@ public class PostController {
 
         try{
             // 게시물 조회
-            Post post = postService.getPost(postIdx, animalIdx);
+            Post post = postService.get(postIdx, animalIdx);
 
             GetPostRes getPostRes = new GetPostRes(post.getIdx(), post.getImgUrl(), post.getContent());
             return new BaseResponse<>(getPostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 
@@ -83,7 +85,7 @@ public class PostController {
         }
 
         // 게시글의 이미지가 없으면
-        if(updatePostReq.getImgUrl().isEmpty() || updatePostReq.getImgUrl() == null){
+        if(updatePostReq.getImgUrl() == null || updatePostReq.getImgUrl().isEmpty()){
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
@@ -100,6 +102,8 @@ public class PostController {
             return new BaseResponse<>(updatePostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 
@@ -117,6 +121,8 @@ public class PostController {
             return new BaseResponse<>("게시물 삭제에 성공했습니다.");
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
     }
 }
