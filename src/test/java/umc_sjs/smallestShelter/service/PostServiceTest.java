@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 @Rollback(value = false)
 class PostServiceTest {
 
@@ -34,17 +34,23 @@ class PostServiceTest {
 
     private List<Animal> animals;
     private List<Post> posts;
+    private String imgUrl = "https://www.missyusa.com/fileServer/ImageServer/upload/talk6/20209/2020090722130066402.jpeg";
+
+    private Long animalIdx;
+    private Long postIdx;
 
     @BeforeEach
     public void 동물_전체조회(){
         animals = em.createQuery("select a from Animal a", Animal.class)
                 .getResultList();
+        animalIdx = animals.get(0).getIdx();
     }
 
     @BeforeEach
     public void 게시물_전체조회(){
         posts = em.createQuery("select p from Post p", Post.class)
                 .getResultList();
+        postIdx = posts.get(3).getIdx();
     }
 
     @Test
@@ -53,7 +59,7 @@ class PostServiceTest {
         try{
             Animal animal = animals.get(0);
 
-            Post post = postService.create(animal.getIdx(), "/img1", "게시물 내용");
+            Post post = postService.create(animal.getIdx(), imgUrl, "게시물 내용");
 
             Assertions.assertThat(post.getContent()).isEqualTo("게시물 내용");
         } catch (BaseException e){
@@ -81,9 +87,8 @@ class PostServiceTest {
     public void 게시물조회(){
         try {
             Post post = posts.get(0);
-            Animal animal = animals.get(0);
 
-            Post findPost = postService.getPost(post.getIdx(), animal.getIdx());
+            Post findPost = postService.getPost(post.getIdx(), post.getAnimal().getIdx());
 
             Assertions.assertThat(findPost.getIdx()).isEqualTo(post.getIdx());
         } catch (BaseException e){
@@ -98,7 +103,7 @@ class PostServiceTest {
     @Rollback(value = true)
     public void 게시물조회_X_없는게시물조회(){
         try {
-            postService.getPost(-1L, 1L);
+            postService.getPost(-1L, animalIdx);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POST_NOT_EXIST);
         } catch (Exception e){
@@ -109,9 +114,9 @@ class PostServiceTest {
 
     @Test
     @Rollback(value = true)
-    public void 게시글조회_X_일치하지않는idx(){
+    public void 게시글조회_X_일치하지않는동물idx(){
         try{
-            postService.getPost(1L, -1L);
+            postService.getPost(postIdx, -1L);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POSTIDX_ANIMALIDX_ILLEGAL);
         } catch (Exception e){

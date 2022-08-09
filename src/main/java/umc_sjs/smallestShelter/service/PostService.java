@@ -1,6 +1,7 @@
 package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
@@ -108,13 +109,19 @@ public class PostService {
 
     // 게시물 찾기
     public Post findPost(Long postIdx) throws BaseException{
-        Post post = postRepository.findPost(postIdx);
-
-        // 해당하는 게시물이 없을경우
-        if(post == null){
+        try {
+            return postRepository.findPost(postIdx);
+        } catch (EmptyResultDataAccessException e){ // 해당하는 게시물이 없을경우
             throw new BaseException(POST_NOT_EXIST);
         }
 
-        return post;
+//        Post post = postRepository.findPost(postIdx);
+//
+//        // 해당하는 게시물이 없을경우
+//        if(post == null){
+//            throw new BaseException(POST_NOT_EXIST);
+//        }
+//
+//        return post;
     }
 }
