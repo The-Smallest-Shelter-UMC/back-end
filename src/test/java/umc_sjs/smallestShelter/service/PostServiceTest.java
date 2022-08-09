@@ -165,4 +165,36 @@ class PostServiceTest {
     }
 
 
+    @Test
+    public void 게시물수정(){
+        try {
+            postService.update(postIdx, post.getAnimal().getIdx(), "/updateImgUrl", "서비스에서 게시물 내용 수전ㅇ");
+        } catch (BaseException e){
+            Assertions.fail("게시물 수정 실패: " + e.getStatus().getMessage());
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
+
+    @Test
+    public void 게시물수정_x_없는게시물(){
+        try {
+            postService.update(-1L, animalIdx, "/noUpdateImgURl", "서비스에서 게시물 수정 불가");
+        } catch (BaseException e){
+            Assertions.assertThat(e.getStatus()).isEqualTo(POST_NOT_EXIST);
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
+
+    @Test
+    public void 게시물수정_x_일치하지않는동물idx(){
+        try {
+            postService.update(postIdx, -1L, "/noUpdateImgUrl", "서비스에서 게시물 수정 불가");
+        } catch (BaseException e){
+            Assertions.assertThat(e.getStatus()).isEqualTo(POSTIDX_ANIMALIDX_ILLEGAL);
+        } catch (Exception e){
+            Assertions.fail("에러!");
+        }
+    }
 }

@@ -30,7 +30,7 @@ public class PostController {
         }
 
         // 게시글의 이미지가 없으면
-        if(createPostReq.getImgUrl().isEmpty() || createPostReq.getImgUrl() == null){
+        if(createPostReq.getImgUrl() == null || createPostReq.getImgUrl().isEmpty()){
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
@@ -86,7 +86,7 @@ public class PostController {
         }
 
         // 게시글의 이미지가 없으면
-        if(updatePostReq.getImgUrl().isEmpty() || updatePostReq.getImgUrl() == null){
+        if(updatePostReq.getImgUrl() == null || updatePostReq.getImgUrl().isEmpty()){
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?

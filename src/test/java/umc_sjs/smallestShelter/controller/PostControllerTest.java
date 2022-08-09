@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.dto.post.CreatePostReq;
+import umc_sjs.smallestShelter.dto.post.UpdatePostReq;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
 
@@ -78,6 +79,15 @@ class PostControllerTest {
     }
 
     @Test
+    public void 게시글생성_X_이미지없음_null(){
+        CreatePostReq createPostReq = new CreatePostReq(null, "테스트 게시물 내용");
+        BaseResponse response = postController.createPost(animals.get(0).getIdx(), createPostReq);
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
     public void 게시글조회(){
         BaseResponse response = postController.getPost(post.getAnimal().getIdx(), post.getIdx());
 
@@ -121,6 +131,55 @@ class PostControllerTest {
     @Test
     public void 게시물삭제_x_일치하지않는동물idx(){
         BaseResponse response = postController.deletePost(-1L, post.getIdx());
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
+    public void 게시물수정(){
+        UpdatePostReq updatePostReq = new UpdatePostReq("/updateImgUrl", "컨트롤러 테스트코드에서 수정된 게시물");
+
+        BaseResponse response = postController.updatePost(post.getAnimal().getIdx(), post.getIdx(), updatePostReq);
+
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(true);
+    }
+
+    @Test
+    public void 게시물수정_x_이미지없음(){
+        UpdatePostReq updatePostReq = new UpdatePostReq("", "컨트롤러 테스트코드에서 수정된 게시물");
+
+        BaseResponse response = postController.updatePost(post.getAnimal().getIdx(), post.getIdx(), updatePostReq);
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
+    public void 게시물수정_x_이미지없음_null(){
+        UpdatePostReq updatePostReq = new UpdatePostReq(null, "컨트롤러 테스트코드에서 수정된 게시물");
+
+        BaseResponse response = postController.updatePost(post.getAnimal().getIdx(), post.getIdx(), updatePostReq);
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
+    public void 게시물수정_x_없는게시물(){
+        UpdatePostReq updatePostReq = new UpdatePostReq("/updateImgUrl", "컨트롤러 테스트코드에서 수정된 게시물");
+
+        BaseResponse response = postController.updatePost(animal.getIdx(), -1L, updatePostReq);
+
+        System.out.println(response.getMessage());
+        Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
+    }
+
+    @Test
+    public void 게시물수정_x_일치하지않는동물idx(){
+        UpdatePostReq updatePostReq = new UpdatePostReq("/updateImgUrl", "컨트롤러 테스트코드에서 수정된 게시물");
+
+        BaseResponse response = postController.updatePost(-1L, post.getIdx(), updatePostReq);
 
         System.out.println(response.getMessage());
         Assertions.assertThat(response.getIsSuccess()).isEqualTo(false);
