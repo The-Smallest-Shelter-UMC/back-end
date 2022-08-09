@@ -1,6 +1,7 @@
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.service.PostService;
@@ -21,33 +22,33 @@ public class PostController {
     // 동물 게시물(피드) 등록
     // [POST] /post/join?animal_id
     @PostMapping("/join")
-    public BaseResponse<CreatePostRes> createPost(@RequestParam("animal_id") Long animalIdx, @RequestBody CreatePostReq createPostReq){
+    public BaseResponse<CreatePostRes> createPost(@RequestParam(value = "animal_id", required = false) Long animalIdx, @RequestBody CreatePostReq createPostReq){
 
+        // 이거 안됨
         if(animalIdx == null){
             return new BaseResponse<>(URL_VALUE_EMPLY);
         }
 
-        String imgUrl = createPostReq.getImgUrl(); // 게시글의 이미지
-        String content = createPostReq.getContent(); // 게시글의 내용
-
         // 게시글의 이미지가 없으면
-        if(imgUrl.isEmpty() || imgUrl == null){
+        if(createPostReq.getImgUrl().isEmpty() || createPostReq.getImgUrl() == null){
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
         // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(content.length() > MAX_CONTENT){
+        if(createPostReq.getContent().length() > MAX_CONTENT){
             return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
         }
 
         try {
             // 게시물 생성
-            Post post = postService.create(animalIdx, imgUrl, content);
+            Post post = postService.create(animalIdx, createPostReq.getImgUrl(), createPostReq.getContent());
 
             CreatePostRes createPostRes = new CreatePostRes(post.getIdx());
             return new BaseResponse<>(createPostRes);
         } catch (BaseException e){
             return new BaseResponse<>(e.getStatus());
+        } catch (Exception e){
+            return new BaseResponse<>(DATABASE_ERROR);
         }
 
     }

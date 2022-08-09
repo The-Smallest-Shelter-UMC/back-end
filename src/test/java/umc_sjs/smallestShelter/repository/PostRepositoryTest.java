@@ -9,7 +9,7 @@ import umc_sjs.smallestShelter.domain.Post;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 class PostRepositoryTest {
 
     @Autowired private PostRepository postRepository;

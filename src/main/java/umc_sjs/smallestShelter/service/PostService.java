@@ -10,6 +10,10 @@ import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
+import javax.persistence.NoResultException;
+
+import java.util.List;
+
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @Service
@@ -20,29 +24,26 @@ public class PostService {
     private final PostRepository postRepository;
     private final AnimalRepository animalRepository;
 
-    @Transactional
     // 게시글(피드) 생성
+    @Transactional
     public Post create(Long animalIdx, String imgUrl, String content) throws BaseException{
-        // 동물 찾기
-        Animal animal;
-        try {
-            animal = animalRepository.findAnimalById(animalIdx);
-        } catch (EmptyResultDataAccessException e){ // 해당하는 동물이 없을경우
-            throw new BaseException(ANIMAL_NOT_EXIST);
-        } catch (Exception e){
-            throw new BaseException(DATABASE_ERROR);
-        }
-
-        // 게시물 만들기
-        Post post = Post.createPost(imgUrl, content, animal);
 
         try {
-            // 게시물 저장
+            // 동물 찾기
+            Animal animal = animalRepository.findAnimalOne(animalIdx);
+            if(animal == null){
+                throw new BaseException(ANIMAL_NOT_EXIST);
+            }
+
+            // 게시물 만들기
+            Post post = Post.createPost(imgUrl, content, animal);
             postRepository.save(post);
+
             return post;
-        } catch (Exception e){
-            throw new BaseException(DATABASE_ERROR);
+        } catch (BaseException e){
+            throw e;
         }
+
     }
 
     // 게시물 조회
@@ -114,12 +115,13 @@ public class PostService {
 
     // 게시물 찾기
     public Post findPostOne(Long postIdx) throws BaseException{
-        try{
-            return postRepository.findPost(postIdx);
-        } catch (EmptyResultDataAccessException e){ // 해당하는 게시물이 없을경우
+        Post post = postRepository.findPost(postIdx);
+
+        // 해당하는 게시물이 없을경우
+        if(post == null){
             throw new BaseException(POST_NOT_EXIST);
-        } catch (Exception e){
-            throw new BaseException(DATABASE_ERROR);
         }
+
+        return post;
     }
 }

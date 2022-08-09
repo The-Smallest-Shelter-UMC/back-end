@@ -134,4 +134,9 @@ public class AnimalRepository {
 
         return resultList;
     }
+
+    //가나 추가. findAnimalById 쓰면 없는 튜플 찾을 때 RuntimeException이 떠서 unexpectedRollback 돼요ㅠㅠ
+    public Animal findAnimalOne(Long animalIdx){
+        return em.find(Animal.class, animalIdx);
+    }
 }
