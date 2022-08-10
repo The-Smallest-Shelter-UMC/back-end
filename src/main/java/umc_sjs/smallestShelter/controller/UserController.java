@@ -127,24 +127,33 @@ public class UserController {
     }
 
     @GetMapping("/auth/organization/animals/{userIdx}") // 마이페이지 등록동물 - 단체
-    public GetAnimalsRes organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetAnimalsRes> organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.organizationAnimals(page, userIdx);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetAnimalsRes getAnimalsRes = userService.organizationAnimals(page, userIdx);
+            return new BaseResponse<>(getAnimalsRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @PatchMapping("/auth/private/{userIdx}") // 회원정보수정 - 개인
-    public String updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+    public BaseResponse<String> updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return "userIdx : " + userService.updatePrivate(userIdx, patchUserReq);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            Long userId = userService.updatePrivate(userIdx, patchUserReq);
+            return new BaseResponse<>("userIdx : " + userId);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
