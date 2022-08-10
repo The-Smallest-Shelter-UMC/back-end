@@ -145,6 +145,7 @@ public class UserController {
     @PatchMapping("/auth/private/{userIdx}") // 회원정보수정 - 개인
     public BaseResponse<String> updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
         if (principalDetails.getUser().getIdx() == userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
@@ -158,25 +159,34 @@ public class UserController {
     }
 
     @PatchMapping("/auth/organization/{userIdx}") // 회원정보수정 - 단체
-    public String updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+    public BaseResponse<String> updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return "userIdx : " + userService.updateOrganization(userIdx, patchUserReq);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            Long userId = userService.updateOrganization(userIdx, patchUserReq);
+            return new BaseResponse<>("userIdx : " + userId);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @DeleteMapping("/auth/out/{userIdx}") // 회원탈퇴
-    public String outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<String> outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
             userService.outUser(userIdx);
-            return "회원 탈퇴가 완료되었습니다.";
-        } else {
-            return null;
+            return new BaseResponse<>("회원 탈퇴가 완료되었습니다.");
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
