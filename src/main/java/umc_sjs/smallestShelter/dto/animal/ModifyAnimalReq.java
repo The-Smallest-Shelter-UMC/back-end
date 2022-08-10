@@ -2,14 +2,16 @@ package umc_sjs.smallestShelter.dto.animal;
 
 import lombok.Getter;
 import lombok.Setter;
-import umc_sjs.smallestShelter.domain.*;
+import umc_sjs.smallestShelter.domain.Gender;
+import umc_sjs.smallestShelter.domain.Species;
+import umc_sjs.smallestShelter.domain.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public class JoinAnimalReq {
+public class ModifyAnimalReq {
 
     private Long userIdx;
     private String name;
@@ -19,7 +21,6 @@ public class JoinAnimalReq {
     private Gender gender;
     private Species species;
     private String mainImgUrl;
-    private Boolean isAdopted;
     private Status socialization;
     private Status separation;
     private Status toilet;

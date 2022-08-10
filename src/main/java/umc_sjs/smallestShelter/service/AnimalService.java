@@ -3,11 +3,10 @@ package umc_sjs.smallestShelter.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import umc_sjs.smallestShelter.domain.Animal;
-import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.domain.User;
+import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.animal.AdoptAnimalRes;
 import umc_sjs.smallestShelter.dto.animal.LikeAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.ModifyAnimalReq;
 import umc_sjs.smallestShelter.dto.animal.SearchAnimalReq;
 import umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
@@ -107,5 +106,56 @@ public class AnimalService {
             e.printStackTrace();
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
+    }
+
+    public Long modifyAnimal(Long anmIdx, ModifyAnimalReq modifyAnimalReq) {
+
+        Animal findAnimal = animalRepository.findAnimalById(anmIdx);
+
+        if (findAnimal.getName() != null) {
+            findAnimal.setName(modifyAnimalReq.getName());
+        }
+        if (modifyAnimalReq.getYear() != null) {
+            findAnimal.getAge().setYear(modifyAnimalReq.getYear());
+        }
+        if (modifyAnimalReq.getMonth() != null) {
+            findAnimal.getAge().setMonth(modifyAnimalReq.getMonth());
+        }
+        if (modifyAnimalReq.getGender() != null) {
+            findAnimal.setGender(modifyAnimalReq.getGender());
+        }
+        if (modifyAnimalReq.getSpecies() != null) {
+            findAnimal.setSpecies(modifyAnimalReq.getSpecies());
+        }
+        if (modifyAnimalReq.getMainImgUrl() != null) {
+            findAnimal.setMainImgUrl(modifyAnimalReq.getMainImgUrl());
+        }
+        if (modifyAnimalReq.getSocialization() != null) {
+            findAnimal.setSocialization(modifyAnimalReq.getSocialization());
+        }
+        if (modifyAnimalReq.getSeparation() != null) {
+            findAnimal.setSeparation(modifyAnimalReq.getSeparation());
+        }
+        if (modifyAnimalReq.getToilet() != null) {
+            findAnimal.setToilet(modifyAnimalReq.getToilet());
+        }
+        if (modifyAnimalReq.getBark() != null) {
+            findAnimal.setBark(modifyAnimalReq.getBark());
+        }
+        if (modifyAnimalReq.getBite() != null) {
+            findAnimal.setBite(modifyAnimalReq.getBite());
+        }
+        if (modifyAnimalReq.getIllnessList() != null) {
+            List<String> illnessList = modifyAnimalReq.getIllnessList();
+            for (String illnessName : illnessList) {
+                Illness illness = new Illness(illnessName);
+                illness.modifyAnimal(findAnimal);
+            }
+        }
+
+        System.out.println("modifyAnimalReq = " + modifyAnimalReq.getIsGuessed());
+        findAnimal.getAge().setIsGuessed(modifyAnimalReq.getIsGuessed());
+
+        return findAnimal.getIdx();
     }
 }

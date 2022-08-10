@@ -2,7 +2,6 @@ package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.animal.*;
@@ -16,18 +15,10 @@ import umc_sjs.smallestShelter.response.BaseResponse;
 import umc_sjs.smallestShelter.response.BaseResponseStatus;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
-
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-//@NoArgsConstructor
-//@Validated
 public class AnimalController {
 
     private final AnimalService animalService;
@@ -82,7 +73,7 @@ public class AnimalController {
 
         Animal joinAnimal = new Animal();
         joinAnimal.setName(joinAnimalReq.getName());
-        joinAnimal.setAge(new Age(joinAnimalReq.getYear(), joinAnimalReq.getMonth(), joinAnimalReq.isGuessed()));
+        joinAnimal.setAge(new Age(joinAnimalReq.getYear(), joinAnimalReq.getMonth(), joinAnimalReq.getIsGuessed()));
         joinAnimal.setGender(joinAnimalReq.getGender());
         joinAnimal.setSpecies(joinAnimalReq.getSpecies());
         joinAnimal.setMainImgUrl(joinAnimalReq.getMainImgUrl());
@@ -105,6 +96,66 @@ public class AnimalController {
     }
 
     /**
+     * 동물 수정 버튼 API
+     * @param anmIdx
+     * @return
+     */
+    @GetMapping("/auth/organization/animal/{animal_id}")
+    public BaseResponse<ModifyAnimalFormRes> modifyAnimalForm(@PathVariable(name = "animal_id") Long anmIdx) {
+
+        Animal findAnimal;
+
+        try {
+            findAnimal = animalService.getAnimal(anmIdx);
+        } catch (BaseException e) {
+            return new BaseResponse<>(e.getStatus());
+        }
+
+        ModifyAnimalFormRes modifyAnimalFormRes = new ModifyAnimalFormRes();
+
+        modifyAnimalFormRes.setName(findAnimal.getName());
+        modifyAnimalFormRes.setYear(findAnimal.getAge().getYear());
+        modifyAnimalFormRes.setMonth(findAnimal.getAge().getMonth());
+        modifyAnimalFormRes.setGuessed(findAnimal.getAge().getIsGuessed());
+        modifyAnimalFormRes.setGender(findAnimal.getGender());
+        modifyAnimalFormRes.setMainImgUrl(findAnimal.getMainImgUrl());
+        modifyAnimalFormRes.setSocialization(findAnimal.getSocialization());
+        modifyAnimalFormRes.setSeparation(findAnimal.getSeparation());
+        modifyAnimalFormRes.setToilet(findAnimal.getToilet());
+        modifyAnimalFormRes.setBark(findAnimal.getBark());
+        modifyAnimalFormRes.setBite(findAnimal.getBite());
+        List<Illness> illnessList = findAnimal.getIllnessList();
+        for (Illness illness : illnessList) {
+            modifyAnimalFormRes.getIllnessList().add(illness.getName());
+        }
+
+        return new BaseResponse<>(modifyAnimalFormRes);
+    }
+
+    /**
+     * 동물 수정 API
+     * @param anmIdx
+     * @param modifyAnimalReq
+     * @return
+     */
+    @PatchMapping("/auth/organization/animal/{animal_id}")
+    public BaseResponse<String> modifyAnimal(@PathVariable(name = "animal_id") Long anmIdx, @RequestBody(required = false) ModifyAnimalReq modifyAnimalReq) {
+
+        if (modifyAnimalReq.getUserIdx() == null) {
+            return new BaseResponse<>(BaseResponseStatus.EMPTY_JWT);
+        }
+
+        System.out.println("modifyAnimalReq = " + modifyAnimalReq.getYear());
+
+
+
+
+        Long resultAnmIdx = animalService.modifyAnimal(anmIdx, modifyAnimalReq);
+        return new BaseResponse<>("anmIdx : " + resultAnmIdx);
+
+    }
+
+    /**
      * 동물 리스트 조회 API
      * @param page
      * @return GetAnimalRes
@@ -112,7 +163,6 @@ public class AnimalController {
     @GetMapping("/animals")
     //@ResponseBody
     public BaseResponse<GetAnimalRes> getAnimals(@RequestParam Integer page) {
-
         if (page == null) {
             return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
         }
@@ -201,9 +251,6 @@ public class AnimalController {
     public BaseResponse<GetAnimalRes> searchAnimal(@RequestParam Integer page, @RequestBody SearchAnimalReq searchAnimalReq) {
 
         try {
-            /*if (page == null) {
-                return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
-            }*/
             GetAnimalRes getAnimalRes = animalService.searchAnimal(page, searchAnimalReq, new GetAnimalRes());
             return new BaseResponse<>(getAnimalRes);
         } catch (BaseException e) {

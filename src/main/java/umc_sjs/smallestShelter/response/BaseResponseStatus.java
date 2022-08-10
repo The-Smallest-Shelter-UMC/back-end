@@ -56,7 +56,6 @@ public enum BaseResponseStatus {
     POST_NOT_EXIST(false,33,"해당하는 게시물이 존재하지 않습니다"),
     POSTIDX_ANIMALIDX_ILLEGAL(false, 33, "해당 동물의 게시물의 아닙니다: idx 불일치"),
 
-
     /**
      * 3000 : Response 오류
      */
@@ -67,14 +66,10 @@ public enum BaseResponseStatus {
     DELETE_FAIL_USER(false, 3021, "회원 삭제를 실패하였습니다."),
     NON_EXISTING_USER(false, 3022, "해당하는 회원이 존재하지 않습니다."),
 
-
-
     //animal
     NON_EXISTING_ANIMAL(false, 3023, "해당하는 동물이 존재하지 않습니다."),
 
-
     //post
-
 
 
 
@@ -84,13 +79,10 @@ public enum BaseResponseStatus {
     // Common
     DATABASE_ERROR(false, 4000, "데이터베이스 연결에 실패하였습니다."),
 
-
-
     //member
     PASSWORD_ENCRYPTION_ERROR(false, 4011, "비밀번호 암호화에 실패하였습니다."),
     PASSWORD_DECRYPTION_ERROR(false, 4012, "비밀번호 복호화에 실패하였습니다."),
     FAILED_TO_LOGIN(false,3014,"없는 아이디거나 비밀번호가 틀렸습니다.");
-
 
 
     //animal

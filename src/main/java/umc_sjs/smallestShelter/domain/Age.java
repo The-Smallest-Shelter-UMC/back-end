@@ -25,7 +25,7 @@ public class Age {
         return year;
     }
 
-    private void setYear(Integer year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
@@ -33,7 +33,7 @@ public class Age {
         return month;
     }
 
-    private void setMonth(Integer month) {
+    public void setMonth(Integer month) {
         this.month = month;
     }
 
@@ -41,7 +41,7 @@ public class Age {
         return isGuessed;
     }
 
-    private void setIsGuessed(boolean guessed) {
+    public void setIsGuessed(boolean guessed) {
         isGuessed = guessed;
     }
 }

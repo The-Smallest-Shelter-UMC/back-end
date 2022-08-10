@@ -1,4 +1,3 @@
-/*
 package umc_sjs.smallestShelter.controller;
 
 import lombok.RequiredArgsConstructor;
@@ -158,4 +157,3 @@ public class UserController {
     }
 
 }
-*/
