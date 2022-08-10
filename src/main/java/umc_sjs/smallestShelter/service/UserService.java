@@ -35,7 +35,6 @@ public class UserService {
 
     @Transactional
     public void join(JoinDto joinDto) throws BaseException {
-
         // 아이디 중복 확인
         if(checkUsername(joinDto.getUsername())){
             throw new BaseException(USERS_EXISTS_USERNAME);
@@ -202,25 +201,43 @@ public class UserService {
     }
 
     @Transactional // 회원정보수정 - 단체
-    public Long updateOrganization(Long userIdx, PatchUserReq patchUserReq) {
-        Optional<User> user = userRepository.findById(userIdx);
+    public Long updateOrganization(Long userIdx, PatchUserReq patchUserReq) throws BaseException {
+        try{
+            Optional<User> user = userRepository.findById(userIdx);
 
-        user.get().setName(patchUserReq.getName());
-        user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
-        user.get().setAddress(patchUserReq.getAddress());
-        user.get().setEmail(patchUserReq.getEmail());
+            if (patchUserReq.getName() == null) {
+                patchUserReq.setName(user.get().getName()); }
+            if (patchUserReq.getPhoneNumber() == null) {
+                patchUserReq.setPhoneNumber(user.get().getPhoneNumber()); }
+            if (patchUserReq.getAddress() == null) {
+                patchUserReq.setAddress(user.get().getAddress()); }
+            if (patchUserReq.getEmail() == null) {
+                patchUserReq.setEmail(user.get().getEmail()); }
 
-        userRepository.save(user.get());
+            user.get().setName(patchUserReq.getName());
+            user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
+            user.get().setAddress(patchUserReq.getAddress());
+            user.get().setEmail(patchUserReq.getEmail());
 
-        return user.get().getIdx();
+            userRepository.save(user.get());
+
+            return user.get().getIdx();
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional // 회원탈퇴
-    public void outUser(Long userIdx) {
+    public void outUser(Long userIdx) throws BaseException {
+        try {
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
-
-        userRepository.delete(user.get());
+            userRepository.delete(user.get());
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     public boolean checkUsername(String username) throws BaseException{
