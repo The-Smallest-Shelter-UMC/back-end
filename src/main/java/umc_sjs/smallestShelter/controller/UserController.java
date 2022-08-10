@@ -82,7 +82,7 @@ public class UserController {
     public BaseResponse<GetPrivatePageRes> privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -98,7 +98,7 @@ public class UserController {
     public BaseResponse<GetAnimalsRes> privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -114,7 +114,7 @@ public class UserController {
     public BaseResponse<GetOrganizationPageRes> organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -130,7 +130,7 @@ public class UserController {
     public BaseResponse<GetAnimalsRes> organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -146,7 +146,7 @@ public class UserController {
     public BaseResponse<String> updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -162,7 +162,7 @@ public class UserController {
     public BaseResponse<String> updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
@@ -178,7 +178,7 @@ public class UserController {
     public BaseResponse<String> outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);
         }
 
