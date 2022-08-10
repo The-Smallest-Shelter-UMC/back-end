@@ -125,22 +125,26 @@ public class UserService {
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 단체
-    public GetOrganizationPageRes organizationPage(Long userIdx) {
+    public GetOrganizationPageRes organizationPage(Long userIdx) throws BaseException {
+        try{
+            GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
 
-        GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
+            getOrganizationPageRes.setUserIdx(user.get().getIdx());
+            getOrganizationPageRes.setName(user.get().getName());
+            getOrganizationPageRes.setPhoneNumber(user.get().getPhoneNumber());
+            getOrganizationPageRes.setAddress(user.get().getAddress());
+            getOrganizationPageRes.setEmail(user.get().getEmail());
+            getOrganizationPageRes.setRole(user.get().getRole().toString());
+            getOrganizationPageRes.setProfileImgUrl(user.get().getProfileImgUrl());
+            getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
 
-        getOrganizationPageRes.setUserIdx(user.get().getIdx());
-        getOrganizationPageRes.setName(user.get().getName());
-        getOrganizationPageRes.setPhoneNumber(user.get().getPhoneNumber());
-        getOrganizationPageRes.setAddress(user.get().getAddress());
-        getOrganizationPageRes.setEmail(user.get().getEmail());
-        getOrganizationPageRes.setRole(user.get().getRole().toString());
-        getOrganizationPageRes.setProfileImgUrl(user.get().getProfileImgUrl());
-        getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
-
-        return getOrganizationPageRes;
+            return getOrganizationPageRes;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 등록동물 - 단체

@@ -111,13 +111,18 @@ public class UserController {
     }
 
     @GetMapping("/auth/organization/{userIdx}") // 마이페이지 - 단체
-    public GetOrganizationPageRes organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetOrganizationPageRes> organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.organizationPage(userIdx);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetOrganizationPageRes getOrganizationPageRes = userService.organizationPage(userIdx);
+            return new BaseResponse<>(getOrganizationPageRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
