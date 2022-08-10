@@ -75,45 +75,53 @@ public class UserService {
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 개인
-    public GetPrivatePageRes privatePage(Long userIdx) {
+    public GetPrivatePageRes privatePage(Long userIdx) throws BaseException {
+        try{
+            GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
 
-        GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
+            getPrivatePageRes.setUserIdx(user.get().getIdx());
+            getPrivatePageRes.setName(user.get().getName());
+            getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
+            getPrivatePageRes.setAddress(user.get().getAddress());
+            getPrivatePageRes.setEmail(user.get().getEmail());
+            getPrivatePageRes.setRole(user.get().getRole().toString());
+            getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
 
-        getPrivatePageRes.setUserIdx(user.get().getIdx());
-        getPrivatePageRes.setName(user.get().getName());
-        getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
-        getPrivatePageRes.setAddress(user.get().getAddress());
-        getPrivatePageRes.setEmail(user.get().getEmail());
-        getPrivatePageRes.setRole(user.get().getRole().toString());
-        getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
-
-        return getPrivatePageRes;
+            return getPrivatePageRes;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 관심동물 - 개인
-    public GetAnimalsRes privateAnimals(int page, Long userIdx) {
+    public GetAnimalsRes privateAnimals(int page, Long userIdx) throws BaseException {
+        try{
+            GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
 
-        GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
+            Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
-        Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
+            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
 
-        List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
+            List<AnimalRes> animalResList = new ArrayList<>();
 
-        List<AnimalRes> animalResList = new ArrayList<>();
-
-        for (FavoriteAnimal fa : favoriteAnimals) {
-            Animal animal = animalRepository.findAnimalById(fa.getIdx());
-            AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
+            for (FavoriteAnimal fa : favoriteAnimals) {
+                Animal animal = animalRepository.findAnimalById(fa.getIdx());
+                AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
 
 
-            animalResList.add(animalRes);
+                animalResList.add(animalRes);
+            }
+
+            getAnimalsRes.setAnimalResList(animalResList);
+
+            return getAnimalsRes;
         }
-
-        getAnimalsRes.setAnimalResList(animalResList);
-
-        return getAnimalsRes;
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 단체

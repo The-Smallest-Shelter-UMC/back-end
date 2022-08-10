@@ -79,24 +79,34 @@ public class UserController {
     }
 
     @GetMapping("/auth/private/{userIdx}") // 마이페이지 - 개인
-    public GetPrivatePageRes privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetPrivatePageRes> privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.privatePage(userIdx);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetPrivatePageRes getPrivatePageRes = userService.privatePage(userIdx);
+            return new BaseResponse<>(getPrivatePageRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @GetMapping("/auth/private/animals/{userIdx}") // 마이페이지 관심동물 - 개인
-    public GetAnimalsRes privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetAnimalsRes> privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
         if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.privateAnimals(page, userIdx);
-        } else {
-            return null;
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetAnimalsRes getAnimalsRes = userService.privateAnimals(page, userIdx);
+            return new BaseResponse<>(getAnimalsRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
