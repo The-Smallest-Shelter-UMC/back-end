@@ -79,80 +79,114 @@ public class UserController {
     }
 
     @GetMapping("/auth/private/{userIdx}") // 마이페이지 - 개인
-    public GetPrivatePageRes privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetPrivatePageRes> privatePage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.privatePage(userIdx);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetPrivatePageRes getPrivatePageRes = userService.privatePage(userIdx);
+            return new BaseResponse<>(getPrivatePageRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @GetMapping("/auth/private/animals/{userIdx}") // 마이페이지 관심동물 - 개인
-    public GetAnimalsRes privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetAnimalsRes> privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.privateAnimals(page, userIdx);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetAnimalsRes getAnimalsRes = userService.privateAnimals(page, userIdx);
+            return new BaseResponse<>(getAnimalsRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @GetMapping("/auth/organization/{userIdx}") // 마이페이지 - 단체
-    public GetOrganizationPageRes organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetOrganizationPageRes> organizationPage(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.organizationPage(userIdx);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetOrganizationPageRes getOrganizationPageRes = userService.organizationPage(userIdx);
+            return new BaseResponse<>(getOrganizationPageRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @GetMapping("/auth/organization/animals/{userIdx}") // 마이페이지 등록동물 - 단체
-    public GetAnimalsRes organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<GetAnimalsRes> organizationAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return userService.organizationAnimals(page, userIdx);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            GetAnimalsRes getAnimalsRes = userService.organizationAnimals(page, userIdx);
+            return new BaseResponse<>(getAnimalsRes);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @PatchMapping("/auth/private/{userIdx}") // 회원정보수정 - 개인
-    public String updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+    public BaseResponse<String> updatePrivate(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return "userIdx : " + userService.updatePrivate(userIdx, patchUserReq);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            Long userId = userService.updatePrivate(userIdx, patchUserReq);
+            return new BaseResponse<>("userIdx : " + userId);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @PatchMapping("/auth/organization/{userIdx}") // 회원정보수정 - 단체
-    public String updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
+    public BaseResponse<String> updateOrganization(@PathVariable Long userIdx, @RequestBody PatchUserReq patchUserReq, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
-            return "userIdx : " + userService.updateOrganization(userIdx, patchUserReq);
-        } else {
-            return null;
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
+            Long userId = userService.updateOrganization(userIdx, patchUserReq);
+            return new BaseResponse<>("userIdx : " + userId);
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 
     @DeleteMapping("/auth/out/{userIdx}") // 회원탈퇴
-    public String outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
+    public BaseResponse<String> outUser(@PathVariable Long userIdx, Authentication authentication) throws IOException {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-        if (principalDetails.getUser().getIdx() == userIdx) {
+        if (principalDetails.getUser().getIdx() != userIdx) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        try{
             userService.outUser(userIdx);
-            return "회원 탈퇴가 완료되었습니다.";
-        } else {
-            return null;
+            return new BaseResponse<>("회원 탈퇴가 완료되었습니다.");
+        } catch(BaseException exception){
+            return new BaseResponse<>((exception.getStatus()));
         }
     }
 

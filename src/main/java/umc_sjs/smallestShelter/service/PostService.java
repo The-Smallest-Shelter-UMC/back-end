@@ -28,9 +28,11 @@ public class PostService {
 
         try {
             // 동물 찾기
+
             Animal animal = animalRepository.findAnimalById(animalIdx);
             if(animal == null){
                 throw new BaseException(NON_EXISTING_ANIMAL);
+
             }
 
             // 게시물 만들기
@@ -125,11 +127,13 @@ public class PostService {
 //        }
 //
 //        return post;
+
     }
 
     //건호 추가
     public List<Post> getAnimalPost(Long anmIdx) {
         List<Post> postList = postRepository.findPostByAnimalId(anmIdx);
         return postList;
+
     }
 }

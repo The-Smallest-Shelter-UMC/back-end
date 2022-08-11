@@ -38,7 +38,6 @@ public class UserService {
 
     @Transactional
     public void join(JoinDto joinDto) throws BaseException {
-
         // 아이디 중복 확인
         if(checkUsername(joinDto.getUsername())){
             throw new BaseException(USERS_EXISTS_USERNAME);
@@ -78,122 +77,174 @@ public class UserService {
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 개인
-    public GetPrivatePageRes privatePage(Long userIdx) {
+    public GetPrivatePageRes privatePage(Long userIdx) throws BaseException {
+        try{
+            GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
 
-        GetPrivatePageRes getPrivatePageRes = new GetPrivatePageRes();
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
+            getPrivatePageRes.setUserIdx(user.get().getIdx());
+            getPrivatePageRes.setName(user.get().getName());
+            getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
+            getPrivatePageRes.setAddress(user.get().getAddress());
+            getPrivatePageRes.setEmail(user.get().getEmail());
+            getPrivatePageRes.setRole(user.get().getRole().toString());
+            getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
 
-        getPrivatePageRes.setUserIdx(user.get().getIdx());
-        getPrivatePageRes.setName(user.get().getName());
-        getPrivatePageRes.setPhoneNumber(user.get().getPhoneNumber());
-        getPrivatePageRes.setAddress(user.get().getAddress());
-        getPrivatePageRes.setEmail(user.get().getEmail());
-        getPrivatePageRes.setRole(user.get().getRole().toString());
-        getPrivatePageRes.setProfileImgUrl(user.get().getProfileImgUrl());
-
-        return getPrivatePageRes;
+            return getPrivatePageRes;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 관심동물 - 개인
-    public GetAnimalsRes privateAnimals(int page, Long userIdx) {
+    public GetAnimalsRes privateAnimals(int page, Long userIdx) throws BaseException {
+        try{
+            GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
 
-        GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
+            Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
-        Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
-
-        List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
-
-        List<AnimalRes> animalResList = new ArrayList<>();
-
-        for (FavoriteAnimal fa : favoriteAnimals) {
-            Animal animal = animalRepository.findAnimalById(fa.getIdx());
-            AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
+            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
 
 
-            animalResList.add(animalRes);
+            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
+
+            List<AnimalRes> animalResList = new ArrayList<>();
+
+
+            for (FavoriteAnimal fa : favoriteAnimals) {
+                Animal animal = animalRepository.findAnimalById(fa.getIdx());
+                AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
+
+
+                animalResList.add(animalRes);
+            }
+
+            getAnimalsRes.setAnimalResList(animalResList);
+
+            return getAnimalsRes;
         }
-
-        getAnimalsRes.setAnimalResList(animalResList);
-
-        return getAnimalsRes;
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 - 단체
-    public GetOrganizationPageRes organizationPage(Long userIdx) {
+    public GetOrganizationPageRes organizationPage(Long userIdx) throws BaseException {
+        try{
+            GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
 
-        GetOrganizationPageRes getOrganizationPageRes = new GetOrganizationPageRes();
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
+            getOrganizationPageRes.setUserIdx(user.get().getIdx());
+            getOrganizationPageRes.setName(user.get().getName());
+            getOrganizationPageRes.setPhoneNumber(user.get().getPhoneNumber());
+            getOrganizationPageRes.setAddress(user.get().getAddress());
+            getOrganizationPageRes.setEmail(user.get().getEmail());
+            getOrganizationPageRes.setRole(user.get().getRole().toString());
+            getOrganizationPageRes.setProfileImgUrl(user.get().getProfileImgUrl());
+            getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
 
-        getOrganizationPageRes.setUserIdx(user.get().getIdx());
-        getOrganizationPageRes.setName(user.get().getName());
-        getOrganizationPageRes.setPhoneNumber(user.get().getPhoneNumber());
-        getOrganizationPageRes.setAddress(user.get().getAddress());
-        getOrganizationPageRes.setEmail(user.get().getEmail());
-        getOrganizationPageRes.setRole(user.get().getRole().toString());
-        getOrganizationPageRes.setProfileImgUrl(user.get().getProfileImgUrl());
-        getOrganizationPageRes.setOrganizationName(user.get().getOrganizationName().toString());
-
-        return getOrganizationPageRes;
+            return getOrganizationPageRes;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional(readOnly = true) // 마이페이지 등록동물 - 단체
-    public GetAnimalsRes organizationAnimals(int page, Long userIdx) {
+    public GetAnimalsRes organizationAnimals(int page, Long userIdx) throws BaseException {
+        try{
+            GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
 
-        GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
+            //Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
-        //Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
+            List<Animal> animals = animalRepository.findByUserIdx(userIdx, page);
 
-        List<Animal> animals = animalRepository.findByUserIdx(userIdx, page);
+            List<AnimalRes> animalResList = new ArrayList<>();
 
-        List<AnimalRes> animalResList = new ArrayList<>();
+            for (Animal a : animals) {
+                AnimalRes animalRes = new AnimalRes(a.getIdx(), a.getMainImgUrl(), a.getName(), a.getSpecies(), a.getGender(), a.getIsAdopted(), a.getAge());
 
-        for (Animal a : animals) {
-            AnimalRes animalRes = new AnimalRes(a.getIdx(), a.getMainImgUrl(), a.getName(), a.getSpecies(), a.getGender(), a.getIsAdopted(), a.getAge());
+                animalResList.add(animalRes);
+            }
 
-            animalResList.add(animalRes);
+            getAnimalsRes.setAnimalResList(animalResList);
+
+            return getAnimalsRes;
         }
-
-        getAnimalsRes.setAnimalResList(animalResList);
-
-        return getAnimalsRes;
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional // 회원정보수정 - 개인
-    public Long updatePrivate(Long userIdx, PatchUserReq patchUserReq) {
-        Optional<User> user = userRepository.findById(userIdx);
+    public Long updatePrivate(Long userIdx, PatchUserReq patchUserReq) throws BaseException {
+        try{
+            Optional<User> user = userRepository.findById(userIdx);
 
-        user.get().setName(patchUserReq.getName());
-        user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
-        user.get().setAddress(patchUserReq.getAddress());
-        user.get().setEmail(patchUserReq.getEmail());
+            if (patchUserReq.getName() == null) {
+                patchUserReq.setName(user.get().getName()); }
+            if (patchUserReq.getPhoneNumber() == null) {
+                patchUserReq.setPhoneNumber(user.get().getPhoneNumber()); }
+            if (patchUserReq.getAddress() == null) {
+                patchUserReq.setAddress(user.get().getAddress()); }
+            if (patchUserReq.getEmail() == null) {
+                patchUserReq.setEmail(user.get().getEmail()); }
 
-        userRepository.save(user.get());
+            user.get().setName(patchUserReq.getName());
+            user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
+            user.get().setAddress(patchUserReq.getAddress());
+            user.get().setEmail(patchUserReq.getEmail());
 
-        return user.get().getIdx();
+            userRepository.save(user.get());
+
+            return user.get().getIdx();
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional // 회원정보수정 - 단체
-    public Long updateOrganization(Long userIdx, PatchUserReq patchUserReq) {
-        Optional<User> user = userRepository.findById(userIdx);
+    public Long updateOrganization(Long userIdx, PatchUserReq patchUserReq) throws BaseException {
+        try{
+            Optional<User> user = userRepository.findById(userIdx);
 
-        user.get().setName(patchUserReq.getName());
-        user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
-        user.get().setAddress(patchUserReq.getAddress());
-        user.get().setEmail(patchUserReq.getEmail());
+            if (patchUserReq.getName() == null) {
+                patchUserReq.setName(user.get().getName()); }
+            if (patchUserReq.getPhoneNumber() == null) {
+                patchUserReq.setPhoneNumber(user.get().getPhoneNumber()); }
+            if (patchUserReq.getAddress() == null) {
+                patchUserReq.setAddress(user.get().getAddress()); }
+            if (patchUserReq.getEmail() == null) {
+                patchUserReq.setEmail(user.get().getEmail()); }
 
-        userRepository.save(user.get());
+            user.get().setName(patchUserReq.getName());
+            user.get().setPhoneNumber(patchUserReq.getPhoneNumber());
+            user.get().setAddress(patchUserReq.getAddress());
+            user.get().setEmail(patchUserReq.getEmail());
 
-        return user.get().getIdx();
+            userRepository.save(user.get());
+
+            return user.get().getIdx();
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     @Transactional // 회원탈퇴
-    public void outUser(Long userIdx) {
+    public void outUser(Long userIdx) throws BaseException {
+        try {
+            Optional<User> user = userRepository.findById(userIdx);
 
-        Optional<User> user = userRepository.findById(userIdx);
-
-        userRepository.delete(user.get());
+            userRepository.delete(user.get());
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
     public boolean checkUsername(String username) throws BaseException{
