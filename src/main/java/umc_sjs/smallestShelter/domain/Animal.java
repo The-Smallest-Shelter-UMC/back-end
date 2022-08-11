@@ -36,7 +36,9 @@ public class Animal {
     private Species species;
 
     private String mainImgUrl;
-    private Boolean isAdopted;
+
+
+    private Boolean isAdopted = false;
 
     @Enumerated(EnumType.STRING)
     private Status socialization;

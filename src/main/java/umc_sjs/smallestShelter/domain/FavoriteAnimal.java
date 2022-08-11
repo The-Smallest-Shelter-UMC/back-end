@@ -19,7 +19,7 @@ public class FavoriteAnimal {
     private Long idx;
 
     @ManyToOne
-    @JoinColumn(name = "likeUser_idx")
+    @JoinColumn(name = "likeUser_Idx")
     private User likeUser;
 
     @ManyToOne

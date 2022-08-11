@@ -1,4 +1,3 @@
-/*
 
 package umc_sjs.smallestShelter.config;
 
@@ -70,4 +69,3 @@ public class SecurityConfig{
     }
 }
 
-*/

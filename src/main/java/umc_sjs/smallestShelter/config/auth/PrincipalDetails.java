@@ -1,4 +1,3 @@
-/*
 
 package umc_sjs.smallestShelter.config.auth;
 
@@ -65,4 +64,4 @@ public class PrincipalDetails implements UserDetails {
         return true;
     }
 
-}*/
+}

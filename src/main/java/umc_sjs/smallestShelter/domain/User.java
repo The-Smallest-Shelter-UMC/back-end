@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 public class User {
 
     @Id
@@ -37,9 +38,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Builder.Default
     @OneToMany(mappedBy = "uploadUser")
     private List<Animal> uploadAnimalList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "likeUser")
     private List<FavoriteAnimal> favoriteAnimalList = new ArrayList<>();
 

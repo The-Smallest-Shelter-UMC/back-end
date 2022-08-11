@@ -1,4 +1,3 @@
-/*
 
 package umc_sjs.smallestShelter.config.jwt;
 
@@ -85,4 +84,3 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         jsonConverter.write(loginRes, jsonMimeType, new ServletServerHttpResponse(response));
     }
 }
-*/

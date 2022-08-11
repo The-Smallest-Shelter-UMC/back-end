@@ -4,14 +4,14 @@ https://sjs.hana-umc.shop/
 post/join?animal_id=
 동물 게시물(피드) 등록
 {
-    "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
+    "imgUrl": "https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/storypick/editor/2019052111361692611.jpg",
     "content": "안녕하세요, 게시글 내용입니다"
 }
 
 post?animal_id=&post_id=
 동물 게시물(피드) 수정
 {
-    "imgUrl": "https://sjs.hana-umc.shop/test/display/1659312799286testImg.jpg",
+    "imgUrl": "https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/storypick/editor/2019052111361692611.jpg",
     "content": "안녕하세요, 게시글 내용입니다"
 }
 

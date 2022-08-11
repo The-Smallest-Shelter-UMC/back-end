@@ -112,7 +112,7 @@ public class AnimalService {
 
         Animal findAnimal = animalRepository.findAnimalById(anmIdx);
 
-        if (findAnimal.getName() != null) {
+        if (modifyAnimalReq.getName() != null) {
             findAnimal.setName(modifyAnimalReq.getName());
         }
         if (modifyAnimalReq.getYear() != null) {

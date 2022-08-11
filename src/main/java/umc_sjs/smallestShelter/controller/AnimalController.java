@@ -77,7 +77,7 @@ public class AnimalController {
         joinAnimal.setGender(joinAnimalReq.getGender());
         joinAnimal.setSpecies(joinAnimalReq.getSpecies());
         joinAnimal.setMainImgUrl(joinAnimalReq.getMainImgUrl());
-        joinAnimal.setIsAdopted(joinAnimalReq.getIsAdopted());
+        //joinAnimal.setIsAdopted(joinAnimalReq.getIsAdopted());
         joinAnimal.setSocialization(joinAnimalReq.getSocialization());
         joinAnimal.setSeparation(joinAnimalReq.getSeparation());
         joinAnimal.setToilet(joinAnimalReq.getToilet());
