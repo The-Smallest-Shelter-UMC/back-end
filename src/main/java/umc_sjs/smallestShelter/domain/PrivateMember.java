@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.domain;
 
 import lombok.*;
@@ -39,3 +40,4 @@ public class PrivateMember {
 
 
 }
+*/

@@ -1,20 +1,28 @@
 package umc_sjs.smallestShelter.repository;
 
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.*;
-import umc_sjs.smallestShelter.dto.GetAnimalRes;
-import umc_sjs.smallestShelter.dto.SearchAnimalReq;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+
+import umc_sjs.smallestShelter.dto.animal.AdoptAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.LikeAnimalRes;
+import umc_sjs.smallestShelter.dto.animal.SearchAnimalReq;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalRes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static umc_sjs.smallestShelter.domain.QAnimal.animal;
+
 @Repository
-@Transactional
 public class AnimalRepository {
 
     @PersistenceContext
@@ -35,19 +43,25 @@ public class AnimalRepository {
         return joinAnimal.getIdx();
     }
 
-    public OrganizationMember findOrganizationMember(Long userIdx) {
-        OrganizationMember findOrganization = em.find(OrganizationMember.class, userIdx);
-        return findOrganization;
+    public User findUser(Long userIdx) {
+        User findUser = em.find(User.class, userIdx);
+        return findUser;
     }
 
-    public List<GetAnimalRes> getAnimals(int page) {
+    public GetAnimalRes getAnimals(int page, GetAnimalRes getAnimalRes) {
 
-        List<GetAnimalRes> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a order by a.createDate desc", GetAnimalRes.class)
+        List<GetAnimalDto> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.animal.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalDto.class)
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
                 .getResultList();
 
-        return animalList;
+        Long animalCount = em.createQuery("select count(a) from Animal a", Long.class)
+                .getSingleResult();
+
+        getAnimalRes.setAnimal(animalList);
+        getAnimalRes.setPageNumber((animalCount.intValue()/12));
+
+        return getAnimalRes;
     }
 
     public Animal findAnimalById(Long anmIdx) {
@@ -61,7 +75,7 @@ public class AnimalRepository {
 
     // 연지 추가
     public List<Animal> findByUserIdx(Long userIdx, int page) {
-        List<Animal> animals = em.createQuery("select a from Animal a where a.user.idx =: userIdx order by a.createDate desc", Animal.class)
+        List<Animal> animals = em.createQuery("select a from Animal a where a.uploadUser.idx =: userIdx order by a.createDate desc", Animal.class)
                 .setParameter("userIdx", userIdx)
                 .setFirstResult(page * 2)
                 .setMaxResults(2)
@@ -70,21 +84,9 @@ public class AnimalRepository {
         return animals;
     }
 
+    public void deleteAnimal(Animal animal){
 
-    public List<Post> findPostById(Long anmIdx) {
-        List<Post> postList = em.createQuery("select p from Post p where p.animal.idx =: anmIdx", Post.class)
-                .setParameter("anmIdx", anmIdx)
-                .getResultList();
-
-        return postList;
-    }
-
-    public void deleteAnimal(Long anmIdx){
-
-        em.remove(anmIdx);
-
-        /*Animal findAnimal = findAnimalById(anmIdx);
-        em.remove(findAnimal);*/
+        em.remove(animal);
     }
 
     public List<RecommandAnimalDto> getRecommendAnimals(Long anmIdx) {
@@ -95,13 +97,14 @@ public class AnimalRepository {
         random.setSeed(System.currentTimeMillis());
         int randomNumber = random.nextInt(animalCount.intValue());
 
-        List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
+        List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
                         "where a.isAdopted = false ", RecommandAnimalDto.class)
                 .setFirstResult(randomNumber)
                 .setMaxResults(12)
                 .getResultList();
 
         System.out.println("randomNumber = " + randomNumber);
+        System.out.println("resultList.size() = " + resultList.size());
 
         for (RecommandAnimalDto recommandAnimalDto : resultList) {
             System.out.println("recommandAnimalDto = " + recommandAnimalDto.getRecommandAnmIdx());
@@ -110,33 +113,149 @@ public class AnimalRepository {
         return resultList;
     }
 
-    public List<GetAnimalRes> searchAnimal(int page, SearchAnimalReq searchAnimalReq) {
-        List<GetAnimalRes> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.GetAnimalRes(a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted) from Animal a " +
-                        "where a.species =: species and a.gender =: gender and a.age =: age and a.isAdopted =: isAdopted" +
-                                " order by a.createDate desc", GetAnimalRes.class)
-                .setParameter("species", searchAnimalReq.getSpecies())
-                .setParameter("gender", searchAnimalReq.getGender())
-                .setParameter("age", searchAnimalReq.getAge())
-                .setParameter("isAdopted", searchAnimalReq.getIsAdopted())
-                .setFirstResult(page * 12)
-                .setMaxResults(12)
-                .getResultList();
+    // 동물 검색 querydsl
+    public GetAnimalRes searchAnimal(int page, SearchAnimalReq searchAnimalReq, GetAnimalRes getAnimalRes) {
 
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getAge());
-        System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
+        QAnimal qAnimal = new QAnimal("animal");
 
-        for (GetAnimalRes getAnimalRes : resultList) {
-            System.out.println("getAnimalRes = " + getAnimalRes);
-        }
+        List<GetAnimalDto> getAnimalDtoList = queryFactory
+                .select(Projections.fields(GetAnimalDto.class,
+                        animal.idx.as("animalIdx"),
+                        animal.name,
+                        animal.mainImgUrl.as("imgUrl"),
+                        animal.species,
+                        animal.gender,
+                        animal.isAdopted,
+                        animal.age))
+                .from(animal)
+                .where(ageBoundaryEq(searchAnimalReq.getAgeBoundary()),
+                        speciesEq(searchAnimalReq.getSpecies()),
+                        genderEq(searchAnimalReq.getGender()),
+                        isAdoptedEq(searchAnimalReq.getIsAdopted()))
+                .orderBy(animal.createDate.desc())
+                .offset(page * 12)
+                .limit(12)
+                .fetch();
 
-        return resultList;
+        int count = queryFactory
+                .selectFrom(animal)
+                .where(ageBoundaryEq(searchAnimalReq.getAgeBoundary()),
+                        speciesEq(searchAnimalReq.getSpecies()),
+                        genderEq(searchAnimalReq.getGender()),
+                        isAdoptedEq(searchAnimalReq.getIsAdopted()))
+                .orderBy(animal.createDate.desc())
+                .fetch().size();
+        
+        getAnimalRes.setAnimal(getAnimalDtoList);
+        getAnimalRes.setPageNumber(count/12);
+        
+        return getAnimalRes;
     }
 
-    //가나 추가. findAnimalById 쓰면 없는 튜플 찾을 때 RuntimeException이 떠서 unexpectedRollback 돼요ㅠㅠ
-    public Animal findAnimalOne(Long animalIdx){
-        return em.find(Animal.class, animalIdx);
+    private BooleanExpression ageBoundaryEq(AgeBoundary ageBoundary) {
+        if (ageBoundary == null) {
+            return null;
+        } else if (ageBoundary == AgeBoundary.PUPPY) {
+            return animal.age.year.eq(0);
+        } else if (ageBoundary == AgeBoundary.JUNIOR) {
+            return animal.age.year.between(1, 2);
+        } else if (ageBoundary == AgeBoundary.ADULT) {
+            return animal.age.year.between(3, 8);
+        } else  {
+            return animal.age.year.goe(9);
+        }
+    }
+
+    private BooleanExpression speciesEq(Species species) {
+        if (species == null) {
+            return null;
+        }
+        return animal.species.eq(species);
+    }
+
+    private BooleanExpression genderEq(Gender gender) {
+        if (gender == null) {
+            return null;
+        }
+        return animal.gender.eq(gender);
+    }
+
+    private BooleanExpression isAdoptedEq(Boolean isAdopted) {
+        if (isAdopted == null) {
+            return null;
+        }
+        return animal.isAdopted.eq(isAdopted);
+    }
+
+    // 동물 검색 querydsl 끝
+
+
+    public AdoptAnimalRes setIsAdopt(Long anmIdx) {
+
+        Boolean isAdopted = em.createQuery("select a.isAdopted from Animal a where a.idx =: anmIdx", Boolean.class)
+                .setParameter("anmIdx", anmIdx)
+                .getSingleResult();
+
+        if (isAdopted == true) {
+            em.createQuery("update Animal a set a.isAdopted = false where a.idx =: anmIdx")
+                    .setParameter("anmIdx", anmIdx)
+                    .executeUpdate();
+
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.animal.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+                    .setParameter("anmIdx", anmIdx)
+                    .getSingleResult();
+
+            return adoptAnimalRes;
+        }
+        else{
+            em.createQuery("update Animal a set a.isAdopted = true where a.idx =: anmIdx")
+                    .setParameter("anmIdx", anmIdx)
+                    .executeUpdate();
+
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.animal.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+                    .setParameter("anmIdx", anmIdx)
+                    .getSingleResult();
+
+            return adoptAnimalRes;
+        }
+    }
+
+    public LikeAnimalRes setFavoriteAnimal(Long userIdx, Long animalIdx, LikeAnimalRes likeAnimalRes) {
+
+        List<FavoriteAnimal> resultList = em.createQuery("select fa from FavoriteAnimal fa where fa.animal.idx =: animalIdx and fa.likeUser.idx =: userIdx", FavoriteAnimal.class)
+                .setParameter("animalIdx", animalIdx)
+                .setParameter("userIdx", userIdx)
+                .getResultList();
+
+        if(resultList.size() == 0){
+            FavoriteAnimal favoriteAnimal = new FavoriteAnimal();
+
+            favoriteAnimal.modifyLikeUserAndAnimal(findUser(userIdx), findAnimalById(animalIdx));
+            em.persist(favoriteAnimal);
+
+            likeAnimalRes.setUserIdx(favoriteAnimal.getLikeUser().getIdx());
+            likeAnimalRes.setAnimalIdx(favoriteAnimal.getAnimal().getIdx());
+            likeAnimalRes.setLike(true);
+
+            return likeAnimalRes;
+        }
+
+        else{
+            FavoriteAnimal favoriteAnimal = resultList.get(0);
+
+            Long findUserIdx = favoriteAnimal.getLikeUser().getIdx();
+            Long findAnimalIdx = favoriteAnimal.getAnimal().getIdx();
+
+            likeAnimalRes.setUserIdx(findUserIdx);
+            likeAnimalRes.setAnimalIdx(findAnimalIdx);
+            likeAnimalRes.setLike(false);
+
+            em.remove(favoriteAnimal);
+
+            return likeAnimalRes;
+        }
+
     }
 }

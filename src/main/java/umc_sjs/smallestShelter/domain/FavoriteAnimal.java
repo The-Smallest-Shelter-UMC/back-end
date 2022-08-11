@@ -19,14 +19,18 @@ public class FavoriteAnimal {
     private Long idx;
 
     @ManyToOne
-    @JoinColumn(name = "privateMember_idx")
-    private PrivateMember privateMember;
-
-    @ManyToOne
-    @JoinColumn(name = "user_idx")
-    private User user;
+    @JoinColumn(name = "likeUser_Idx")
+    private User likeUser;
 
     @ManyToOne
     @JoinColumn(name = "animal_idx")
     private Animal animal;
+
+    //연관관계 편의 메소드
+    public void modifyLikeUserAndAnimal(User likeUser, Animal animal) {
+        this.likeUser = likeUser;
+        likeUser.getFavoriteAnimalList().add(this);
+        this.animal = animal;
+    }
+
 }

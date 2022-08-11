@@ -1,3 +1,4 @@
+/*
 package umc_sjs.smallestShelter.service;
 
 import lombok.RequiredArgsConstructor;
@@ -35,3 +36,4 @@ public class OrganizationService {
         organizationRepository.save(organization);
     }
 }
+*/

@@ -8,5 +8,5 @@ import umc_sjs.smallestShelter.domain.FavoriteAnimal;
 import java.util.List;
 
 public interface FavoriteAnimalRepository extends JpaRepository<FavoriteAnimal, Long> {
-    List<FavoriteAnimal> findByUserIdx(Long userIdx, Pageable pageable);
+    List<FavoriteAnimal> findByLikeUserIdx(Long likeUserIdx, Pageable pageable);
 }

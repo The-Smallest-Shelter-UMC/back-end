@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Illness;
-import umc_sjs.smallestShelter.dto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.RecommandAnimalDto;
 import umc_sjs.smallestShelter.repository.AnimalRepository;
 
 import java.util.List;

@@ -1,3 +1,4 @@
+
 package umc_sjs.smallestShelter.config;
 
 import lombok.RequiredArgsConstructor;
@@ -67,3 +68,4 @@ public class SecurityConfig{
         }
     }
 }
+
