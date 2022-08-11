@@ -9,12 +9,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class User {
 
     @Id
@@ -38,10 +38,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Animal> animalList = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "uploadUser")
+    private List<Animal> uploadAnimalList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    @OneToMany(mappedBy = "likeUser")
     private List<FavoriteAnimal> favoriteAnimalList = new ArrayList<>();
 
     @CreationTimestamp

@@ -10,6 +10,8 @@ import umc_sjs.smallestShelter.repository.AnimalRepository;
 import umc_sjs.smallestShelter.repository.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
 
+import java.util.List;
+
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @Service
@@ -26,9 +28,11 @@ public class PostService {
 
         try {
             // 동물 찾기
-            Animal animal = animalRepository.findAnimalOne(animalIdx);
+
+            Animal animal = animalRepository.findAnimalById(animalIdx);
             if(animal == null){
-                throw new BaseException(ANIMAL_NOT_EXIST);
+                throw new BaseException(NON_EXISTING_ANIMAL);
+
             }
 
             // 게시물 만들기
@@ -123,5 +127,13 @@ public class PostService {
 //        }
 //
 //        return post;
+
+    }
+
+    //건호 추가
+    public List<Post> getAnimalPost(Long anmIdx) {
+        List<Post> postList = postRepository.findPostByAnimalId(anmIdx);
+        return postList;
+
     }
 }

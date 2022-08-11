@@ -1,4 +1,5 @@
-package umc_sjs.smallestShelter.repository;
+
+/*package umc_sjs.smallestShelter.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import umc_sjs.smallestShelter.domain.PrivateMember;
@@ -6,4 +7,5 @@ import umc_sjs.smallestShelter.domain.PrivateMember;
 public interface PrivateMemberRepository extends JpaRepository<PrivateMember, Long> {
 
     PrivateMember findByUserName(String username);
-}
+}*/
+

@@ -1,3 +1,4 @@
+
 package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
@@ -68,7 +69,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
 
-        /* body에 추가 정보 응답 */
+ //body에 추가 정보 응답
+
         LoginRes loginRes = new LoginRes();
         loginRes.setUserIdx(principalDetails.getUser().getIdx());
         loginRes.setName(principalDetails.getUser().getName());

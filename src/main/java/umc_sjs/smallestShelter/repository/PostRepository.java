@@ -52,4 +52,13 @@ public class PostRepository {
         return em.createQuery("select p from Post p left join fetch p.animal a", Post.class)
                 .getResultList();
     }
+
+    public List<Post> findPostByAnimalId(Long anmIdx) {
+        List<Post> postList = em.createQuery("select p from Post p where p.animal.idx = :anmIdx", Post.class)
+                .setParameter("anmIdx", anmIdx)
+                .getResultList();
+
+        return postList;
+    }
+
 }
