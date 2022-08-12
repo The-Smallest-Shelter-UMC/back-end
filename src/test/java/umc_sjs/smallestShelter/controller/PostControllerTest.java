@@ -6,20 +6,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import umc_sjs.smallestShelter.post.PostController;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.dto.post.CreatePostReq;
-import umc_sjs.smallestShelter.dto.post.UpdatePostReq;
-import umc_sjs.smallestShelter.response.BaseException;
+import umc_sjs.smallestShelter.post.postDto.CreatePostReq;
+import umc_sjs.smallestShelter.post.postDto.UpdatePostReq;
 import umc_sjs.smallestShelter.response.BaseResponse;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional

@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import umc_sjs.smallestShelter.domain.Animal;
-import umc_sjs.smallestShelter.domain.Illness;
-import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.RecommandAnimalDto;
-import umc_sjs.smallestShelter.repository.AnimalRepository;
+import umc_sjs.smallestShelter.animal.animalDto.getAnimalDetailDto.RecommandAnimalDto;
+import umc_sjs.smallestShelter.animal.AnimalRepository;
 
 import java.util.List;
 

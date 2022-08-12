@@ -6,10 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import umc_sjs.smallestShelter.domain.User;
-import umc_sjs.smallestShelter.repository.UserRepository;
-import umc_sjs.smallestShelter.response.BaseException;
-
-import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
+import umc_sjs.smallestShelter.user.UserRepository;
 
 @Service
 @RequiredArgsConstructor

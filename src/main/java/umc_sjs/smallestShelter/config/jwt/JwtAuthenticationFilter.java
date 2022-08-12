@@ -14,8 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
-import umc_sjs.smallestShelter.dto.user.LoginDto;
-import umc_sjs.smallestShelter.dto.user.LoginRes;
+import umc_sjs.smallestShelter.user.userDto.LoginDto;
+import umc_sjs.smallestShelter.user.userDto.LoginRes;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
