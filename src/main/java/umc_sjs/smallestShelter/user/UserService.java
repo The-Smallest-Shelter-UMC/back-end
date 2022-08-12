@@ -11,7 +11,6 @@ import umc_sjs.smallestShelter.domain.FavoriteAnimal;
 import umc_sjs.smallestShelter.domain.User;
 import umc_sjs.smallestShelter.animal.animalDto.AnimalRes;
 import umc_sjs.smallestShelter.animal.animalDto.GetAnimalsRes;
-import umc_sjs.smallestShelter.dto.userDto.*;
 import umc_sjs.smallestShelter.animal.AnimalRepository;
 import umc_sjs.smallestShelter.animal.FavoriteAnimalRepository;
 

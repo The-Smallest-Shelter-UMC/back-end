@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.animal.animalDto.GetAnimalsRes;
-import umc_sjs.smallestShelter.dto.userDto.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
 import umc_sjs.smallestShelter.user.userDto.GetOrganizationPageRes;

@@ -2,9 +2,7 @@ package umc_sjs.smallestShelter.post;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import umc_sjs.post.postDto.*;
 import umc_sjs.smallestShelter.domain.Post;
-import umc_sjs.smallestShelter.dto.postDto.*;
 import umc_sjs.smallestShelter.post.postDto.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;

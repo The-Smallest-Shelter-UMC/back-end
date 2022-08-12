@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import umc_sjs.animal.animalDto.*;
 import umc_sjs.smallestShelter.post.PostService;
 import umc_sjs.smallestShelter.animal.animalDto.*;
 import umc_sjs.smallestShelter.animal.animalDto.getAnimalDetailDto.GetAnimalDetailRes;
@@ -15,7 +14,6 @@ import umc_sjs.smallestShelter.animal.animalDto.getAnimalDetailDto.RecommandAnim
 import umc_sjs.smallestShelter.animal.animalDto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.domain.*;
-import umc_sjs.smallestShelter.dto.animalDto.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
 
