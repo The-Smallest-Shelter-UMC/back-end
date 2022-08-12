@@ -33,8 +33,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
 
-        System.out.println("request : " + request);
-
         ObjectMapper om = new ObjectMapper();
         LoginDto loginDto = null;
         try{
@@ -71,12 +69,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
 
- //body에 추가 정보 응답
-
+        //body에 추가 정보 응답
         LoginRes loginRes = new LoginRes();
         loginRes.setUserIdx(principalDetails.getUser().getIdx());
         loginRes.setName(principalDetails.getUser().getName());
         loginRes.setRole(principalDetails.getUser().getRole().toString());
+        loginRes.setOrganizationName(principalDetails.getUser().getOrganizationName());
 
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
         MediaType jsonMimeType = MediaType.APPLICATION_JSON;
