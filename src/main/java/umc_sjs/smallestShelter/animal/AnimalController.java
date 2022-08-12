@@ -287,7 +287,7 @@ public class AnimalController {
      * @param animal_id
      * @return AdoptAnimalRes
      */
-    @PatchMapping("/auth/organization/animal/adopt")
+    @PostMapping("/auth/organization/animal/adopt")
     public BaseResponse<AdoptAnimalRes> adoptAnimal(@RequestParam Long animal_id) {
 
         if (animal_id == null) {
