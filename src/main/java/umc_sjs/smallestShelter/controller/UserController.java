@@ -96,7 +96,9 @@ public class UserController {
 
     @GetMapping("/auth/private/animals/{userIdx}") // 마이페이지 관심동물 - 개인
     public BaseResponse<GetAnimalsRes> privateAnimals(@RequestParam int page, @PathVariable Long userIdx, Authentication authentication) throws IOException {
+
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
 
         if (principalDetails.getUser().getIdx() != userIdx) {
             return new BaseResponse<>(INVALID_USER_JWT);

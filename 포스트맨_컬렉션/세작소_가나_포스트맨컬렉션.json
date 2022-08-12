@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "b7d28518-4089-488f-baae-b100506671d3",
+		"name": "세작소",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20800008"
+	},
+	"item": [
+		{
+			"name": "게시물 생성_로컬",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MDMwMyIsImlkIjo4LCJleHAiOjE2NjAyODMzNjIsInVzZXJuYW1lIjoidGVzdDAzMDMifQ.hSBSOaTRvnLAnf57LRat9rphLMC_l9HcnZb0aNLNu6eN6INHDZyKm-bCSrW6FHaev1eiwaukYFEIjqQz4PaD-w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imgUrl\": \"https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/storypick/editor/2019052111361692611.jpg\",\r\n    \"content\": \"포스트맨에서 게시글 생성합니다\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/organization/post/join?animal_id=14",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"organization",
+						"post",
+						"join"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 조회_로컬",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/post?animal_id=2&post_id=15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "2"
+						},
+						{
+							"key": "post_id",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 삭제_로컬",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/post?animal_id=14&post_id=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "14"
+						},
+						{
+							"key": "post_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 수정_로컬",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MDMwMyIsImlkIjo4LCJleHAiOjE2NjAyODMzNjIsInVzZXJuYW1lIjoidGVzdDAzMDMifQ.hSBSOaTRvnLAnf57LRat9rphLMC_l9HcnZb0aNLNu6eN6INHDZyKm-bCSrW6FHaev1eiwaukYFEIjqQz4PaD-w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imgUrl\": \"https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/storypick/editor/2019052111361692611.jpg\",\r\n    \"content\": \"포스트맨에서 게시글 내용 수정합니다\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/organization/post?animal_id=1&post_id=27",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"organization",
+						"post"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "1"
+						},
+						{
+							"key": "post_id",
+							"value": "27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 생성_서버",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imgUrl\": \"https://d1bg8rd1h4dvdb.cloudfront.net/upload/imgServer/storypick/editor/2019052111361692611.jpg\",\r\n    \"content\": \"안녕하세요, 서버용 포스트맨에서 보낸 게시글 내용입니다\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sjs.hana-umc.shop/post/join?animal_id=1",
+					"protocol": "https",
+					"host": [
+						"sjs",
+						"hana-umc",
+						"shop"
+					],
+					"path": [
+						"post",
+						"join"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 조회_서버",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "게시물 삭제_서버",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sjs.hana-umc.shop/auth/organization/post?animal_id=1&post_id=20",
+					"protocol": "https",
+					"host": [
+						"sjs",
+						"hana-umc",
+						"shop"
+					],
+					"path": [
+						"auth",
+						"organization",
+						"post"
+					],
+					"query": [
+						{
+							"key": "animal_id",
+							"value": "1"
+						},
+						{
+							"key": "post_id",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "회원가입_서버",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test0303\",\r\n    \"password\": \"0303test\",\r\n    \"name\": \"가나_단체\",\r\n    \"phoneNumber\": \"010-7138-0000\",\r\n    \"address\": \"인천\",\r\n    \"email\": \"choign@naver.com\",\r\n    \"profileImgUrl\": \"/img2\",\r\n    \"role\": \"ORGANIZATION\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sjs.hana-umc.shop/join",
+					"protocol": "https",
+					"host": [
+						"sjs",
+						"hana-umc",
+						"shop"
+					],
+					"path": [
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인_서버",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

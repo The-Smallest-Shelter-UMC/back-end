@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtExceptionFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/포스트맨_컬렉션/세작소_가나_포스트맨컬렉션.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/BaseResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/BaseResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/MissingParamExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/response/MissingParamExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/AnimalRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/AnimalRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/controller/PostControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/controller/PostControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/repository/PostRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/repository/PostRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/service/PostServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/service/PostServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/세작소_가나_포스트맨컬랙션.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +43,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="smallestShelter" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="smallestShelter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="smallestShelter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -105,7 +128,7 @@
       <recent name="C:\git\smallest-shelter-back\src\main\java\umc_sjs\smallestShelter\response" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.smallest-shelter-back [compileQuerydsl]">
+  <component name="RunManager" selected="Gradle.smallest-shelter-back [compileJava]">
     <configuration name="SmallestShelterApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="umc_sjs.smallestShelter.SmallestShelterApplication" />
       <module name="smallestShelter.main" />
@@ -142,7 +165,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="/Users/Keonho/smallest-shelter-back" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="smallest-shelter-back [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -152,7 +175,30 @@
           <list />
         </option>
         <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="smallest-shelter-back [compileQuerydslJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
           <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileQuerydslJava" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -182,22 +228,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GanaServiceTest.게시물등록" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="smallestShelter.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="umc_sjs.smallestShelter.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="umc_sjs.smallestShelter" />
-      <option name="MAIN_CLASS_NAME" value="umc_sjs.smallestShelter.GanaServiceTest" />
-      <option name="METHOD_NAME" value="게시물등록" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GanaServiceTest.설정파일조회" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="smallestShelter.test" />
       <extension name="coverage">
@@ -223,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.smallest-shelter-back [compileJava]" />
+        <item itemvalue="Gradle.smallest-shelter-back [compileQuerydslJava]" />
         <item itemvalue="Gradle.smallest-shelter-back [compileQuerydsl]" />
         <item itemvalue="Gradle.smallest-shelter-back [compileQuerydsl]" />
         <item itemvalue="Gradle.QuerydslApplicationTest.contextloads" />
-        <item itemvalue="Gradle./Users/Keonho/smallest-shelter-back" />
-        <item itemvalue="JUnit.GanaServiceTest.게시물등록" />
       </list>
     </recent_temporary>
   </component>

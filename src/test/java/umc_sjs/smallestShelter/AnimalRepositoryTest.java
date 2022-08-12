@@ -22,26 +22,26 @@ public class AnimalRepositoryTest {
     @Autowired
     AnimalRepository animalRepository;
 
-    @Test
-    public void findAnimalById() throws Exception{
-        //given
-
-        Long anmIdx = 20L;
-
-        //when
-
-        Animal findAnimal = animalRepository.findAnimalById(anmIdx);
-        List<Illness> illnessList = findAnimal.getIllnessList();
-        for (Illness illness : illnessList) {
-            System.out.println("illness = " + illness.getName());
-
-        }
-
-        //then
-
-        Assertions.assertThat(findAnimal.getIllnessList().size()).isEqualTo(3);
-
-    }
+//    @Test
+//    public void findAnimalById() throws Exception{
+//        //given
+//
+//        Long anmIdx = 20L;
+//
+//        //when
+//
+//        Animal findAnimal = animalRepository.findAnimalById(anmIdx);
+//        List<Illness> illnessList = findAnimal.getIllnessList();
+//        for (Illness illness : illnessList) {
+//            System.out.println("illness = " + illness.getName());
+//
+//        }
+//
+//        //then
+//
+//        Assertions.assertThat(findAnimal.getIllnessList().size()).isEqualTo(3);
+//
+//    }
 
     @Test
     public void getRecommandAnimals() throws Exception{
