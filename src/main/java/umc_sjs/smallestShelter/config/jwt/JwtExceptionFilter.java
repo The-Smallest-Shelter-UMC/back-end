@@ -1,6 +1,7 @@
-/*package umc_sjs.smallestShelter.config.jwt;
+package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import io.jsonwebtoken.JwtException;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -15,9 +16,9 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
 
         try {
             filterChain.doFilter(request, response);
-        } catch (JWTVerificationException e) {
-            setErro
+        } catch (JwtException e) {
+            //
         }
 
     }
-}*/
+}

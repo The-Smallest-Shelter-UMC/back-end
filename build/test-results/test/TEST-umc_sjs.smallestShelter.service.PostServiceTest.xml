@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="umc_sjs.smallestShelter.service.PostServiceTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-08-12T06:24:51" hostname="baggeonhoui-MacBookPro.local" time="0.667">
+  <properties/>
+  <testcase name="게시글조회_X_일치하지않는동물idx()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.064"/>
+  <testcase name="게시글삭제()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.079"/>
+  <testcase name="게시물생성()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.088"/>
+  <testcase name="게시물수정()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.071"/>
+  <testcase name="게시물조회()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.065"/>
+  <testcase name="게시물조회_X_없는게시물조회()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.058"/>
+  <testcase name="게시물삭제_x_일치하지않는동물idx()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.054"/>
+  <testcase name="게시물수정_x_없는게시물()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.058"/>
+  <testcase name="게시글삭제_x_없는게시물()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.053"/>
+  <testcase name="게시물수정_x_일치하지않는동물idx()" classname="umc_sjs.smallestShelter.service.PostServiceTest" time="0.059"/>
+  <system-out><![CDATA[2022-08-12 15:24:51.263  INFO 3306 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [umc_sjs.smallestShelter.service.PostServiceTest], using SpringBootContextLoader
+2022-08-12 15:24:51.264  INFO 3306 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [umc_sjs.smallestShelter.service.PostServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-08-12 15:24:51.264  INFO 3306 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [umc_sjs.smallestShelter.service.PostServiceTest]: PostServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-08-12 15:24:51.279  INFO 3306 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration umc_sjs.smallestShelter.SmallestShelterApplication for test class umc_sjs.smallestShelter.service.PostServiceTest
+2022-08-12 15:24:51.282  INFO 3306 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-08-12 15:24:51.283  INFO 3306 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4aed4ff, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2220910, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@563434b4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@40977fab, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@326c526a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2094a7be, org.springframework.test.context.transaction.TransactionalTestExecutionListener@57f2a68c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2c63f1fe, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@7c4c091a, org.springframework.test.context.event.EventPublishingTestExecutionListener@7960e87a, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@3be4e71c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83b0d9f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@14a3d15b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6afed88d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@763e1ec9, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@26b9a264, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2c1a86e1]
+2022-08-12 15:24:51.302  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@75401424, testMethod = 게시글조회_X_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.304 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.319 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.329 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.356  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@75401424, testMethod = 게시글조회_X_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.366  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@735a3e0d, testMethod = 게시글삭제@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.368 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.390 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.407 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.435  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@735a3e0d, testMethod = 게시글삭제@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.449  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@7aaec50e, testMethod = 게시물생성@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.452 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.470 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.480 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_0_,
+        illnesslis1_.illness_idx as illness_1_2_1_,
+        animal0_.is_guessed as is_guess2_0_0_,
+        animal0_.month as month3_0_0_,
+        animal0_.year as year4_0_0_,
+        animal0_.bark as bark5_0_0_,
+        animal0_.bite as bite6_0_0_,
+        animal0_.create_date as create_d7_0_0_,
+        animal0_.gender as gender8_0_0_,
+        animal0_.is_adopted as is_adopt9_0_0_,
+        animal0_.main_img_url as main_im10_0_0_,
+        animal0_.name as name11_0_0_,
+        animal0_.separation as separat12_0_0_,
+        animal0_.socialization as sociali13_0_0_,
+        animal0_.species as species14_0_0_,
+        animal0_.toilet as toilet15_0_0_,
+        animal0_.upload_user_idx as upload_16_0_0_,
+        illnesslis1_.animal_idx as animal_i3_2_1_,
+        illnesslis1_.name as name2_2_1_,
+        illnesslis1_.animal_idx as animal_i3_2_0__,
+        illnesslis1_.illness_idx as illness_1_2_0__ 
+    from
+        animal animal0_ 
+    left outer join
+        illness illnesslis1_ 
+            on animal0_.animal_idx=illnesslis1_.animal_idx 
+    where
+        animal0_.animal_idx=?
+2022-08-12 15:24:51.492 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        post
+        (animal_idx, content, create_date, img_url) 
+    values
+        (?, ?, ?, ?)
+2022-08-12 15:24:51.528  INFO 3306 --- [    Test worker] o.h.c.i.AbstractPersistentCollection     : HHH000496: Detaching an uninitialized collection with queued operations from a session: [umc_sjs.smallestShelter.domain.Animal.postList#1]
+2022-08-12 15:24:51.528  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@7aaec50e, testMethod = 게시물생성@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.540  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@596c6c3e, testMethod = 게시물수정@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.543 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.561 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.573 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.601  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@596c6c3e, testMethod = 게시물수정@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.612  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@58030528, testMethod = 게시물조회@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.614 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.632 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.641 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.668  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@58030528, testMethod = 게시물조회@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.680  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5fe9851f, testMethod = 게시물조회_X_없는게시물조회@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.682 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.695 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.705 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.728  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5fe9851f, testMethod = 게시물조회_X_없는게시물조회@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.737  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5dea9867, testMethod = 게시물삭제_x_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.739 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.751 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.760 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.784  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5dea9867, testMethod = 게시물삭제_x_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.797  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@425cf933, testMethod = 게시물수정_x_없는게시물@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.799 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.811 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.821 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.845  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@425cf933, testMethod = 게시물수정_x_없는게시물@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.854  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5df3f854, testMethod = 게시글삭제_x_없는게시물@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.856 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.866 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.875 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.899  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@5df3f854, testMethod = 게시글삭제_x_없는게시물@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+2022-08-12 15:24:51.909  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@57cc535, testMethod = 게시물수정_x_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@a8964c1]; rollback [true]
+2022-08-12 15:24:51.911 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        animal0_.animal_idx as animal_i1_0_,
+        animal0_.is_guessed as is_guess2_0_,
+        animal0_.month as month3_0_,
+        animal0_.year as year4_0_,
+        animal0_.bark as bark5_0_,
+        animal0_.bite as bite6_0_,
+        animal0_.create_date as create_d7_0_,
+        animal0_.gender as gender8_0_,
+        animal0_.is_adopted as is_adopt9_0_,
+        animal0_.main_img_url as main_im10_0_,
+        animal0_.name as name11_0_,
+        animal0_.separation as separat12_0_,
+        animal0_.socialization as sociali13_0_,
+        animal0_.species as species14_0_,
+        animal0_.toilet as toilet15_0_,
+        animal0_.upload_user_idx as upload_16_0_ 
+    from
+        animal animal0_
+2022-08-12 15:24:51.923 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_,
+        post0_.animal_idx as animal_i5_3_,
+        post0_.content as content2_3_,
+        post0_.create_date as create_d3_3_,
+        post0_.img_url as img_url4_3_ 
+    from
+        post post0_
+2022-08-12 15:24:51.933 DEBUG 3306 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        post0_.post_idx as post_idx1_3_0_,
+        animal1_.animal_idx as animal_i1_0_1_,
+        post0_.animal_idx as animal_i5_3_0_,
+        post0_.content as content2_3_0_,
+        post0_.create_date as create_d3_3_0_,
+        post0_.img_url as img_url4_3_0_,
+        animal1_.is_guessed as is_guess2_0_1_,
+        animal1_.month as month3_0_1_,
+        animal1_.year as year4_0_1_,
+        animal1_.bark as bark5_0_1_,
+        animal1_.bite as bite6_0_1_,
+        animal1_.create_date as create_d7_0_1_,
+        animal1_.gender as gender8_0_1_,
+        animal1_.is_adopted as is_adopt9_0_1_,
+        animal1_.main_img_url as main_im10_0_1_,
+        animal1_.name as name11_0_1_,
+        animal1_.separation as separat12_0_1_,
+        animal1_.socialization as sociali13_0_1_,
+        animal1_.species as species14_0_1_,
+        animal1_.toilet as toilet15_0_1_,
+        animal1_.upload_user_idx as upload_16_0_1_ 
+    from
+        post post0_ 
+    left outer join
+        animal animal1_ 
+            on post0_.animal_idx=animal1_.animal_idx 
+    where
+        post0_.post_idx=?
+2022-08-12 15:24:51.959  INFO 3306 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@25e60726 testClass = PostServiceTest, testInstance = umc_sjs.smallestShelter.service.PostServiceTest@57cc535, testMethod = 게시물수정_x_일치하지않는동물idx@PostServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@571ecfe2 testClass = PostServiceTest, locations = '{}', classes = '{class umc_sjs.smallestShelter.SmallestShelterApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@20f12539, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@aa549e5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@62e6b5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6aecbb8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@52045dbe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@16612a51], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
