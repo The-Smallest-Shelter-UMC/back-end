@@ -18,7 +18,7 @@ class PostRepositoryTest {
 
     @Test
     public void 게시물조회_fetch(){
-        Post post = postRepository.findPost(1L);
+//        Post post = postRepository.findPost(1L);
     }
 
     @Test
