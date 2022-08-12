@@ -48,7 +48,7 @@ public class AnimalRepository {
 
     public GetAnimalRes getAnimals(int page, GetAnimalRes getAnimalRes) {
 
-        List<GetAnimalDto> animalList = em.createQuery("select new umc_sjs.smallestShelter.dto.animalDto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalDto.class)
+        List<GetAnimalDto> animalList = em.createQuery("select new umc_sjs.smallestShelter.animal.animalDto.getAnimalDto.GetAnimalDto(a.idx, a.name, a.mainImgUrl, a.species, a.gender, a.isAdopted, a.age) from Animal a order by a.createDate desc", GetAnimalDto.class)
                 .setFirstResult(page * 12)
                 .setMaxResults(12)
                 .getResultList();
@@ -95,7 +95,7 @@ public class AnimalRepository {
         random.setSeed(System.currentTimeMillis());
         int randomNumber = random.nextInt(animalCount.intValue());
 
-        List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.dto.animalDto.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
+        List<RecommandAnimalDto> resultList = em.createQuery("select new umc_sjs.smallestShelter.animal.animalDto.getAnimalDetailDto.RecommandAnimalDto(a.idx, a.mainImgUrl) from Animal a " +
                         "where a.isAdopted = false ", RecommandAnimalDto.class)
                 .setFirstResult(randomNumber)
                 .setMaxResults(12)
@@ -117,6 +117,13 @@ public class AnimalRepository {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         QAnimal qAnimal = new QAnimal("animal");
+
+        //임시 코드
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getAgeBoundary());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
+        //
 
         List<GetAnimalDto> getAnimalDtoList = queryFactory
                 .select(Projections.fields(GetAnimalDto.class,
@@ -201,7 +208,7 @@ public class AnimalRepository {
                     .setParameter("anmIdx", anmIdx)
                     .executeUpdate();
 
-            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.animalDto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.animal.animalDto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
                     .setParameter("anmIdx", anmIdx)
                     .getSingleResult();
 
@@ -212,7 +219,7 @@ public class AnimalRepository {
                     .setParameter("anmIdx", anmIdx)
                     .executeUpdate();
 
-            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.dto.animalDto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
+            AdoptAnimalRes adoptAnimalRes = em.createQuery("select new umc_sjs.smallestShelter.animal.animalDto.AdoptAnimalRes(a.idx, a.isAdopted) from Animal a where a.idx =: anmIdx", AdoptAnimalRes.class)
                     .setParameter("anmIdx", anmIdx)
                     .getSingleResult();
 
