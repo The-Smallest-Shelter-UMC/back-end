@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtExceptionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/MissingParamExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/response/MissingParamExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/LoginRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/user/LoginRes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,25 +56,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="querydsl" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+                <item name="실행 구성" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -139,7 +126,7 @@
       <recent name="C:\git\smallest-shelter-back\src\main\java\umc_sjs\smallestShelter\response" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.smallest-shelter-back [build]">
+  <component name="RunManager" selected="Spring Boot.SmallestShelterApplication">
     <configuration name="smallest-shelter-back [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -244,6 +231,22 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration name="GanaServiceTest.설정파일조회" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smallestShelter.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="umc_sjs.smallestShelter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="umc_sjs.smallestShelter" />
+      <option name="MAIN_CLASS_NAME" value="umc_sjs.smallestShelter.GanaServiceTest" />
+      <option name="METHOD_NAME" value="설정파일조회" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="SmallestShelterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="smallestShelter.main" />
