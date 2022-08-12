@@ -103,7 +103,7 @@ public class UserService {
         try{
             GetAnimalsRes getAnimalsRes = new GetAnimalsRes();
 
-            Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
+            Pageable pageable = PageRequest.of(page, 6, Sort.Direction.DESC, "idx");
 
 //            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
 
