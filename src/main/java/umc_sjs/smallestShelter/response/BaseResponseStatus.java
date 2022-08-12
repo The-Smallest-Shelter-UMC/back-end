@@ -53,6 +53,7 @@ public enum BaseResponseStatus {
     //post
     POST_EMPTY_IMG(false,33, "게시물에 이미지가 없습니다"),
     POST_CONTENT_LENGTH_OVER(false, 33, "게시글의 내용이 허용된 글자수를 넘었습니다"),
+    POST_EMPTY_CONTNET(false,33,"게시글의 내용이 없습니다"),
     POST_NOT_EXIST(false,33,"해당하는 게시물이 존재하지 않습니다"),
     POSTIDX_ANIMALIDX_ILLEGAL(false, 33, "해당 동물의 게시물의 아닙니다: idx 불일치"),
 

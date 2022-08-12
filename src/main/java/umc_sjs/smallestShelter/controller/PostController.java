@@ -33,10 +33,13 @@ public class PostController {
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
-        // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(createPostReq.getContent().length() > MAX_CONTENT){
-            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+        if(createPostReq.getContent() == null || createPostReq.getContent().isEmpty()){
+            return new BaseResponse<>(POST_EMPTY_CONTNET);
         }
+//        // 대신 게시글의 글자수 제한은 필요할 듯함.
+//        if(createPostReq.getContent().length() > MAX_CONTENT){
+//            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+//        }
 
         try {
             // 게시물 생성
@@ -89,10 +92,13 @@ public class PostController {
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
-        // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(updatePostReq.getContent().length() > MAX_CONTENT){
-            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+        if(updatePostReq.getContent() == null || updatePostReq.getContent().isEmpty()){
+            return new BaseResponse<>(POST_EMPTY_CONTNET);
         }
+//        // 대신 게시글의 글자수 제한은 필요할 듯함.
+//        if(createPostReq.getContent().length() > MAX_CONTENT){
+//            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+//        }
 
         try{
             // 게시물 수정
