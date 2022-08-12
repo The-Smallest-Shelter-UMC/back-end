@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 import umc_sjs.smallestShelter.domain.Animal;
 import umc_sjs.smallestShelter.domain.Post;
 import umc_sjs.smallestShelter.response.BaseException;
@@ -17,8 +18,8 @@ import java.util.List;
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @SpringBootTest
-//@Transactional
-@Rollback(value = false)
+@Transactional
+//@Rollback()
 class PostServiceTest {
 
     @Autowired private PostService postService;

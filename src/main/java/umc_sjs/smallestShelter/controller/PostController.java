@@ -11,7 +11,7 @@ import umc_sjs.smallestShelter.response.BaseResponse;
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @RestController
-@RequestMapping("/post")
+//@RequestMapping("/post")
 @RequiredArgsConstructor
 public class PostController {
 
@@ -19,8 +19,8 @@ public class PostController {
     private final int MAX_CONTENT = 300;
 
     // 동물 게시물(피드) 등록
-    // [POST] /post/join?animal_id
-    @PostMapping("/join")
+    // [POST] /auth/organization/post/join?animal_id=
+    @PostMapping("/auth/organization/post/join")
     public BaseResponse<CreatePostRes> createPost(@RequestParam(value = "animal_id", required = false) Long animalIdx, @RequestBody CreatePostReq createPostReq){
 
         // 이거 안됨
@@ -33,10 +33,13 @@ public class PostController {
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
-        // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(createPostReq.getContent().length() > MAX_CONTENT){
-            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+        if(createPostReq.getContent() == null || createPostReq.getContent().isEmpty()){
+            return new BaseResponse<>(POST_EMPTY_CONTNET);
         }
+//        // 대신 게시글의 글자수 제한은 필요할 듯함.
+//        if(createPostReq.getContent().length() > MAX_CONTENT){
+//            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+//        }
 
         try {
             // 게시물 생성
@@ -54,7 +57,7 @@ public class PostController {
 
     // 게시물 조회
     // [GET] /post?animal_id=&post_id=
-    @GetMapping()
+    @GetMapping("/post")
     public BaseResponse<GetPostRes> getPost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx){
         //animalIdx null 체크도 해줘야하나?
         if(animalIdx==null || postIdx==null){
@@ -75,8 +78,8 @@ public class PostController {
     }
 
     // 게시물 수정
-    // [PATCH] /post?animal_id=&post_id=
-    @PatchMapping()
+    // [PATCH] /auth/organization/post?animal_id=&post_id=
+    @PatchMapping("/auth/organization/post")
     public BaseResponse<UpdatePostRes> updatePost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx, @RequestBody UpdatePostReq updatePostReq){
 
         //animalIdx null 체크도 해줘야하나?
@@ -89,10 +92,13 @@ public class PostController {
             return new BaseResponse<>(POST_EMPTY_IMG);
         }
         // 게시물의 내용은 없어도 되지 않나..?
-        // 대신 게시글의 글자수 제한은 필요할 듯함.
-        if(updatePostReq.getContent().length() > MAX_CONTENT){
-            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+        if(updatePostReq.getContent() == null || updatePostReq.getContent().isEmpty()){
+            return new BaseResponse<>(POST_EMPTY_CONTNET);
         }
+//        // 대신 게시글의 글자수 제한은 필요할 듯함.
+//        if(createPostReq.getContent().length() > MAX_CONTENT){
+//            return new BaseResponse<>(POST_CONTENT_LENGTH_OVER);
+//        }
 
         try{
             // 게시물 수정
@@ -108,8 +114,8 @@ public class PostController {
     }
 
     // 게시물 삭제
-    // [DELTE] /post?animal_id=&post_id=
-    @DeleteMapping()
+    // [DELTE] /auth/organization/post?animal_id=&post_id=
+    @DeleteMapping("/auth/organization/post")
     public BaseResponse<String> deletePost(@RequestParam("animal_id") Long animalIdx, @RequestParam("post_id") Long postIdx){
         //animalIdx null 체크도 해줘야하나?
         if(animalIdx==null || postIdx==null){

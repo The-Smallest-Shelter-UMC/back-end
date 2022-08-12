@@ -22,7 +22,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-//@Rollback(value = false)
+@Transactional
+//@Rollback(value = true)
 class PostControllerTest {
 
     @Autowired private PostController postController;
