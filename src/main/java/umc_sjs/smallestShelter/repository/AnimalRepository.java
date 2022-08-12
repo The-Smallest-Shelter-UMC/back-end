@@ -78,7 +78,7 @@ public class AnimalRepository {
         List<Animal> animals = em.createQuery("select a from Animal a where a.uploadUser.idx =: userIdx order by a.createDate desc", Animal.class)
                 .setParameter("userIdx", userIdx)
                 .setFirstResult(page * 2)
-                .setMaxResults(2)
+                .setMaxResults(6)
                 .getResultList();
 
         return animals;
