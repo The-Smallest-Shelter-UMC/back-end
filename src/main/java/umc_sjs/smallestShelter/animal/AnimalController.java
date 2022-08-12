@@ -309,7 +309,7 @@ public class AnimalController {
      * @return LikeAnimalRes
      */
     @PatchMapping("/auth/private/animal/like")
-    public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam Long user_id, @RequestParam Long animal_id) {
+    public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam(value = "user_id") Long user_id, @RequestParam(value = "animal_id") Long animal_id) {
 
         LikeAnimalRes likeAnimalRes = animalService.likeAnimal(user_id, animal_id, new LikeAnimalRes());
         return new BaseResponse<>(likeAnimalRes);
