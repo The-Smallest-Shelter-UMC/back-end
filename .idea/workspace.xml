@@ -5,54 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1132dfd0-d632-467b-87a5-3ed70628f1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/searchAnimalDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/AnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/AnimalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/Animal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/domain/FavoriteAnimal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/AnimalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/AnimalRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/PostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/repository/PostRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/AnimalService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/AnimalService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/umc_sjs/smallestShelter/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/umc_sjs/smallestShelter/GanaServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/umc_sjs.smallestShelter.GanaServiceTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/umc_sjs.smallestShelter.SmallestShelterApplicationTests.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/umc_sjs.smallestShelter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-umc_sjs.smallestShelter.GanaServiceTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-umc_sjs.smallestShelter.SmallestShelterApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/auth/PrincipalDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/config/jwt/JwtAuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/AnimalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/FavoriteAnimal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDto/GetAnimalDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/dto/animal/getAnimalDto/GetAnimalDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/AnimalRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/FavoriteAnimalRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/repository/PostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/AnimalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc_sjs/smallestShelter/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/GanaServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/repository/PostRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/repository/PostRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/service/PostServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/umc_sjs/smallestShelter/service/PostServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/요청json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/요청json.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,106 +28,12 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
+                <item name="smallest-shelter-back" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-security:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-security:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.security:spring-security-config:5.7.2" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-context:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-context:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-aop:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-thymeleaf:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot:2.7.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-context:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-aop:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.springframework:spring-beans:5.3.21" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="smallestShelter" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="smallest-shelter-back" type="f1a62948:ProjectNode" />
+                <item name="실행 구성" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -200,6 +59,22 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -349,7 +224,6 @@
         <item itemvalue="Gradle.smallest-shelter-back [compileQuerydsl]" />
         <item itemvalue="Gradle.QuerydslApplicationTest.contextloads" />
         <item itemvalue="Gradle./Users/Keonho/smallest-shelter-back" />
-        <item itemvalue="Application.SmallestShelterApplication" />
         <item itemvalue="JUnit.GanaServiceTest.게시물등록" />
       </list>
     </recent_temporary>
