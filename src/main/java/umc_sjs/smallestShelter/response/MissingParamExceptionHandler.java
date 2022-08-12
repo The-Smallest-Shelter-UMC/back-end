@@ -1,5 +1,6 @@
 package umc_sjs.smallestShelter.response;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingPathVariableException;
@@ -18,5 +19,12 @@ public class MissingParamExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new BaseResponse(BaseResponseStatus.EMPTY_URL_VALUE));
 
+    }
+
+    @ExceptionHandler(com.auth0.jwt.exceptions.TokenExpiredException.class)
+    protected ResponseEntity<BaseResponse> TokenExpiredException(TokenExpiredException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new BaseResponse(BaseResponseStatus.INVALID_JWT));
     }
 }

@@ -75,10 +75,10 @@ public class AnimalService {
         try {
             Animal findAnimal = getAnimal(animal_id);
             animalRepository.deleteAnimal(findAnimal);
-
-        } catch (Exception e) {
+        } catch (NoResultException e) {
             throw new BaseException(BaseResponseStatus.NON_EXISTING_ANIMAL);
-
+        } catch (Exception e) {
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
 

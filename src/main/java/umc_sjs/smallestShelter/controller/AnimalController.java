@@ -1,8 +1,11 @@
 package umc_sjs.smallestShelter.controller;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.dto.animal.*;
 import umc_sjs.smallestShelter.dto.animal.getAnimalDetailDto.GetAnimalDetailRes;
@@ -15,7 +18,12 @@ import umc_sjs.smallestShelter.response.BaseResponse;
 import umc_sjs.smallestShelter.response.BaseResponseStatus;
 import umc_sjs.smallestShelter.service.*;
 import umc_sjs.smallestShelter.repository.*;
+
+import java.io.IOException;
 import java.util.List;
+
+import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
+import static umc_sjs.smallestShelter.response.BaseResponseStatus.INVALID_USER_JWT;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,40 +43,40 @@ public class AnimalController {
     public BaseResponse<JoinAnimalRes> joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq) {
 
         if (joinAnimalReq.getUserIdx() == null) {
-            return new BaseResponse<>(BaseResponseStatus.REQUEST_ERROR);
+            return new BaseResponse<>(REQUEST_ERROR);
         }
         if (joinAnimalReq.getName() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_NAME);
+            return new BaseResponse<>(ANIMAL_EMPTY_NAME);
         }
         if (joinAnimalReq.getYear() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_YEAR);
+            return new BaseResponse<>(ANIMAL_EMPTY_YEAR);
         }
         if (joinAnimalReq.getMonth() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_MONTH);
+            return new BaseResponse<>(ANIMAL_EMPTY_MONTH);
         }
         if (joinAnimalReq.getGender() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_GENDER);
+            return new BaseResponse<>(ANIMAL_EMPTY_GENDER);
         }
         if (joinAnimalReq.getSpecies() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_SPECIES);
+            return new BaseResponse<>(ANIMAL_EMPTY_SPECIES);
         }
         if (joinAnimalReq.getMainImgUrl() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_MAINIMG);
+            return new BaseResponse<>(ANIMAL_EMPTY_MAINIMG);
         }
         if (joinAnimalReq.getSocialization() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_SOCIALIZATION);
+            return new BaseResponse<>(ANIMAL_EMPTY_SOCIALIZATION);
         }
         if (joinAnimalReq.getSeparation() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_SEPARATION);
+            return new BaseResponse<>(ANIMAL_EMPTY_SEPARATION);
         }
         if (joinAnimalReq.getToilet() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_TOILET);
+            return new BaseResponse<>(ANIMAL_EMPTY_TOILET);
         }
         if (joinAnimalReq.getBark() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_BARK);
+            return new BaseResponse<>(ANIMAL_EMPTY_BARK);
         }
         if (joinAnimalReq.getBite() == null) {
-            return new BaseResponse<>(BaseResponseStatus.ANIMAL_EMPTY_BITE);
+            return new BaseResponse<>(ANIMAL_EMPTY_BITE);
         }
 
         Animal joinAnimal = new Animal();
@@ -77,7 +85,6 @@ public class AnimalController {
         joinAnimal.setGender(joinAnimalReq.getGender());
         joinAnimal.setSpecies(joinAnimalReq.getSpecies());
         joinAnimal.setMainImgUrl(joinAnimalReq.getMainImgUrl());
-        //joinAnimal.setIsAdopted(joinAnimalReq.getIsAdopted());
         joinAnimal.setSocialization(joinAnimalReq.getSocialization());
         joinAnimal.setSeparation(joinAnimalReq.getSeparation());
         joinAnimal.setToilet(joinAnimalReq.getToilet());
@@ -142,7 +149,7 @@ public class AnimalController {
     public BaseResponse<String> modifyAnimal(@PathVariable(name = "animal_id") Long anmIdx, @RequestBody(required = false) ModifyAnimalReq modifyAnimalReq) {
 
         if (modifyAnimalReq.getUserIdx() == null) {
-            return new BaseResponse<>(BaseResponseStatus.EMPTY_JWT);
+            return new BaseResponse<>(EMPTY_JWT);
         }
 
         System.out.println("modifyAnimalReq = " + modifyAnimalReq.getYear());
@@ -164,7 +171,7 @@ public class AnimalController {
     //@ResponseBody
     public BaseResponse<GetAnimalRes> getAnimals(@RequestParam Integer page) {
         if (page == null) {
-            return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         try {
@@ -181,7 +188,23 @@ public class AnimalController {
      * @param animal_id
      */
     @DeleteMapping("/auth/organization/animal/{animal_id}")
-    public BaseResponse<String> deleteAnimal(@PathVariable Long animal_id) {
+    public BaseResponse<String> deleteAnimal(@PathVariable Long animal_id, Authentication authentication) {
+
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        /*try {
+            principalDetails = (PrincipalDetails) authentication.getPrincipal();
+            principalDetails.
+        } catch (Exception e) {
+            return new BaseResponse<>(INVALID_JWT);
+        }*/
+
+        if (principalDetails.getUser().getRole() == Role.PRIVATE) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
+
+        if (principalDetails.getUser().getRole() == Role.PRIVATE) {
+            return new BaseResponse<>(INVALID_USER_JWT);
+        }
 
         try {
             animalService.deleteAnimal(animal_id);
@@ -189,6 +212,8 @@ public class AnimalController {
             return new BaseResponse<>(result);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
+        } catch (TokenExpiredException e) {
+            return new BaseResponse<>(INVALID_JWT);
         }
     }
 
@@ -256,7 +281,7 @@ public class AnimalController {
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
         } catch (Exception e) {
-            return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
     }
 
@@ -269,7 +294,7 @@ public class AnimalController {
     public BaseResponse<AdoptAnimalRes> adoptAnimal(@RequestParam Long animal_id) {
 
         if (animal_id == null) {
-            return new BaseResponse<>(BaseResponseStatus.EMPTY_URL_VALUE);
+            return new BaseResponse<>(EMPTY_URL_VALUE);
         }
 
         try {
