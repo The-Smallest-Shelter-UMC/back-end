@@ -10,7 +10,7 @@ spring:
     username: umc
     password: chamsaenunjack55
     driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
-# driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
+  # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
 
   jpa:
     hibernate:
@@ -18,7 +18,7 @@ spring:
 
     properties:
       hibernate:
-      #     show_sql: true
+        #     show_sql: true
         format_sql: true
         default_batch_fetch_size: 100
   sql:
@@ -26,4 +26,4 @@ spring:
       platform: mysql
 logging.level:
   org.hibernate.SQL: debug
-    #  org.hibernate.type: trace
+  #  org.hibernate.type: trace

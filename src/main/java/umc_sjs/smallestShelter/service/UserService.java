@@ -105,7 +105,7 @@ public class UserService {
 
             Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
-            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
+//            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
 
 
             List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
