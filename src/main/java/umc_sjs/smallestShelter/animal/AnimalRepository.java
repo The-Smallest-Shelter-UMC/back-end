@@ -118,6 +118,13 @@ public class AnimalRepository {
 
         QAnimal qAnimal = new QAnimal("animal");
 
+        //임시 코드
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getAgeBoundary());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getGender());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getSpecies());
+        System.out.println("searchAnimalReq = " + searchAnimalReq.getIsAdopted());
+        //
+
         List<GetAnimalDto> getAnimalDtoList = queryFactory
                 .select(Projections.fields(GetAnimalDto.class,
                         animal.idx.as("animalIdx"),
