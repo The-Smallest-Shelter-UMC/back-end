@@ -25,79 +25,62 @@ public class PostService {
     @Transactional
     public Post create(Long animalIdx, String imgUrl, String content) throws BaseException{
 
-        try {
-            // 동물 찾기
+        // 동물 찾기
+        Animal animal = animalRepository.findAinmalOne(animalIdx);
+        if(animal == null){
+            throw new BaseException(NON_EXISTING_ANIMAL);
 
-            Animal animal = animalRepository.findAnimalById(animalIdx);
-            if(animal == null){
-                throw new BaseException(NON_EXISTING_ANIMAL);
-
-            }
-
-            // 게시물 만들기
-            Post post = Post.createPost(imgUrl, content, animal);
-            postRepository.save(post);
-
-            return post;
-        } catch (BaseException e){
-            throw e;
         }
 
+        // 게시물 만들기
+        Post post = Post.createPost(imgUrl, content, animal);
+        postRepository.save(post);
+
+        return post;
     }
 
     // 게시물 조회
     public Post get(Long postIdx, Long animalIdx) throws BaseException{
-        try{
-            // 게시물 조회
-            Post post = findPost(postIdx);
 
-            // 게시물 idx와 동물 idx가 일치하는지 확인
-            checkPostLegal(post, animalIdx);
+        // 게시물 조회
+        Post post = findPost(postIdx);
 
-            return post;
-        } catch (BaseException e){
-            throw new BaseException(e.getStatus());
-        }
+        // 게시물 idx와 동물 idx가 일치하는지 확인
+        checkPostLegal(post, animalIdx);
+
+        return post;
     }
 
     // 게시물 수정
     @Transactional
     public Post update(Long postIdx, Long animalIdx, String imgUrl, String content) throws BaseException{
 
-        try{
-            // 수정 전 게시물 조회
-            Post beforUpdatePost = findPost(postIdx);
+        // 수정 전 게시물 조회
+        Post beforUpdatePost = findPost(postIdx);
 
-            // 게시물 idx와 동물 idx가 일치하는지 확인
-            checkPostLegal(beforUpdatePost, animalIdx);
+        // 게시물 idx와 동물 idx가 일치하는지 확인
+        checkPostLegal(beforUpdatePost, animalIdx);
 
-            // 수정 후 게시물
-            Post afterUpdatePost = beforUpdatePost.updatePost(imgUrl, content);
+        // 수정 후 게시물
+        Post afterUpdatePost = beforUpdatePost.updatePost(imgUrl, content);
 
-            // 게시물 수정
-            postRepository.save(afterUpdatePost);
-            return afterUpdatePost;
-        } catch (BaseException e){
-            throw new BaseException(e.getStatus());
-        }
+        // 게시물 수정
+        postRepository.save(afterUpdatePost);
+        return afterUpdatePost;
     }
 
     // 게시물 삭제
     @Transactional
     public void delete(Long postIdx, Long animalIdx) throws BaseException{
 
-        try{
-            // 게시물 조회
-            Post post = findPost(postIdx);
+        // 게시물 조회
+        Post post = findPost(postIdx);
 
-            // 게시물 idx와 동물 idx가 일치하는지 확인
-            checkPostLegal(post, animalIdx);
+        // 게시물 idx와 동물 idx가 일치하는지 확인
+        checkPostLegal(post, animalIdx);
 
-            // 게시물 삭제
-            postRepository.delete(post);
-        } catch (BaseException e){
-            throw new BaseException(e.getStatus());
-        }
+        // 게시물 삭제
+        postRepository.delete(post);
     }
 
     // 게시물 idx와 동물 idx가 일치하는지 확인
