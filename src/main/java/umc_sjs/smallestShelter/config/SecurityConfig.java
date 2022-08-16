@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.CorsFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthenticationFilter;
 import umc_sjs.smallestShelter.config.jwt.JwtAuthorizationFilter;
+import umc_sjs.smallestShelter.config.jwt.JwtExceptionFilter;
 import umc_sjs.smallestShelter.user.UserRepository;
 
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -61,7 +62,8 @@ public class SecurityConfig{
             http
                     .addFilter(corsFilter)
                     .addFilter(new JwtAuthenticationFilter(authenticationManager))
-                    .addFilter(new JwtAuthorizationFilter(authenticationManager, userRepository));
+                    .addFilter(new JwtAuthorizationFilter(authenticationManager, userRepository))
+                    .addFilterBefore(new JwtExceptionFilter(), JwtAuthorizationFilter.class);
         }
     }
 }

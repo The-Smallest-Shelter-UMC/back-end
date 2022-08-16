@@ -2,6 +2,8 @@ package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import io.jsonwebtoken.JwtException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -9,6 +11,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.domain.User;
+import umc_sjs.smallestShelter.response.BaseException;
+import umc_sjs.smallestShelter.response.BaseResponse;
+import umc_sjs.smallestShelter.response.BaseResponseStatus;
 import umc_sjs.smallestShelter.user.UserRepository;
 
 import javax.servlet.FilterChain;
@@ -39,16 +44,15 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         }
         String jwtToken = request.getHeader(JwtProperties.HEADER_STRING).replace(JwtProperties.TOKEN_PREFIX, "");
 
-        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
-                        .getClaim("username").asString();
+        String username = null;
 
-        /*try {
-            String username =
-                    JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
-                            .getClaim("username").asString();
-        } catch (Exception e) {
-            throw
-        }*/
+        try {
+            username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
+                    .getClaim("username").asString();
+        } catch (TokenExpiredException e) {
+            e.printStackTrace();
+            throw new JwtException("Invalid JWT");
+        }
 
         if (username != null){
             Optional<User> user = userRepository.findByUsername(username);

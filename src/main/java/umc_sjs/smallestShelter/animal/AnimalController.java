@@ -299,17 +299,17 @@ public class AnimalController {
             return new BaseResponse<>(adoptAnimalRes);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
-        }
+}
     }
 
-    /**
-     * 관심 동물 - 즐겨찾기 API
-     * @param user_id
-     * @param animal_id
-     * @return LikeAnimalRes
-     */
-    @PatchMapping("/auth/private/animal/like")
-    public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam(value = "user_id") Long user_id, @RequestParam(value = "animal_id") Long animal_id) {
+/**
+ * 관심 동물 - 즐겨찾기 API
+ * @param user_id
+ * @param animal_id
+ * @return LikeAnimalRes
+ */
+@PatchMapping("/auth/private/animal/like")
+public BaseResponse<LikeAnimalRes> likeAnimal(@RequestParam(value = "user_id") Long user_id, @RequestParam(value = "animal_id") Long animal_id) {
 
         LikeAnimalRes likeAnimalRes = animalService.likeAnimal(user_id, animal_id, new LikeAnimalRes());
         return new BaseResponse<>(likeAnimalRes);
