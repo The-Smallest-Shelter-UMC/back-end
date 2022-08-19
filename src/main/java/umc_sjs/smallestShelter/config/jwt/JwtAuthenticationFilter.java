@@ -75,6 +75,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         loginRes.setName(principalDetails.getUser().getName());
         loginRes.setRole(principalDetails.getUser().getRole().toString());
         loginRes.setOrganizationName(principalDetails.getUser().getOrganizationName());
+        loginRes.setProfileImgUrl(principalDetails.getUser().getProfileImgUrl());
 
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
         MediaType jsonMimeType = MediaType.APPLICATION_JSON;
