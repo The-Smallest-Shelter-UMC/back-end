@@ -94,7 +94,6 @@ public class AnimalController {
         joinAnimal.setBite(joinAnimalReq.getBite());
         try {
             User findUser = userService.findUser(joinAnimalReq.getUserIdx());
-            //userRepository.findById(joinAnimalReq.getUserIdx())
             joinAnimal.modifyUploadUser(findUser);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());

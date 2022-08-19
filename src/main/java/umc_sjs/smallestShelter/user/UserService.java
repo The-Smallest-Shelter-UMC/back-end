@@ -30,6 +30,7 @@ import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -272,12 +273,9 @@ public class UserService {
     public User findUser(Long userIdx) throws BaseException{
         try {
             Optional<User> findUser = userRepository.findById(userIdx);
-            if (findUser == null) {
-                throw new BaseException(BaseResponseStatus.NON_EXISTING_USER);
-            }
             return findUser.get();
-        } catch (BaseException e) {
-            throw new BaseException(e.getStatus());
+        } catch (NoSuchElementException e) {
+            throw new BaseException(BaseResponseStatus.NON_EXISTING_USER);
         }catch (Exception e) {
             e.printStackTrace();
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
