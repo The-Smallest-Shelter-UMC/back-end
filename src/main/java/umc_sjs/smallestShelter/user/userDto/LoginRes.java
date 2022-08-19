@@ -20,5 +20,6 @@ public class LoginRes {
     private String role;
     @Enumerated(EnumType.STRING)
     private OrganizationName organizationName;
+    private Integer profileImgUrl;
 
 }

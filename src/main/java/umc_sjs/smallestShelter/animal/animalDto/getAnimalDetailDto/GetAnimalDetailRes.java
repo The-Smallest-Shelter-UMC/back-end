@@ -24,7 +24,7 @@ public class GetAnimalDetailRes {
     private Status bite;
     private OrganizationName organizationName;
     private String organizationMemberId;
-    private String organizationMemberImgUrl;
+    private int organizationMemberImgUrl;
     private String phoneNumber;
     private String address;
 
