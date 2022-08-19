@@ -263,10 +263,4 @@ public class AnimalRepository {
         }
 
     }
-
-    // 가나 추가
-    public Animal findAinmalOne(Long animalIdx){
-        return em.find(Animal.class, animalIdx);
-    }
-
 }
