@@ -37,6 +37,8 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
 
         if (e.getMessage() == "ExpiredToken") {
             baseResponse = new BaseResponse<>(BaseResponseStatus.Expired_JWT_Token);
+        } else if (e.getMessage() == "INVALID JWT Encoded") {
+            baseResponse = new BaseResponse<>(BaseResponseStatus.INVALID_JWT_Encoded);
         } else {
             baseResponse = new BaseResponse<>(BaseResponseStatus.INVALID_JWT);
         }

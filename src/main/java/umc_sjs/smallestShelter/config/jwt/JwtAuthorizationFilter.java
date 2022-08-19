@@ -2,6 +2,7 @@ package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -63,6 +64,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             System.out.println("예외 : SignatureVerificationException");
             //e.printStackTrace();
             throw new JwtException("UserAuthenticationFailed");
+        } catch (JWTDecodeException e) {
+            System.out.println("예외 : JWTDecodeException");
+            throw new JwtException("INVALID JWT Encoded");
         }
 
         if (username != null){
