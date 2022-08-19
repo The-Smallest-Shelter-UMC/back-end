@@ -25,6 +25,8 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (JwtException e) {
             setErrorResponse(HttpStatus.UNAUTHORIZED, response, e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

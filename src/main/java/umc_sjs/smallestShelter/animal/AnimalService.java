@@ -80,22 +80,6 @@ public class AnimalService {
         }
     }
 
-    //회의 후 User쪽 service와 repository로 바꿀 것
-    public User findUser(Long userIdx) throws BaseException{
-        try {
-            User findUser = animalRepository.findUser(userIdx);
-            if (findUser == null) {
-                throw new BaseException(BaseResponseStatus.NON_EXISTING_USER);
-            }
-            return findUser;
-        } catch (BaseException e) {
-            throw new BaseException(e.getStatus());
-        }catch (Exception e) {
-            e.printStackTrace();
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-    }
-
     public GetAnimalRes searchAnimal(Integer page, SearchAnimalReq searchAnimalReq, GetAnimalRes getAnimalRes) throws BaseException{
         try {
             GetAnimalRes returnGetAnimalRes = animalRepository.searchAnimal(page, searchAnimalReq, getAnimalRes);

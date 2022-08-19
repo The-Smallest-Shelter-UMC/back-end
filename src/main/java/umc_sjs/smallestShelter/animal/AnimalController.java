@@ -40,14 +40,13 @@ public class AnimalController {
      * @param joinAnimalReq
      * @return JoinAnimalRes
      */
-    //@ResponseBody
     @PostMapping("/auth/organization/animal/join")
     public BaseResponse<JoinAnimalRes> joinAnimal(@RequestBody JoinAnimalReq joinAnimalReq) {
-
+        
         if (joinAnimalReq.getUserIdx() == null) {
             return new BaseResponse<>(REQUEST_ERROR);
         }
-        if (joinAnimalReq.getName().isEmpty()) {
+        if (joinAnimalReq.getName() == null || joinAnimalReq.getName().isBlank()) {
             return new BaseResponse<>(ANIMAL_EMPTY_NAME);
         }
         if (joinAnimalReq.getYear() == null) {

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import umc_sjs.smallestShelter.domain.*;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +30,5 @@ public class JoinAnimalReq {
 
     public boolean getIsGuessed() {
         return isGuessed;
-    }
-
-    public void setIsGuessed(boolean guessed) {
-        isGuessed = guessed;
     }
 }
