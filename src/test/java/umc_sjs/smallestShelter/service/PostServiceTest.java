@@ -70,18 +70,18 @@ class PostServiceTest {
         }
     }
 
-//    @Test
-//    @Rollback(value = true)
-//    public void 게시물생성_X_없는동물(){
-//        try {
-//            Post post = postService.create(-1L, "/img1", "테스트 게시물 in 게시물생성_X_없는동물");
-//        } catch (BaseException e){
-//            Assertions.assertThat(e.getStatus()).isSameAs(ANIMAL_NOT_EXIST);
-//        } catch (Exception e){
-//            e.printStackTrace();
-//            Assertions.fail("에러!");
-//        }
-//    }
+    @Test
+    @Rollback(value = true)
+    public void 게시물생성_X_없는동물(){
+        try {
+            Post post = postService.create(-1L, "/img1", "테스트 게시물 in 게시물생성_X_없는동물");
+        } catch (BaseException e){
+            Assertions.assertThat(e.getStatus()).isSameAs(NON_EXISTING_ANIMAL);
+        } catch (Exception e){
+            e.printStackTrace();
+            Assertions.fail("에러!");
+        }
+    }
 
     @Test
     public void 게시물조회(){
