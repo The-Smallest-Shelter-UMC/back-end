@@ -42,7 +42,7 @@ public class AnimalController {
         if (joinAnimalReq.getUserIdx() == null) {
             return new BaseResponse<>(REQUEST_ERROR);
         }
-        if (joinAnimalReq.getName() == null) {
+        if (joinAnimalReq.getName() == null || joinAnimalReq.getName().isEmpty()) {
             return new BaseResponse<>(ANIMAL_EMPTY_NAME);
         }
         if (joinAnimalReq.getYear() == null) {
