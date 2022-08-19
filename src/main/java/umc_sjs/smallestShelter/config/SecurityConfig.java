@@ -12,9 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.CorsFilter;
-import umc_sjs.smallestShelter.config.jwt.JwtAuthenticationFilter;
-import umc_sjs.smallestShelter.config.jwt.JwtAuthorizationFilter;
-import umc_sjs.smallestShelter.config.jwt.JwtExceptionFilter;
+import umc_sjs.smallestShelter.config.jwt.*;
 import umc_sjs.smallestShelter.user.UserRepository;
 
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -25,6 +23,8 @@ public class SecurityConfig{
 
     private final CorsFilter corsFilter;
     private final UserRepository userRepository;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -50,9 +50,10 @@ public class SecurityConfig{
                         .access("hasRole('ROLE_PRIVATE')")
                         .antMatchers("/auth/**")
                         .access("hasRole('ROLE_PRIVATE') or hasRole('ROLE_ORGANIZATION')")
-
                         .anyRequest().permitAll())
-                        .build();
+                //.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
+                .exceptionHandling().accessDeniedHandler(jwtAccessDeniedHandler).and()
+                .build();
     }
 
     public class CustomFilter extends AbstractHttpConfigurer<CustomFilter, HttpSecurity> {
