@@ -27,7 +27,7 @@ public class User {
     private String name;
     private String password;
     private String phoneNumber;
-    private String profileImgUrl;
+    private Integer profileImgUrl; // 프론트 단에서 배열 인덱스로 처리
     private String email;
     private String address;
 

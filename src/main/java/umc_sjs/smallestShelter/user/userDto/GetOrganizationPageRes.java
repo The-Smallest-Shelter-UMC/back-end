@@ -17,6 +17,6 @@ public class GetOrganizationPageRes {
     private String address;
     private String email;
     private String role;
-    private String profileImgUrl;
+    private Integer profileImgUrl;
     private String OrganizationName;
 }

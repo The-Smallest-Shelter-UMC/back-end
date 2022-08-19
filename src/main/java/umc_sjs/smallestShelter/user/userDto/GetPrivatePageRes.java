@@ -17,5 +17,5 @@ public class GetPrivatePageRes {
     private String address;
     private String email;
     private String role;
-    private String profileImgUrl;
+    private Integer profileImgUrl;
 }

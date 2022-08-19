@@ -20,7 +20,7 @@ public class JoinDto {
     private String name;
     private String username;
     private String phoneNumber;
-    private String profileImgUrl;
+    private Integer profileImgUrl;
     private String email;
     private String address;
     @Nullable
