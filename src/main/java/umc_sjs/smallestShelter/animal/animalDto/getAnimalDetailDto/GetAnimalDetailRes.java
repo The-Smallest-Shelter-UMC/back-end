@@ -17,6 +17,11 @@ public class GetAnimalDetailRes {
     private Age age;
     private Gender gender;
     private Boolean isAdopted;
+    private Status socialization;
+    private Status separation;
+    private Status toilet;
+    private Status bark;
+    private Status bite;
     private OrganizationName organizationName;
     private String organizationMemberId;
     private String organizationMemberImgUrl;

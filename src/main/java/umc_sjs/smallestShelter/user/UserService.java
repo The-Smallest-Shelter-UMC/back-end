@@ -22,6 +22,10 @@ import umc_sjs.smallestShelter.user.userDto.GetPrivatePageRes;
 import umc_sjs.smallestShelter.user.userDto.JoinDto;
 import umc_sjs.smallestShelter.user.userDto.PatchUserReq;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 import java.util.ArrayList;
@@ -261,6 +265,22 @@ public class UserService {
             return userRepository.existsByEmail(email);
         } catch (Exception exception){
             throw new BaseException(BaseResponseStatus.USERS_EXISTS_EMAIL);
+        }
+    }
+
+    //건호 추가
+    public User findUser(Long userIdx) throws BaseException{
+        try {
+            Optional<User> findUser = userRepository.findById(userIdx);
+            if (findUser == null) {
+                throw new BaseException(BaseResponseStatus.NON_EXISTING_USER);
+            }
+            return findUser.get();
+        } catch (BaseException e) {
+            throw new BaseException(e.getStatus());
+        }catch (Exception e) {
+            e.printStackTrace();
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
 }

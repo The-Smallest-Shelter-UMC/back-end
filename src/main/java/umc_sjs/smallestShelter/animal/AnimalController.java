@@ -16,6 +16,8 @@ import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
+import umc_sjs.smallestShelter.user.UserRepository;
+import umc_sjs.smallestShelter.user.UserService;
 
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class AnimalController {
     private final AnimalRepository animalRepository;
     private final PostService postService;
 
+    //유저 레포지토리
+    private final UserService userService;
+
     /**
      * 동물 등록 API
      * @param joinAnimalReq
@@ -42,7 +47,7 @@ public class AnimalController {
         if (joinAnimalReq.getUserIdx() == null) {
             return new BaseResponse<>(REQUEST_ERROR);
         }
-        if (joinAnimalReq.getName() == null) {
+        if (joinAnimalReq.getName().isEmpty()) {
             return new BaseResponse<>(ANIMAL_EMPTY_NAME);
         }
         if (joinAnimalReq.getYear() == null) {
@@ -89,6 +94,7 @@ public class AnimalController {
         joinAnimal.setBite(joinAnimalReq.getBite());
         try {
             User findUser = animalService.findUser(joinAnimalReq.getUserIdx());
+            //userRepository.findById(joinAnimalReq.getUserIdx())
             joinAnimal.modifyUploadUser(findUser);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
@@ -237,6 +243,11 @@ public class AnimalController {
             getAnimalDetailRes.setOrganizationMemberImgUrl(animal.getUploadUser().getProfileImgUrl());
             getAnimalDetailRes.setPhoneNumber(animal.getUploadUser().getPhoneNumber());
             getAnimalDetailRes.setAddress(animal.getUploadUser().getAddress());
+            getAnimalDetailRes.setSocialization(animal.getSocialization());
+            getAnimalDetailRes.setSeparation(animal.getSeparation());
+            getAnimalDetailRes.setToilet(animal.getToilet());
+            getAnimalDetailRes.setBark(animal.getBark());
+            getAnimalDetailRes.setBite(animal.getBite());
 
             List<Illness> illnessList = animal.getIllnessList();
 
