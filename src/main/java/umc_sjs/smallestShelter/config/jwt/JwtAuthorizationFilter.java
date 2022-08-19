@@ -2,8 +2,11 @@ package umc_sjs.smallestShelter.config.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +23,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.DecodeException;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -50,8 +54,15 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken)
                     .getClaim("username").asString();
         } catch (TokenExpiredException e) {
-            e.printStackTrace();
+            System.out.println("예외 : TokenExpiredException");
+            throw new JwtException("ExpiredToken");
+        } catch (IllegalArgumentException e) {
+            System.out.println("예외 : IllegalArgumentException");
             throw new JwtException("Invalid JWT");
+        } catch (SignatureVerificationException e) {
+            System.out.println("예외 : SignatureVerificationException");
+            //e.printStackTrace();
+            throw new JwtException("UserAuthenticationFailed");
         }
 
         if (username != null){

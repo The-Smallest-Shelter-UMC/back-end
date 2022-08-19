@@ -25,6 +25,7 @@ public enum BaseResponseStatus {
     NON_EXISTING_VALUE(false, 2006, "요청에 대한 값이 존재하지 않습니다."),
     // 임시로 적어두었습니다! by 가나
     EMPTY_URL_VALUE(false, 2007, "URL에 비어있는 값이 있습니다. path variable 또는 query string"),
+    Expired_JWT_Token(false, 2008, "만료된 JWT 토큰입니다. 다시 로그인 해주세요."),
 
     //users
     USERS_EMPTY_USERNAME(false, 2010, "아이디를 입력해주세요."),
