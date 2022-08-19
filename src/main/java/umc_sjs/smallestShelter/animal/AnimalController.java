@@ -93,13 +93,14 @@ public class AnimalController {
         joinAnimal.setBark(joinAnimalReq.getBark());
         joinAnimal.setBite(joinAnimalReq.getBite());
         try {
-            User findUser = animalService.findUser(joinAnimalReq.getUserIdx());
+            User findUser = userService.findUser(joinAnimalReq.getUserIdx());
             //userRepository.findById(joinAnimalReq.getUserIdx())
             joinAnimal.modifyUploadUser(findUser);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
         }
-        List<String> illnessList = joinAnimalReq.getIllnessList();
+        List<String> illnessList = joinAnimalReq.getIllness();
+
         Long saveAnimalIdx = animalService.saveAnimal(joinAnimal, illnessList);
 
         return new BaseResponse<>(new JoinAnimalRes(saveAnimalIdx));

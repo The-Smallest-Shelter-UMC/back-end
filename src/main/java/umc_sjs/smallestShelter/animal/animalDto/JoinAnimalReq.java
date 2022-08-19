@@ -25,7 +25,7 @@ public class JoinAnimalReq {
     private Status toilet;
     private Status bark;
     private Status bite;
-    private List<String> illnessList = new ArrayList<>();
+    private List<String> illness = new ArrayList<>();
 
     public boolean getIsGuessed() {
         return isGuessed;
