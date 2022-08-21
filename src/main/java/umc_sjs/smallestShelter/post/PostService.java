@@ -22,7 +22,15 @@ public class PostService {
     private final PostRepository postRepository;
     private final AnimalRepository animalRepository;
 
-    // 게시글(피드) 생성
+
+    /**
+     * 게시물 생성
+     * @param animalIdx 반려동물 인덱스
+     * @param imgUrl 게시물 이미지 url
+     * @param content 게시물 내용
+     * @return Post
+     * @throws BaseException
+     */
     @Transactional
     public Post create(Long animalIdx, String imgUrl, String content) throws BaseException{
 
@@ -42,7 +50,13 @@ public class PostService {
         return post;
     }
 
-    // 게시물 조회
+    /**
+     * 게시물 조회
+     * @param postIdx 게시물 인덱스
+     * @param animalIdx 동물 인덱스
+     * @return Post
+     * @throws BaseException
+     */
     public Post get(Long postIdx, Long animalIdx) throws BaseException{
 
         // 게시물 조회
@@ -54,7 +68,15 @@ public class PostService {
         return post;
     }
 
-    // 게시물 수정
+    /**
+     * 게시물 수정
+     * @param postIdx 게시물 인덱스
+     * @param animalIdx 반려동물 인덱스
+     * @param imgUrl 수정할 이미지 url
+     * @param content 수정할 내용
+     * @return 수정된 Post
+     * @throws BaseException
+     */
     @Transactional
     public Post update(Long postIdx, Long animalIdx, String imgUrl, String content) throws BaseException{
 
@@ -72,7 +94,12 @@ public class PostService {
         return afterUpdatePost;
     }
 
-    // 게시물 삭제
+    /**
+     * 게시물 삭제
+     * @param postIdx 게시물 idx
+     * @param animalIdx 반려동물 idx
+     * @throws BaseException
+     */
     @Transactional
     public void delete(Long postIdx, Long animalIdx) throws BaseException{
 
@@ -86,7 +113,14 @@ public class PostService {
         postRepository.delete(post);
     }
 
-    // 게시물 idx와 동물 idx가 일치하는지 확인
+
+    /**
+     * 게시물의 idx와 동물 idx가 일치하는지 확인
+     * @param post 게시물
+     * @param animalIdx 반려동물 idx
+     * @return true if 게시물의 idx와 동물 idx가 일치, false if not
+     * @throws BaseException 게시물의 주인(반려동물)이 요청값으로 넘어온 반려동물과 일치하지 않으면
+     */
     private boolean checkPostLegal(Post post, Long animalIdx) throws BaseException{
         // 게시물의 주인(반려동물)이 요청값으로 넘어온 반려동물과 일치하지 않으면
         if(!post.checkLegal(animalIdx)){
@@ -96,22 +130,19 @@ public class PostService {
         return true;
     }
 
-    // 게시물 찾기
+
+    /**
+     * 게시물 idx로 게시물 찾기 (fetch join한 post임)
+     * @param postIdx
+     * @return Post
+     * @throws BaseException 게시물이 존재하지 않을 경우
+     */
     public Post findPost(Long postIdx) throws BaseException{
         try {
             return postRepository.findPost(postIdx);
         } catch (EmptyResultDataAccessException e){ // 해당하는 게시물이 없을경우
             throw new BaseException(POST_NOT_EXIST);
         }
-
-//        Post post = postRepository.findPost(postIdx);
-//
-//        // 해당하는 게시물이 없을경우
-//        if(post == null){
-//            throw new BaseException(POST_NOT_EXIST);
-//        }
-//
-//        return post;
 
     }
 
