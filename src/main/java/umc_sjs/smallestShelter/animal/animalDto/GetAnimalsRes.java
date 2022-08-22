@@ -13,5 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class GetAnimalsRes {
 
+    long totalPage;
     List<AnimalRes> animalResList;
 }
