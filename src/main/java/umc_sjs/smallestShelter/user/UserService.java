@@ -1,6 +1,7 @@
 package umc_sjs.smallestShelter.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -111,10 +112,8 @@ public class UserService {
 
             Pageable pageable = PageRequest.of(page, 6, Sort.Direction.DESC, "idx");
 
-//            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByUserIdx(userIdx, pageable);
-
-
-            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
+//            List<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
+            Page<FavoriteAnimal> favoriteAnimals = favoriteAnimalRepository.findByLikeUserIdx(userIdx, pageable);
 
             List<AnimalRes> animalResList = new ArrayList<>();
 
@@ -128,6 +127,7 @@ public class UserService {
             }
 
             getAnimalsRes.setAnimalResList(animalResList);
+            getAnimalsRes.setTotalPage(favoriteAnimals.getTotalPages());
 
             return getAnimalsRes;
         }
@@ -167,6 +167,9 @@ public class UserService {
             //Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "idx");
 
             List<Animal> animals = animalRepository.findByUserIdx(userIdx, page);
+            long totalCount = animalRepository.totalCount(userIdx);
+            System.out.println("totalCount" + totalCount);
+            long totalPage = (totalCount/6) + 1;
 
             List<AnimalRes> animalResList = new ArrayList<>();
 
@@ -177,6 +180,7 @@ public class UserService {
             }
 
             getAnimalsRes.setAnimalResList(animalResList);
+            getAnimalsRes.setTotalPage(totalPage);
 
             return getAnimalsRes;
         }

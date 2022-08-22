@@ -72,15 +72,24 @@ public class AnimalRepository {
     }
 
     // 연지 추가
+    // -----
     public List<Animal> findByUserIdx(Long userIdx, int page) {
         List<Animal> animals = em.createQuery("select a from Animal a where a.uploadUser.idx =: userIdx order by a.createDate desc", Animal.class)
                 .setParameter("userIdx", userIdx)
-                .setFirstResult(page * 2)
+                .setFirstResult(page * 6)
                 .setMaxResults(6)
                 .getResultList();
 
         return animals;
     }
+
+    public long totalCount(Long userIdx) {
+        return em.createQuery("select count(a) from Animal a where a.uploadUser.idx =: userIdx", Long.class)
+                .setParameter("userIdx", userIdx)
+                .getSingleResult();
+    }
+
+    // -----
 
     public void deleteAnimal(Animal animal){
 
