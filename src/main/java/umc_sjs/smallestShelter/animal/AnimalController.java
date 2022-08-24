@@ -4,6 +4,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import lombok.RequiredArgsConstructor;
 //import org.springframework.security.core.Authentication;
 import org.springframework.security.core.Authentication;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import umc_sjs.smallestShelter.post.PostService;
 import umc_sjs.smallestShelter.animal.animalDto.*;
@@ -46,7 +47,7 @@ public class AnimalController {
         if (joinAnimalReq.getUserIdx() == null) {
             return new BaseResponse<>(REQUEST_ERROR);
         }
-        if (joinAnimalReq.getName() == null || joinAnimalReq.getName().isBlank()) {
+        if (!StringUtils.hasText(joinAnimalReq.getName())) {
             return new BaseResponse<>(ANIMAL_EMPTY_NAME);
         }
         if (joinAnimalReq.getYear() == null) {
