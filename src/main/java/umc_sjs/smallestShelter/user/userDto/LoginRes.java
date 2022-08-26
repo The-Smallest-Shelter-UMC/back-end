@@ -18,6 +18,9 @@ public class LoginRes {
     private Long userIdx;
     private String name;
     private String role;
+    private String phoneNumber;
+    private String email;
+    private String address;
     @Enumerated(EnumType.STRING)
     private OrganizationName organizationName;
     private Integer profileImgUrl;
