@@ -17,6 +17,7 @@ import umc_sjs.smallestShelter.config.auth.PrincipalDetails;
 import umc_sjs.smallestShelter.domain.*;
 import umc_sjs.smallestShelter.response.BaseException;
 import umc_sjs.smallestShelter.response.BaseResponse;
+import umc_sjs.smallestShelter.response.BaseResponseStatus;
 import umc_sjs.smallestShelter.user.UserRepository;
 import umc_sjs.smallestShelter.user.UserService;
 
@@ -149,18 +150,16 @@ public class AnimalController {
      * @return
      */
     @PatchMapping("/auth/organization/animal/{animal_id}")
-    public BaseResponse<String> modifyAnimal(@PathVariable(name = "animal_id") Long anmIdx, @RequestBody(required = false) ModifyAnimalReq modifyAnimalReq) {
+    public BaseResponse<String> modifyAnimal(@PathVariable(name = "animal_id") Long anmIdx, @RequestBody ModifyAnimalReq modifyAnimalReq, Authentication authentication) {
 
-        if (modifyAnimalReq.getUserIdx() == null) {
-            return new BaseResponse<>(EMPTY_JWT);
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        Animal findAnimal = animalRepository.findAnimalById(anmIdx);
+        if (principalDetails.getUser().getIdx() != findAnimal.getUploadUser().getIdx()) {
+            return new BaseResponse<>(INVALID_USER_JWT);
         }
 
-        System.out.println("modifyAnimalReq = " + modifyAnimalReq.getYear());
-
-
-
-
-        Long resultAnmIdx = animalService.modifyAnimal(anmIdx, modifyAnimalReq);
+        Long resultAnmIdx = animalService.modifyAnimal(modifyAnimalReq, findAnimal);
         return new BaseResponse<>("anmIdx : " + resultAnmIdx);
 
     }
@@ -188,30 +187,18 @@ public class AnimalController {
 
     /**
      * 동물 삭제 API
-     * @param animal_id
+     * @param anmIdx
      */
     @DeleteMapping("/auth/organization/animal/{animal_id}")
-    public BaseResponse<String> deleteAnimal(@PathVariable Long animal_id, Authentication authentication) {
+    public BaseResponse<String> deleteAnimal(@PathVariable(name = "animal_id") Long anmIdx, Authentication authentication) {
 
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-        /*try {
-            principalDetails = (PrincipalDetails) authentication.getPrincipal();
-            principalDetails.
-        } catch (Exception e) {
-            return new BaseResponse<>(INVALID_JWT);
-        }*/
 
-        if (principalDetails.getUser().getRole() == Role.PRIVATE) {
-            return new BaseResponse<>(INVALID_USER_JWT);
-        }
-
-        if (principalDetails.getUser().getRole() == Role.PRIVATE) {
-            return new BaseResponse<>(INVALID_USER_JWT);
-        }
+        Long userIdx = principalDetails.getUser().getIdx();
 
         try {
-            animalService.deleteAnimal(animal_id);
-            String result = animal_id + " 번 동물이 삭제되었습니다.";
+            animalService.deleteAnimal(anmIdx, userIdx);
+            String result = anmIdx + " 번 동물이 삭제되었습니다.";
             return new BaseResponse<>(result);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
@@ -310,7 +297,7 @@ public class AnimalController {
             return new BaseResponse<>(adoptAnimalRes);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
-}
+        }
     }
 
 /**

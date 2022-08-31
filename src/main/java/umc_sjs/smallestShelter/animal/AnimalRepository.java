@@ -270,6 +270,18 @@ public class AnimalRepository {
 
             return likeAnimalRes;
         }
+    }
+
+    public void modifyAnimalIllness(Animal animal, List<String> illnessNameList) {
+        em.createQuery("delete from Illness i where i.animal = :animal")
+                .setParameter("animal", animal)
+                .executeUpdate();
+
+        for (String illnessName : illnessNameList) {
+            Illness illness = new Illness(illnessName);
+            illness.modifyAnimal(animal);
+            em.persist(illness);
+        }
 
     }
 }

@@ -13,11 +13,10 @@ import java.util.List;
 @Setter
 public class ModifyAnimalReq {
 
-    private Long userIdx;
     private String name;
     private Integer year;
     private Integer month;
-    private boolean isGuessed;
+    private Boolean isGuessed;
     private Gender gender;
     private Species species;
     private String mainImgUrl;
@@ -26,9 +25,9 @@ public class ModifyAnimalReq {
     private Status toilet;
     private Status bark;
     private Status bite;
-    private List<String> illnessList = new ArrayList<>();
+    private List<String> illness = new ArrayList<>();
 
-    public boolean getIsGuessed() {
+    public Boolean getIsGuessed() {
         return isGuessed;
     }
 

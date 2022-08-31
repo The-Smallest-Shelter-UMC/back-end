@@ -1,5 +1,6 @@
 package umc_sjs.smallestShelter.animal;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,10 +12,13 @@ import umc_sjs.smallestShelter.animal.animalDto.SearchAnimalReq;
 import umc_sjs.smallestShelter.animal.animalDto.getAnimalDto.GetAnimalRes;
 import umc_sjs.smallestShelter.post.PostRepository;
 import umc_sjs.smallestShelter.response.BaseException;
+import umc_sjs.smallestShelter.response.BaseResponse;
 import umc_sjs.smallestShelter.response.BaseResponseStatus;
 
 import javax.persistence.NoResultException;
 import java.util.List;
+
+import static umc_sjs.smallestShelter.response.BaseResponseStatus.INVALID_USER_JWT;
 
 @Service
 @RequiredArgsConstructor
@@ -69,12 +73,17 @@ public class AnimalService {
         return returnLikeAnimalRes;
     }
 
-    public void deleteAnimal(Long animal_id) throws BaseException {
+    public void deleteAnimal(Long anmIdx, Long userIdx) throws BaseException {
         try {
-            Animal findAnimal = getAnimal(animal_id);
+            Animal findAnimal = getAnimal(anmIdx);
+            if (userIdx != findAnimal.getUploadUser().getIdx()) {
+                throw new BaseException(INVALID_USER_JWT);
+            }
             animalRepository.deleteAnimal(findAnimal);
         } catch (NoResultException e) {
             throw new BaseException(BaseResponseStatus.NON_EXISTING_ANIMAL);
+        } catch (BaseException e) {
+            throw e;
         } catch (Exception e) {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
@@ -90,9 +99,7 @@ public class AnimalService {
         }
     }
 
-    public Long modifyAnimal(Long anmIdx, ModifyAnimalReq modifyAnimalReq) {
-
-        Animal findAnimal = animalRepository.findAnimalById(anmIdx);
+    public Long modifyAnimal(ModifyAnimalReq modifyAnimalReq, Animal findAnimal){
 
         if (modifyAnimalReq.getName() != null) {
             findAnimal.setName(modifyAnimalReq.getName());
@@ -102,6 +109,9 @@ public class AnimalService {
         }
         if (modifyAnimalReq.getMonth() != null) {
             findAnimal.getAge().setMonth(modifyAnimalReq.getMonth());
+        }
+        if (modifyAnimalReq.getIsGuessed() != null) {
+            findAnimal.getAge().setIsGuessed(modifyAnimalReq.getIsGuessed());
         }
         if (modifyAnimalReq.getGender() != null) {
             findAnimal.setGender(modifyAnimalReq.getGender());
@@ -127,16 +137,10 @@ public class AnimalService {
         if (modifyAnimalReq.getBite() != null) {
             findAnimal.setBite(modifyAnimalReq.getBite());
         }
-        if (modifyAnimalReq.getIllnessList() != null) {
-            List<String> illnessList = modifyAnimalReq.getIllnessList();
-            for (String illnessName : illnessList) {
-                Illness illness = new Illness(illnessName);
-                illness.modifyAnimal(findAnimal);
-            }
+        if (modifyAnimalReq.getIllness() != null) {
+            List<String> illnessList = modifyAnimalReq.getIllness();
+            animalRepository.modifyAnimalIllness(findAnimal, illnessList);
         }
-
-        System.out.println("modifyAnimalReq = " + modifyAnimalReq.getIsGuessed());
-        findAnimal.getAge().setIsGuessed(modifyAnimalReq.getIsGuessed());
 
         return findAnimal.getIdx();
     }
