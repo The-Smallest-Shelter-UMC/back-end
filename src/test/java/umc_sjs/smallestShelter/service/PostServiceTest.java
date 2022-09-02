@@ -116,7 +116,7 @@ class PostServiceTest {
     @Rollback(value = true)
     public void 게시글조회_X_일치하지않는동물idx(){
         try{
-            postService.get(postIdx, -1L);
+            postService.get(156L, 132L);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POSTIDX_ANIMALIDX_ILLEGAL);
         } catch (Exception e){
