@@ -119,7 +119,7 @@ public class UserService {
 
 
             for (FavoriteAnimal fa : favoriteAnimals) {
-                Animal animal = animalRepository.findAnimalById(fa.getIdx());
+                Animal animal = animalRepository.findAnimalById(fa.getAnimal().getIdx());
                 AnimalRes animalRes = new AnimalRes(animal.getIdx(), animal.getMainImgUrl(), animal.getName(), animal.getSpecies(), animal.getGender(), animal.getIsAdopted(), animal.getAge());
 
 
