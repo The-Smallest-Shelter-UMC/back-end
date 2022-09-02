@@ -32,4 +32,6 @@ public class GetAnimalDetailRes {
 
     private List<PostDto> post = new ArrayList<>();
     private List<RecommandAnimalDto> recommandAnimal = new ArrayList<>();
+
+    private Long uploadUserIdx;
 }

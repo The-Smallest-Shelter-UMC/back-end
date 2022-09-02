@@ -198,6 +198,7 @@ public class AnimalController {
             getAnimalDetailRes.setToilet(animal.getToilet());
             getAnimalDetailRes.setBark(animal.getBark());
             getAnimalDetailRes.setBite(animal.getBite());
+            getAnimalDetailRes.setUploadUserIdx(animal.getUploadUser().getIdx());
 
             List<Illness> illnessList = animal.getIllnessList();
 
