@@ -65,6 +65,9 @@ public class Animal {
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE)
+    private List<FavoriteAnimal> favoriteAnimalList = new ArrayList<>();
+
     @CreationTimestamp
     private Timestamp createDate;
 
