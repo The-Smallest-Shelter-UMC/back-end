@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static umc_sjs.smallestShelter.response.BaseResponseStatus.*;
 
 @SpringBootTest
@@ -81,6 +82,10 @@ class PostServiceTest {
             e.printStackTrace();
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            Post post = postService.create(-1L, "/img1", "테스트 게시물 in 게시물생성_X_없는동물");
+        });
     }
 
     @Test
@@ -110,19 +115,28 @@ class PostServiceTest {
             e.printStackTrace();
             Assertions.fail("에러!");
         }
+
+        org.junit.jupiter.api.Assertions.assertThrows(BaseException.class, () -> {
+            postService.get(-1L, animalIdx);
+        });
     }
 
     @Test
     @Rollback(value = true)
     public void 게시글조회_X_일치하지않는동물idx(){
+
         try{
-            postService.get(156L, 132L);
+            postService.get(156L, 131L);
         } catch (BaseException e){
             Assertions.assertThat(e.getStatus()).isSameAs(POSTIDX_ANIMALIDX_ILLEGAL);
         } catch (Exception e){
             e.printStackTrace();
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            postService.get(156L,131L);
+        });
     }
 
     @Test
@@ -146,6 +160,10 @@ class PostServiceTest {
         } catch (Exception e){
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            postService.delete(-1L, animalIdx);
+        });
     }
 
     @Test
@@ -158,6 +176,10 @@ class PostServiceTest {
         } catch (Exception e){
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            postService.delete(postIdx, -1L);
+        });
     }
 
 
@@ -181,6 +203,10 @@ class PostServiceTest {
         } catch (Exception e){
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            postService.update(-1L, animalIdx, "/noUpdateImgURl", "서비스에서 게시물 수정 불가");
+        });
     }
 
     @Test
@@ -192,5 +218,9 @@ class PostServiceTest {
         } catch (Exception e){
             Assertions.fail("에러!");
         }
+
+        assertThrows(BaseException.class, () -> {
+            postService.update(postIdx, -1L, "/noUpdateImgUrl", "서비스에서 게시물 수정 불가");
+        });
     }
 }
