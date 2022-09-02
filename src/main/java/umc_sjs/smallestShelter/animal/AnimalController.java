@@ -107,43 +107,6 @@ public class AnimalController {
     }
 
     /**
-     * 동물 수정 버튼 API
-     * @param anmIdx
-     * @return
-     */
-    @GetMapping("/auth/organization/animal/{animal_id}")
-    public BaseResponse<ModifyAnimalFormRes> modifyAnimalForm(@PathVariable(name = "animal_id") Long anmIdx) {
-
-        Animal findAnimal;
-
-        try {
-            findAnimal = animalService.getAnimal(anmIdx);
-        } catch (BaseException e) {
-            return new BaseResponse<>(e.getStatus());
-        }
-
-        ModifyAnimalFormRes modifyAnimalFormRes = new ModifyAnimalFormRes();
-
-        modifyAnimalFormRes.setName(findAnimal.getName());
-        modifyAnimalFormRes.setYear(findAnimal.getAge().getYear());
-        modifyAnimalFormRes.setMonth(findAnimal.getAge().getMonth());
-        modifyAnimalFormRes.setGuessed(findAnimal.getAge().getIsGuessed());
-        modifyAnimalFormRes.setGender(findAnimal.getGender());
-        modifyAnimalFormRes.setMainImgUrl(findAnimal.getMainImgUrl());
-        modifyAnimalFormRes.setSocialization(findAnimal.getSocialization());
-        modifyAnimalFormRes.setSeparation(findAnimal.getSeparation());
-        modifyAnimalFormRes.setToilet(findAnimal.getToilet());
-        modifyAnimalFormRes.setBark(findAnimal.getBark());
-        modifyAnimalFormRes.setBite(findAnimal.getBite());
-        List<Illness> illnessList = findAnimal.getIllnessList();
-        for (Illness illness : illnessList) {
-            modifyAnimalFormRes.getIllnessList().add(illness.getName());
-        }
-
-        return new BaseResponse<>(modifyAnimalFormRes);
-    }
-
-    /**
      * 동물 수정 API
      * @param anmIdx
      * @param modifyAnimalReq
