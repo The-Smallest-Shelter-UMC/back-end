@@ -22,7 +22,7 @@ import static umc_sjs.smallestShelter.response.BaseResponseStatus.INVALID_USER_J
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
@@ -83,6 +83,7 @@ public class AnimalService {
         } catch (NoResultException e) {
             throw new BaseException(BaseResponseStatus.NON_EXISTING_ANIMAL);
         } catch (BaseException e) {
+            e.printStackTrace();
             throw e;
         } catch (Exception e) {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
